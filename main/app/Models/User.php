@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use Illuminate\Support\Facades\Storage;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -44,4 +45,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getImageURL() {
+        if (Storage::exists('public/images/MLk5koUziGSggwC6k9tEW9bGRahiRNCF8L4gMzfG.jpg')) {
+//            dd();
+        } else {
+            // File doesn't exist
+//            dd();
+        }
+
+//        dd(url('storage/' . $this->image));
+        if($this->image) {
+            return url('storage/' . $this->image);
+        }
+//        return "https://api.dicebear.com/6.x/fun-emoji/svg?seed={$this->name}";
+    }
 }

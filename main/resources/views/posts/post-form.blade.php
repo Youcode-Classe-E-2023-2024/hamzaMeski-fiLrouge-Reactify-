@@ -10,7 +10,7 @@
             <textarea name="content" class=" bg-transparent text-gray-400 font-medium text-lg w-full" rows="2" cols="50" placeholder="What's happening?"></textarea>
             <div class="text-red-500">
                 @error('content')
-                    {{ $message  }}
+                    {{ $message }}
                 @enderror
             </div>
         </div>

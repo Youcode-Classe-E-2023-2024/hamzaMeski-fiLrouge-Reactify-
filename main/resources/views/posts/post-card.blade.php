@@ -2,13 +2,13 @@
     <a href="#" class="flex-shrink-0 group block">
         <div class="flex items-center">
             <div>
-                <img class="inline-block h-10 w-10 rounded-full" src="https://pbs.twimg.com/profile_images/1121328878142853120/e-rpjoJi_bigger.png" alt=""/>
+                <img class="inline-block h-10 w-10 rounded-full" src="{{ $post->user->getImageURL() }}" alt=""/>
             </div>
             <div class="ml-3">
                 <p class="text-base leading-6 font-medium text-white">
-                    Sonali Hirave
+                    {{ $post->user->name}}
                     <span class="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
-                            @ShonaDesign . 16 April
+                            {{ $post->user->email}}. {{ $post->created_at->diffForHumans()}}
                     </span>
                 </p>
             </div>
@@ -29,7 +29,7 @@
 
 <div class="pl-16">
     <p class="text-base width-auto font-medium text-white flex-shrink">
-        {{ $post['content'] }}
+        {{ $post->content }}
     </p>
 
     <div class="flex">
