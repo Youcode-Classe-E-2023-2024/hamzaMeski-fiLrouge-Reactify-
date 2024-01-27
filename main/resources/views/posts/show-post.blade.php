@@ -7,6 +7,9 @@
 
             <div class="w-3/5 border border-gray-600 h-auto  border-t-0">
                 @include('posts.layout.post-card')
+                @include('comments.comment-form')
+                @include('comments.comment-box')
+                @include('comments.comment-box')
             </div>
 
             @include('pageComponents.right-side')
