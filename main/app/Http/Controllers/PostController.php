@@ -13,7 +13,14 @@ class PostController extends Controller
     }
 
     public function store() {
+        $validated = request()->validate([
+            'content' => 'required|min:5'
+        ]);
 
+        $validated['user_id'] = auth()->user()->id;
+        Post::create($validated);
+
+        return redirect()->route('main');
     }
 
     public function edit(Post $post) {

@@ -20,13 +20,13 @@ Route::post('/login', [AuthController::class, 'authenticate'])->name('login.auth
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 /* post route */
-Route::get('/post/{post}', [PostController::class, 'show'])->name('post.show');
+Route::get('/post/{post}', [PostController::class, 'show'])->name('posts.show');
 
-Route::post('/post/{post}', [PostController::class, 'store'])->name('post.store');
+Route::post('/post', [PostController::class, 'store'])->name('posts.store')->middleware('auth');
 
-Route::get('/post/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
+Route::get('/post/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
 
-Route::put('/post/{post}', [PostController::class, 'update'])->name('post.update');
+Route::put('/post/{post}', [PostController::class, 'update'])->name('posts.update');
 
-Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('post.destroy');
+Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
