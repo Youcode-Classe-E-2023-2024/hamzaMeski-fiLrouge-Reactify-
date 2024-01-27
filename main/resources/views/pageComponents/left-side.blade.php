@@ -15,18 +15,6 @@
             <ion-icon name="person-outline" class="text-3xl mr-4"></ion-icon>
             Profile
         </a>
-        <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300">
-            <ion-icon name="mail-open-outline" class="text-3xl mr-4"></ion-icon>
-            Register
-        </a>
-        <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300">
-            <ion-icon name="log-in-outline" class="text-3xl mr-4"></ion-icon>
-            Login
-        </a>
-        <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300">
-            <ion-icon name="log-out-outline" class="text-3xl mr-4"></ion-icon>
-            Logout
-        </a>
 
     </nav>
 
