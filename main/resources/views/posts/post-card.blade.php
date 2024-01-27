@@ -1,4 +1,4 @@
-<div class="flex flex-shrink-0 p-4 pb-0">
+<div class="flex items-center flex-shrink-0 p-4 pb-0 justify-between">
     <a href="#" class="flex-shrink-0 group block">
         <div class="flex items-center">
             <div>
@@ -9,15 +9,29 @@
             <div class="ml-3">
                 <p class="text-base leading-6 font-medium text-white">
                     Sonali Hirave
-                    <span
-                        class="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
+                    <span class="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
                             @ShonaDesign . 16 April
-                          </span>
+                    </span>
                 </p>
+            </div>
+            <div>
+
             </div>
         </div>
     </a>
+    <div class="flex gap-2 items-center">
+        <a href="#" class="text-white font-bold">view</a>
+        <button class="text-white font-bold">edit</button>
+        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded-full transition duration-300 ease-in-out">
+            delete
+        </button>
+
+    </div>
 </div>
+
+
+
+
 <div class="pl-16">
     <p class="text-base width-auto font-medium text-white flex-shrink">
         Day 07 of the challenge 100DaysOfCode
