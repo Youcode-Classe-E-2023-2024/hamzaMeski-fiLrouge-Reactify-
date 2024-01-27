@@ -5,8 +5,7 @@
              src="https://pbs.twimg.com/profile_images/1121328878142853120/e-rpjoJi_bigger.png" alt=""/>
     </div>
     <div class="flex-1 px-2 pt-2 mt-2">
-                        <textarea class=" bg-transparent text-gray-400 font-medium text-lg w-full" rows="2" cols="50"
-                                  placeholder="What's happening?"></textarea>
+        <textarea class=" bg-transparent text-gray-400 font-medium text-lg w-full" rows="2" cols="50" placeholder="What's happening?"></textarea>
     </div>
 </div>
 <!--middle creat tweet below icons-->
