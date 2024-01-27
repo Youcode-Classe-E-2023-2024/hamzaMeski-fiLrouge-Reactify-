@@ -2,9 +2,7 @@
     <a href="#" class="flex-shrink-0 group block">
         <div class="flex items-center">
             <div>
-                <img class="inline-block h-10 w-10 rounded-full"
-                     src="https://pbs.twimg.com/profile_images/1121328878142853120/e-rpjoJi_bigger.png"
-                     alt=""/>
+                <img class="inline-block h-10 w-10 rounded-full" src="https://pbs.twimg.com/profile_images/1121328878142853120/e-rpjoJi_bigger.png" alt=""/>
             </div>
             <div class="ml-3">
                 <p class="text-base leading-6 font-medium text-white">
@@ -13,9 +11,6 @@
                             @ShonaDesign . 16 April
                     </span>
                 </p>
-            </div>
-            <div>
-
             </div>
         </div>
     </a>
@@ -34,13 +29,8 @@
 
 <div class="pl-16">
     <p class="text-base width-auto font-medium text-white flex-shrink">
-        Day 07 of the challenge 100DaysOfCode
-        I was wondering what I can do with  so just
-        started building Twitter UI using Tailwind and so far it looks so promising. I will post my code
-        after completion.
-        [07/100]
+        {{ $post['content'] }}
     </p>
-
 
     <div class="flex">
         <div class="flex items-center">
