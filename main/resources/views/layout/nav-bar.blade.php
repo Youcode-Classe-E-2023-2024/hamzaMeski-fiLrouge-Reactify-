@@ -1,4 +1,4 @@
-<div class="fixed top-0 left-0 w-full z-50 bg-white border-b backdrop-blur-lg bg-opacity-80">
+<div class="fixed top-0 left-0 h-20 w-full z-50 bg-white border-b backdrop-blur-lg bg-opacity-80">
     <div class="mx-auto max-w-7xl px-6 sm:px-6 lg:px-8 ">
         <div class="relative flex h-16 justify-between">
             <div class="flex flex-1 items-stretch justify-start">
@@ -15,3 +15,5 @@
         </div>
     </div>
 </div>
+
+<main class="pt-20">

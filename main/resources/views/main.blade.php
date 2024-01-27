@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section('content')
     <!-- component -->
-    <div class="bg-blue-900 min-h-screen pt-20">
+    <div class="bg-blue-900 min-h-screen">
         <div class="flex">
 
             @include('pageComponents.left-side')
