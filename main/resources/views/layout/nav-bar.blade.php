@@ -6,12 +6,28 @@
                     <ion-icon name="logo-twitter" class="text-5xl"></ion-icon>
                 </a>
             </div>
-            <div class="flex-shrink-0 flex px-2 py-3 items-center space-x-8">
-                <a class="text-gray-700 hover:text-indigo-700 text-sm font-medium" href="{{ route('login') }}">Login</a>
-                <a class="text-gray-800 bg-blue-600 hover:bg-blue-500 inline-flex items-center justify-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm "
-                   href="{{ route('register') }}">Register
-                </a>
-            </div>
+
+            @guest
+                <div class="flex-shrink-0 flex px-2 py-3 items-center space-x-8">
+                    <a class="text-gray-700 hover:text-indigo-700 text-sm font-medium" href="{{ route('login') }}">Login</a>
+                    <a class="text-gray-800 bg-blue-600 hover:bg-blue-500 inline-flex items-center justify-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm "
+                       href="{{ route('register') }}">Register
+                    </a>
+                </div>
+            @endguest
+
+            @auth
+                <div class="flex-shrink-0 flex px-2 py-3 items-center space-x-8">
+                    <a class="text-gray-700 hover:text-indigo-700 text-sm font-medium" href="">Profile</a>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="text-gray-800 bg-blue-600 hover:bg-blue-500 inline-flex items-center justify-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm ">
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            @endauth
+
         </div>
     </div>
 </div>
