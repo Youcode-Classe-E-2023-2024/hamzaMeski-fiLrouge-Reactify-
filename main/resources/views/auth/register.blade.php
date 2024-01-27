@@ -16,7 +16,7 @@
                             <input name="name" type="text" class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" />
                             <div class="text-red-500">
                                 @error('name')
-                                    {{ $message }}
+                                {{ $message }}
                                 @enderror
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                             <input name="email" type="email" class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" />
                             <div class="text-red-500">
                                 @error('email')
-                                    {{ $message }}
+                                {{ $message }}
                                 @enderror
                             </div>
                         </div>
@@ -40,7 +40,7 @@
                             <textarea name="bio" class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm"></textarea>
                             <div class="text-red-500">
                                 @error('bio')
-                                    {{ $message }}
+                                {{ $message }}
                                 @enderror
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                             <input name="password" type="password" class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" />
                             <div class="text-red-500">
                                 @error('password')
-                                    {{ $message }}
+                                {{ $message }}
                                 @enderror
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                             <input name="password_confirmation" type="password" class="px-2 py-3 mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm" />
                             <div class="text-red-500">
                                 @error('password_confirmation')
-                                    {{ $message }}
+                                {{ $message }}
                                 @enderror
                             </div>
                         </div>

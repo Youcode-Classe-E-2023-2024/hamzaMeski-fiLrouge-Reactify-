@@ -37,8 +37,20 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function authentificate(User $user) {
+    public function authenticate(User $user) {
+        $validated = request()->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
+        if(auth()->attempt($validated)) {
+            request()->session()->regenerate();
+            return redirect()->route('main');
+        }
+
+        return redirect()->route('login')->withErrors([
+            'email' => 'No matching user found the provided email and password'
+        ]);
     }
 
     public function logout() {
