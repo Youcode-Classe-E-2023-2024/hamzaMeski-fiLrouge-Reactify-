@@ -8,18 +8,22 @@
                 <p class="text-base leading-6 font-medium text-white">
                     {{ $post->user->name}}
                     <span class="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
-                            {{ $post->user->email}}. {{ $post->created_at->diffForHumans()}}
+                        {{ $post->user->email}}. {{ $post->created_at->diffForHumans()}}
                     </span>
                 </p>
             </div>
         </div>
     </a>
     <div class="flex gap-2 items-center">
-        <a href="#" class="text-white font-bold">view</a>
-        <button class="text-white font-bold">edit</button>
-        <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded-full transition duration-300 ease-in-out">
-            delete
-        </button>
+        <a href="{{ route('posts.show', $post->id) }}" class="text-white font-bold">view</a>
+        @if($post->user->id == auth()->id())
+            <a href="{{ route('posts.edit', $post->id) }}" class="text-white font-bold">edit</a>
+            <form action="{{ route('posts.destroy', $post->id) }}">
+                <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded-full transition duration-300 ease-in-out">
+                    delete
+                </button>
+            </form>
+        @endif
 
     </div>
 </div>

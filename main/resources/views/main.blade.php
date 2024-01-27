@@ -14,10 +14,10 @@
                     </div>
                 </div>
                 <hr class="border-gray-600">
-                @include('posts.post-form')
+                @include('posts.layout.post-form')
                 <!--posts-->
                 @forelse($posts as $post)
-                    @include('posts.post-card')
+                    @include('posts.layout.post-card')
                 @empty
                     <div class="font-bold text-white text-center mt-4">Result not found</div>
                 @endforelse
