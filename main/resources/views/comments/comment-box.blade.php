@@ -38,6 +38,7 @@
     </footer>
     <p class="text-gray-500 dark:text-gray-400">Very straight-to-point article. Really worth time reading. Thank you! But tools are just the
         instruments for the UX designers. The knowledge of the design tools are as important as the
-        creation of the design strategy.</p>
+        creation of the design strategy.
+    </p>
 
 </article>

@@ -29,10 +29,22 @@
 </div>
 
 
+
 <div class="pl-16">
-    <p class="text-base width-auto font-medium text-white flex-shrink">
-        {{ $post->content }}
-    </p>
+    <form action="{{ route('posts.update', $post->id) }}" method="post">
+        @csrf
+        @method('put')
+        <p class="text-base width-auto font-medium text-white flex-shrink">
+        <textarea name="content" id="comment" rows="6"
+                  class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
+                  placeholder="Write a comment..." required>{{ $post->content }}</textarea>
+        </p>
+        <button type="submit"
+                class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
+            Update post
+        </button>
+    </form>
+
 
     <div class="flex">
         <div class="flex items-center">
