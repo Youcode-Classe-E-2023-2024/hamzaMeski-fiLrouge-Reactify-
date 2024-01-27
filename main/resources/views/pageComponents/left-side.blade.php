@@ -7,33 +7,37 @@
             <ion-icon name="home-outline" class="text-3xl mr-4"></ion-icon>
             Home
         </a>
-        <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-semibold rounded-full hover:bg-blue-800 hover:text-blue-300">
-            <ion-icon name="eye-outline" class="text-3xl mr-4"></ion-icon>
-            Feed
-        </a>
-        <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300">
-            <ion-icon name="person-outline" class="text-3xl mr-4"></ion-icon>
-            Profile
-        </a>
+        @auth
+            <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-semibold rounded-full hover:bg-blue-800 hover:text-blue-300">
+                <ion-icon name="eye-outline" class="text-3xl mr-4"></ion-icon>
+                Feed
+            </a>
+            <a href="#" class="mt-1 group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-full hover:bg-blue-800 hover:text-blue-300">
+                <ion-icon name="person-outline" class="text-3xl mr-4"></ion-icon>
+                Profile
+            </a>
+        @endauth
 
     </nav>
 
-    <div class="flex-shrink-0 flex hover:bg-blue-00 rounded-full p-4 mt-12 mr-2">
-        <a href="#" class="flex-shrink-0 group block">
-            <div class="flex items-center">
-                <div>
-                    <img class="inline-block h-10 w-10 rounded-full" src="https://pbs.twimg.com/profile_images/1121328878142853120/e-rpjoJi_bigger.png" alt="" />
+    @auth
+        <div class="flex-shrink-0 flex hover:bg-blue-00 rounded-full p-4 mt-12 mr-2">
+            <a href="#" class="flex-shrink-0 group block">
+                <div class="flex items-center">
+                    <div>
+                        <img class="inline-block h-10 w-10 rounded-full" src="https://pbs.twimg.com/profile_images/1121328878142853120/e-rpjoJi_bigger.png" alt="" />
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-base leading-6 font-medium text-white">
+                            Sonali Hirave
+                        </p>
+                        <p class="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
+                            @ShonaDesign
+                        </p>
+                    </div>
                 </div>
-                <div class="ml-3">
-                    <p class="text-base leading-6 font-medium text-white">
-                        Sonali Hirave
-                    </p>
-                    <p class="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
-                        @ShonaDesign
-                    </p>
-                </div>
-            </div>
-        </a>
+            </a>
     </div>
+    @endauth
 
 </div>
