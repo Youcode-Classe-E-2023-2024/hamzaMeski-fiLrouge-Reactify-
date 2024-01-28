@@ -33,3 +33,8 @@ Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('posts.d
 
 /* profile route */
 Route::get('/profile/{user}', [UserController::class, 'profile'])->name('profile')->middleware('auth');
+
+/* users route */
+Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit')->middleware('auth');
+
+Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update')->middleware('auth');

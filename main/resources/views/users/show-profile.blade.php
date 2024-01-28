@@ -6,7 +6,11 @@
             @include('pageComponents.left-side')
 
             <div class="w-3/5 border border-gray-600 h-auto  border-t-0">
-                @include('users.layout.profile-card')
+                @if($editing ?? null)
+                    @include('users.layout.edit-profile-card')
+                @else
+                    @include('users.layout.profile-card')
+                @endif
 {{--                @include('comments.comment-form')--}}
             </div>
 

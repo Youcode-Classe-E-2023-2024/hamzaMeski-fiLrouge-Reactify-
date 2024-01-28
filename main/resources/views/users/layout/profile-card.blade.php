@@ -1,5 +1,9 @@
-<!-- component -->
+<!-- show profile component -->
 <div class="max-w-lg mx-auto my-10 bg-gray-900 rounded-lg shadow-md p-5">
+    <div class="flex justify-between">
+        <span></span>
+        <a href="{{ route('users.edit', $user->id) }}" class="text-white underline">edit</a>
+    </div>
     <img class="w-32 h-32 rounded-full mx-auto border-2 border-solid " src="{{ $user->getImageURL() }}" alt="Profile picture">
     <h2 class="text-center text-white text-2xl font-semibold mt-3">{{ $user->name }}</h2>
     <p class="text-center text-white text-gray-600 mt-1">{{ $user->email }}</p>

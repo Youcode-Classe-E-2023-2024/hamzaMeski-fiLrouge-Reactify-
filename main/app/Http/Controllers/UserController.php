@@ -12,7 +12,27 @@ class UserController extends Controller
         return view('users.show-profile', compact('user'));
     }
 
-    public function update(User $user) {
+    public function edit(User $user) {
+        $editing = true;
+        return view('users.show-profile', compact('user', 'editing'));
+    }
 
+    public function update(User $user) {
+        $validated = request()->validate([
+            'name' => 'required|min:5|max:50',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'bio' => 'required|min:5|max:200'
+        ]);
+
+        if(request()->hasFile('image')) {
+            $imagePath = request()->file('image')->store('images', 'public');
+            $validated['image'] = $imagePath;
+
+//            Storage::disk('images')->delete($user->image);
+        }
+
+        $user->update($validated);
+
+        return redirect()->route('profile', $user->id);
     }
 }

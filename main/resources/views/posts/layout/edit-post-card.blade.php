@@ -1,5 +1,5 @@
 <div class="flex items-center flex-shrink-0 p-4 pb-0 justify-between">
-    <a href="#" class="flex-shrink-0 group block">
+    <a href="{{ route('profile', $post->user->id) }}" class="flex-shrink-0 group block">
         <div class="flex items-center">
             <div>
                 <img class="inline-block h-10 w-10 rounded-full" src="{{ $post->user->getImageURL() }}" alt=""/>
