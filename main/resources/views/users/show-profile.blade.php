@@ -11,7 +11,6 @@
                 @else
                     @include('users.layout.profile-card')
                 @endif
-{{--                @include('comments.comment-form')--}}
             </div>
 
             @include('pageComponents.right-side')
