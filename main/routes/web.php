@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 /* main route */
 Route::get('/', [MainController::class, 'index'])->name('main');
@@ -30,3 +31,5 @@ Route::put('/post/{post}', [PostController::class, 'update'])->name('posts.updat
 
 Route::delete('/post/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
+/* profile route */
+Route::get('/profile/{user}', [UserController::class, 'profile'])->name('profile')->middleware('auth');
