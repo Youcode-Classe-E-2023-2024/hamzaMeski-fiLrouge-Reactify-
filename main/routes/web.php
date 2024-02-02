@@ -9,6 +9,9 @@ use App\Http\Controllers\CommentController;
 
 /* main route */
 Route::get('/', [MainController::class, 'index'])->name('main');
+//Route::get('/', function () {
+//    return 'hello';
+//});
 
 /* auth route */
 Route::get('/register', [AuthController::class, 'register'])->name('register');
