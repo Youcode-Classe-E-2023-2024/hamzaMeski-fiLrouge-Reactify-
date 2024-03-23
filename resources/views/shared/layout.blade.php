@@ -1,3 +1,4 @@
 @include('shared.header')
-    @yield('content')
+@include('shared.nav-bar')
+@yield('content')
 @include('shared.footer')

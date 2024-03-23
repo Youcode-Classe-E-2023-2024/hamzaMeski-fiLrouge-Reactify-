@@ -1,4 +1,4 @@
-@extends('shared.layout')
+@extends('auth-shared.layout')
 
 @section('content')
     <!-- component -->
