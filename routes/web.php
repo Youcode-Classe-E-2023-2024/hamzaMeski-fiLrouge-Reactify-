@@ -37,3 +37,8 @@ Route::post('/forget-password', [ForgetPasswordController::class, 'forgetPasswor
 Route::get('/reset-password/{token}', [ForgetPasswordController::class, 'resetPassword'])->name('reset.password');
 
 Route::post('/reset-password', [ForgetPasswordController::class, 'resetPasswordPost'])->name('reset.password.post');
+
+/* main route */
+Route::get('/main', function() {
+    return view('main');
+})->name('main');
