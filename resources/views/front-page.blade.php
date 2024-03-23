@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Space Dynamic - SEO HTML5 Template</title>
+    <title>reactify</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('front-page/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -59,9 +59,9 @@
                             <li class="scroll-to-section"><a href="#about">Features</a></li>
                             <li class="scroll-to-section"><a href="#services">Services</a></li>
                             <li class="scroll-to-section"><a href="#portfolio">Top IT fields</a></li>
-                            <li class="scroll-to-section"><a href="#blog">Blog</a></li>
+                            <li class="scroll-to-section"><a href="#blog">Top questions</a></li>
                             <li class="scroll-to-section"><a href="#contact">Message Us</a></li>
-                            <li class="scroll-to-section"><div class="main-red-button"><a href="#contact">Contact Now</a></div></li>
+                            <li class="scroll-to-section"><div class="main-red-button"><a href="{{ route('login') }}">Get Started</a></div></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
