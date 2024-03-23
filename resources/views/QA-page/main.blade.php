@@ -81,14 +81,48 @@
                         </table>
 
                     </div>
-                    <div class="grid grid-cols-5 gap-2 border-t-[1px] border-solid border-gray-400 px-6 py-6">
-                        <div class="bg-gray-200 col-span-1 flex justify-end"><span>1 votes</span></div>
-                        <div class="bg-gray-200 col-span-4 flex"><span>How to create a zoom animation in Jetpack Compose</span></div>
-                        <div class="bg-gray-200 col-span-1 flex justify-end"><span>1 answers</span></div>
-                        <div class="bg-gray-200 col-span-4"><span>I'm new to Jetpack Compose and this is the first animation I'm trying to produce. I'm trying to make an animation that e</span></div>
-                        <div class="bg-gray-200 col-span-1 flex justify-end"><span>1 views</span></div>
-                        <div class="bg-gray-200 col-span-4">2</div>
+                    
+                    <div class="border-t-[1px] px-6 py-6">
+                        <div class="grid grid-cols-5 gap-y-2 gap-x-4 border-solid border-gray-400">
+                            <div class="col-span-1 flex justify-end text-[14px]"><span>1 votes</span></div>
+                            <div class="col-span-4 text-[14px] flex text-sky-500"><a href="">How to create a zoom animation in Jetpack Compose</a></div>
+                            <div class="col-span-1 flex justify-end text-[14px]"><span>1 answers</span></div>
+                            <div class="col-span-4 text-[14px]"><span>I'm new to Jetpack Compose and this is the first animation I'm trying to prod. I'm trying to make an ani lksj flqjsdf flqsj lqksjdf l mation that endgame.</span></div>
+                            <div class="col-span-1 flex justify-end text-[14px]"><span>1 views</span></div>
+                            <div class="col-span-4">
+                                <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android</a>
+                                <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">kotlin</a>
+                                <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android-jetpack-compose</a>
+                                <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android-animation</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-end gap-1 mt-2">
+                            <div class="h-[30px] w-[30px] rounded-md bg-gray-900"></div>
+                            <a href="" class="text-blue-500 text-[13px]">hamza</a>
+                            <span class="text-[13px] text-gray-700">asked 1 min ago</span>
+                        </div>
                     </div>
+                    <div class="border-t-[1px] px-6 py-6">
+                        <div class="grid grid-cols-5 gap-y-2 gap-x-4 border-solid border-gray-400">
+                            <div class="col-span-1 flex justify-end text-[14px]"><span>1 votes</span></div>
+                            <div class="col-span-4 text-[14px] flex text-sky-500"><span>How to create a zoom animation in Jetpack Compose</span></div>
+                            <div class="col-span-1 flex justify-end text-[14px]"><span>1 answers</span></div>
+                            <div class="col-span-4 text-[14px]"><span>I'm new to Jetpack Compose and this is the first animation I'm trying to prod. I'm trying to make an ani lksj flqjsdf flqsj lqksjdf l mation that endgame.</span></div>
+                            <div class="col-span-1 flex justify-end text-[14px]"><span>1 views</span></div>
+                            <div class="col-span-4">
+                                <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android</a>
+                                <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">kotlin</a>
+                                <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android-jetpack-compose</a>
+                                <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android-animation</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-end gap-1 mt-2">
+                            <div class="h-[30px] w-[30px] rounded-md bg-gray-900"></div>
+                            <a href="" class="text-blue-500 text-[13px]">hamza</a>
+                            <span class="text-[13px] text-gray-700">asked 1 min ago</span>
+                        </div>
+                    </div>
+
                 </div>
             {{-- Questions Section end --}}
 
