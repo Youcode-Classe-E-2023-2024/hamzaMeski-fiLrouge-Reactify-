@@ -6,3 +6,8 @@
 .menu_items li:hover {
     color: #fe3f40;
 }
+
+/* QA-page side bar */
+.side_item:hover {
+    background-color: #eeeeee;
+}

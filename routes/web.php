@@ -40,5 +40,6 @@ Route::post('/reset-password', [ForgetPasswordController::class, 'resetPasswordP
 
 /* main route */
 Route::get('/main', function() {
-    return view('main');
+    return view('QA-page.main');
 })->name('main');
+
