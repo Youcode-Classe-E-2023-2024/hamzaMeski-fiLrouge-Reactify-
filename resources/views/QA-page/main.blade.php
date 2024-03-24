@@ -67,7 +67,7 @@
                 <div class="col-span-3 h-full pt-6">
                     <div class="flex items-center justify-between px-6">
                         <span class="text-2xl">All Questions</span>
-                        <a href="" class="text-white bg-[#03a4ed] px-4 py-2 rounded-md text-[14px]">Ask Question</a>
+                        <a href="{{ route('ask-question.show') }}" class="text-white bg-[#03a4ed] px-4 py-2 rounded-md text-[14px]">Ask Question</a>
                     </div>
                     <div class="flex items-center justify-between mt-4 px-6 pb-6">
                         <span class="">24,115,613 questions</span>

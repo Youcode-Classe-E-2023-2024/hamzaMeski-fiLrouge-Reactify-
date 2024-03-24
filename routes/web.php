@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgetPasswordController;
+use App\Http\Controllers\AQuestionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,3 +44,5 @@ Route::get('/main', function() {
     return view('QA-page.main');
 })->name('main');
 
+/* ask-question route */
+Route::get('/ask-question', [AQuestionController::class, 'show'])->name('ask-question.show');
