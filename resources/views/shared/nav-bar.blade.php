@@ -1,5 +1,5 @@
 <header class="shadow-md">
-    <nav class="h-[80px] flex items-center px-[114px]">
+    <nav class="h-[80px] flex items-center px-[114px] fixed bg-white shadow-md w-full">
         <!-- ***** Logo Start ***** -->
         <a href="#" class="text-[24px] font-bold">
             <h4 class="text-[#03a4ed] tracking-[2px]">REAC<span class="text-[#fe3f40]">TIFY</span></h4>
