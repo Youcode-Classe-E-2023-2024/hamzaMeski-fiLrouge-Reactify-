@@ -41,8 +41,13 @@ Route::post('/reset-password', [ForgetPasswordController::class, 'resetPasswordP
 
 /* main route */
 Route::get('/main', function() {
-    return view('QA-page.main');
+    return view('QA-page.Q-items');
 })->name('main');
 
 /* ask-question route */
 Route::get('/ask-question', [AQuestionController::class, 'show'])->name('ask-question.show');
+
+/* question item route */
+Route::get('/question-details', function() {
+    return view('QA-page.Q-item-detail');
+})->name('question-details');
