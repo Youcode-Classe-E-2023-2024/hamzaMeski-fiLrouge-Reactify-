@@ -31,6 +31,11 @@
                 <strong>Title</strong>
                 <label for="">Be specific and imagine you’re asking a question to another person</label>
                 <input type="text" class="border-2 border-gray-300 p-2 w-full" name="title" id="title" value=""  placeholder="What is Search Algorithm?">
+                <div class="text-red-500">
+                    @error('title')
+                    {{ $message }}
+                    @enderror
+                </div>
             </div>
             {{--grid4--}}
             <div class="w-[80%] border border-solid border-gray-400 rounded-sm shadow-md">
@@ -48,6 +53,11 @@
                 <strong>Tags</strong>
                 <label for="">Add up to 5 tags to describe what your question is about. </label>
                 <div id="tagContainer" class="border-2 border-gray-300 h-[46px] flex items-center pl-2"></div>
+                <div class="text-red-500">
+                    @error('tags')
+                    {{ $message }}
+                    @enderror
+                </div>
                 <div id="tags" class="">
                     @foreach($tags as $tag)
                         <span id="{{ $tag->id }}" class="tag text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1 cursor-pointer" data-tag="{{ $tag->name }}">{{ $tag->name }}</span>
@@ -76,6 +86,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="text-red-500">
+                    @error('description')
+                    {{ $message }}
+                    @enderror
                 </div>
             </div>
             <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>

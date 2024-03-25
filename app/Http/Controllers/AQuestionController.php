@@ -18,6 +18,7 @@ class AQuestionController extends Controller
         $validated = request()->validate([
             'title' => 'required|min:10',
             'description' => 'required|min:10',
+            'tags' => 'required|array|min:1'
         ]);
 
         $validated['user_id'] = auth()->id();
