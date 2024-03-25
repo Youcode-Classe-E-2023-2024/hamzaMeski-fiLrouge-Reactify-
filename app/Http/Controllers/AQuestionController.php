@@ -37,6 +37,6 @@ class AQuestionController extends Controller
             ]);
         }
 
-        return redirect()->route('ask-question.show');
+        return redirect()->route('ask-question.show')->with('success', '_');
     }
 }

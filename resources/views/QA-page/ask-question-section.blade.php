@@ -162,3 +162,11 @@
         });
     });
 </script>
+
+@if(session()->has('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            Swal.fire("Question is created successfully!");
+        })
+    </script>
+@endif
