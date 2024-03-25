@@ -20,46 +20,29 @@
 
         </div>
 
-        <div class="border-t-[1px] px-6 py-6 w-full">
-            <div class="grid grid-cols-5 gap-y-2 gap-x-4 border-solid border-gray-400">
-                <div class="col-span-1 flex justify-end text-[14px]"><span>1 votes</span></div>
-                <div class="col-span-4 text-[14px] flex text-sky-500"><a href="">How to create a zoom animation in Jetpack Compose</a></div>
-                <div class="col-span-1 flex justify-end text-[14px]"><span>1 answers</span></div>
-                <div class="col-span-4 text-[14px]"><span>I'm new to Jetpack Compose and this is the first animation I'm trying to prod. I'm trying to make an ani lksj flqjsdf flqsj lqksjdf l mation that endgame.</span></div>
-                <div class="col-span-1 flex justify-end text-[14px]"><span>1 views</span></div>
-                <div class="col-span-4">
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android</a>
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">kotlin</a>
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android-jetpack-compose</a>
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android-animation</a>
+        @forelse($questions as $question)
+            <div class="border-t-[1px] px-6 py-6 w-full">
+                <div class="grid grid-cols-5 gap-y-2 gap-x-4 border-solid border-gray-400">
+                    <div class="col-span-1 flex justify-end text-[14px]"><span>{{ $question->likes }} votes</span></div>
+                    <div class="col-span-4 text-[14px] flex text-sky-500"><a href="">{{ substr($question->title, 0, 100) }}</a></div>
+                    <div class="col-span-1 flex justify-end text-[14px]"><span></span></div>
+                    <div class="col-span-4 text-[14px]"><span>{{ substr($question->description, 0, 200) }}</span></div>
+                    <div class="col-span-1 flex justify-end text-[14px]"><span>{{ $question->answers_count }} answers</span></div>
+                    <div class="col-span-4">
+                        @foreach($question->tags as $tag)
+                            <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">{{ $tag->name }}</a>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="flex items-center justify-end gap-1 mt-2">
+                    <div class="h-[30px] w-[30px] rounded-md bg-gray-900"></div>
+                    <a href="" class="text-blue-500 text-[13px]">{{ $question->user->name }}</a>
+                    <span class="text-[13px] text-gray-700">asked on: {{ $question->created_at->diffForHumans() }}</span>
                 </div>
             </div>
-            <div class="flex items-center justify-end gap-1 mt-2">
-                <div class="h-[30px] w-[30px] rounded-md bg-gray-900"></div>
-                <a href="" class="text-blue-500 text-[13px]">hamza</a>
-                <span class="text-[13px] text-gray-700">asked 1 min ago</span>
-            </div>
-        </div>
-        <div class="border-t-[1px] px-6 py-6">
-            <div class="grid grid-cols-5 gap-y-2 gap-x-4 border-solid border-gray-400">
-                <div class="col-span-1 flex justify-end text-[14px]"><span>1 votes</span></div>
-                <div class="col-span-4 text-[14px] flex text-sky-500"><span>How to create a zoom animation in Jetpack Compose</span></div>
-                <div class="col-span-1 flex justify-end text-[14px]"><span>1 answers</span></div>
-                <div class="col-span-4 text-[14px]"><span>I'm new to Jetpack Compose and this is the first animation I'm trying to prod. I'm trying to make an ani lksj flqjsdf flqsj lqksjdf l mation that endgame.</span></div>
-                <div class="col-span-1 flex justify-end text-[14px]"><span>1 views</span></div>
-                <div class="col-span-4">
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android</a>
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">kotlin</a>
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android-jetpack-compose</a>
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android-animation</a>
-                </div>
-            </div>
-            <div class="flex items-center justify-end gap-1 mt-2">
-                <div class="h-[30px] w-[30px] rounded-md bg-gray-900"></div>
-                <a href="" class="text-blue-500 text-[13px]">hamza</a>
-                <span class="text-[13px] text-gray-700">asked 1 min ago</span>
-            </div>
-        </div>
+        @empty
+            <div class="text-3xl">there is no questions yet.</div>
+        @endforelse
     </div>
     {{-- Questions Section end --}}
 @endsection
