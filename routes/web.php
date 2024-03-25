@@ -45,7 +45,7 @@ Route::post('/reset-password', [ForgetPasswordController::class, 'resetPasswordP
 Route::get('/main', [HomeController::class, 'Q_items'])->name('main');
 
 /* question item route */
-Route::get('/question-details', [HomeController::class, 'Q_item_details'])->name('question-details');
+Route::get('/question-details/{question}', [HomeController::class, 'Q_item_details'])->name('question-details');
 
 /* ask-question route */
 Route::get('/ask-question', [AQuestionController::class, 'show'])->name('ask-question.show');

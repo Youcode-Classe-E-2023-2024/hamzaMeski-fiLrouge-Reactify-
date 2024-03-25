@@ -23,7 +23,8 @@ class HomeController extends Controller
         return view('QA-page.Q-items', compact('questions'));
     }
 
-    public function Q_item_details() {
-        return view('QA-page.Q-item-details');
+    public function Q_item_details(Question $question) {
+        $question = $question->loadCount('answers');
+        return view('QA-page.Q-item-details', compact('question'));
     }
 }

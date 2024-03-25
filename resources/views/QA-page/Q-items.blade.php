@@ -24,7 +24,7 @@
             <div class="border-t-[1px] px-6 py-6 w-full">
                 <div class="grid grid-cols-5 gap-y-2 gap-x-4 border-solid border-gray-400">
                     <div class="col-span-1 flex justify-end text-[14px]"><span>{{ $question->likes }} votes</span></div>
-                    <div class="col-span-4 text-[14px] flex text-sky-500"><a href="">{{ substr($question->title, 0, 100) }}</a></div>
+                    <div class="col-span-4 text-[14px] flex text-sky-500"><a href="{{ route('question-details', $question->id) }}">{{ substr($question->title, 0, 100) }}</a></div>
                     <div class="col-span-1 flex justify-end text-[14px]"><span></span></div>
                     <div class="col-span-4 text-[14px]"><span>{{ substr($question->description, 0, 200) }}</span></div>
                     <div class="col-span-1 flex justify-end text-[14px]"><span>{{ $question->answers_count }} answers</span></div>

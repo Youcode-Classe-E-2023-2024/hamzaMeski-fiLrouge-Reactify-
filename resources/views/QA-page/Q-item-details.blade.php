@@ -5,7 +5,7 @@
         {{-- Question Section start --}}
             <div>
                 <h1 class="text-2xl">
-                    How to create two separate sets of data (one for daylight hours and another for nighttime hours) from hourly model output using CDO?
+                    {{ $question->title }}
                 </h1>
                 <div class="flex gap-4 text-gray-700 text-[13px]">
                     <span>Asked yesterday</span>
@@ -23,7 +23,7 @@
                             </a>
                         </li>
                         <li>
-                            <span class="text-2xl">0</span>
+                            <span class="text-2xl">{{ $question->likes }}</span>
                         </li>
                         <li>
                             <a href="">
@@ -39,21 +39,14 @@
                 </div>
                 <div class="col-span-7">
                     <p>
-                        I am trying to connect to an on-premise Oracle database in order to sync some tables to an Azure SQL Server database. I believe that Data Factory is the best tool to use for these kind of bulk data transfer tasks, but I can't see how to connect it to the on-prem data gateway.
-
-                        The gateway is setup fine, as I can see and use it in Logic Apps. I did try using Logic Apps to perform the task, but it timed out because of the volume of data.
-
-                        Can Azure Data Factory connect using the data gateway? And, if not, is there a more suitable Azure service that can perform this task?
-                        Can Azure Data Factory connect using the data gateway? And, if not, is there a more suitable Azure service that can perform this task?
+                        {{ $question->description }}
                     </p>
                 </div>
                 <div></div>
                 <div class="col-span-7">
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1 mb-2 inline-block">android</a>
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">kotlin</a>
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android-jetpack-compose</a>
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android-jetpack-compose</a>
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android-jetpack-compose</a>
+                    @foreach($question->tags as $tag)
+                        <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">{{ $tag->name }}</a>
+                    @endforeach
                 </div>
                 <div></div>
                 <div class="col-span-7 flex gap-2 text-gray-700 text-[13px]">
@@ -63,8 +56,8 @@
                 <div></div>
                 <div class="col-span-7 flex justify-end">
                     <div class="flex items-center justify-end gap-1">
-                        <div class="h-[30px] w-[30px] rounded-md bg-gray-900"></div>
-                        <a href="" class="text-blue-500 text-[13px]">hamza</a>
+                        <div class="h-[30px] w-[30px] rounded-md bg-black" style="background-image: url('{{asset('http://127.0.0.1:8000/storage/'.$question->user->image )}}'); background-size: cover"></div>
+                        <a href="" class="text-blue-500 text-[13px]">{{ $question->user->name }}</a>
                         <span class="text-[13px] text-gray-700">asked 1 min ago</span>
                     </div>
                 </div>
@@ -74,7 +67,7 @@
         {{-- Answers Section start --}}
             <div>
                 <h1 class="text-2xl">
-                    1 Answer
+                    {{ $question->answers_count }} {{$question->answers_count > 9 ?'Answers': 'Answer' }}
                 </h1>
                 <div class="flex gap-4 text-gray-700 text-[13px]">
                     <span>Asked yesterday</span>
@@ -117,13 +110,6 @@
                     </p>
                 </div>
                 <div></div>
-                <div class="col-span-7">
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1 mb-2 inline-block">android</a>
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">kotlin</a>
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android-jetpack-compose</a>
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android-jetpack-compose</a>
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">android-jetpack-compose</a>
-                </div>
                 <div></div>
                 <div class="col-span-7 flex gap-2 text-gray-700 text-[13px]">
                     <a href="">Share</a>
