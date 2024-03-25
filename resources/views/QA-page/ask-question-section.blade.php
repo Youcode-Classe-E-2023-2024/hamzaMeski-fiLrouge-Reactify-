@@ -60,7 +60,7 @@
             <div class="border border-solid border-gray-400 rounded-md flex flex-col gap-2 p-4">
                 <strong>Image (Optional)</strong>
                 <label for="">You can set an image to help fixing your issue.</label>
-                <input class="block w-full text-sm text-gray-900 border rounded-lg cursor-pointer focus:outline-none  dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+                <input name="image" class="block w-full text-sm text-gray-900 border rounded-lg cursor-pointer focus:outline-none  dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
             </div>
             {{--grid8--}}
             <div></div>
@@ -131,8 +131,8 @@
 
         // Event listener for form submission
         form.addEventListener('submit', function(event) {
-            // Remove any existing hidden input fields with name="values[]" before adding new ones
-            form.querySelectorAll('input[name="values[]"]').forEach(function(input) {
+            // Remove any existing hidden input fields with name="tags[]" before adding new ones
+            form.querySelectorAll('input[name="tags[]"]').forEach(function(input) {
                 input.remove();
             });
             // Create hidden input fields for each tag in the tagContainer and append them to the form
@@ -140,7 +140,7 @@
                 const tagId = tag.getAttribute('data-id'); // Get the id attribute value
                 const hiddenInput = document.createElement('input');
                 hiddenInput.type = 'hidden';
-                hiddenInput.name = 'values[]';
+                hiddenInput.name = 'tags[]';
                 hiddenInput.value = tagId; // Set the value to the id attribute of the span
                 form.appendChild(hiddenInput);
             });
