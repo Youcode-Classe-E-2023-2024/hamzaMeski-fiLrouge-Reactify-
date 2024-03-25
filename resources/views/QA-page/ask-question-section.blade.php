@@ -43,6 +43,14 @@
                 </div>
             </div>
             {{--grid5--}}
+            <div class="border border-solid border-gray-400 rounded-md flex flex-col gap-2 p-4">
+                <strong>Tags</strong>
+                <label for="">Add up to 5 tags to describe what your question is about. </label>
+                <input type="text" class="border-2 border-gray-300 p-2 w-full" name="title" id="title" value="" required placeholder="What is Search Algorithm?">
+            </div>
+            {{--grid6--}}
+            <div></div>
+            {{--grid7--}}
             <div class="w-full border border-solid border-gray-400 rounded-md p-4">
                 <div class="">
                     <div class="w-full bg-white overflow-hidden shadow-sm">
@@ -60,9 +68,9 @@
             <script>
                 CKEDITOR.replace( 'content' );
             </script>
-            {{--grid6--}}
+            {{--grid8--}}
             <div></div>
-            {{--grid7--}}
+            {{--grid9--}}
             <button role="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400 rounded-md" required>Submit</button>
         </form>
     </section>
