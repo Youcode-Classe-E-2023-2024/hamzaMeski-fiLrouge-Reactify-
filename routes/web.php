@@ -44,10 +44,12 @@ Route::get('/main', function() {
     return view('QA-page.Q-items');
 })->name('main');
 
-/* ask-question route */
-Route::get('/ask-question', [AQuestionController::class, 'show'])->name('ask-question.show');
-
 /* question item route */
 Route::get('/question-details', function() {
     return view('QA-page.Q-item-detail');
 })->name('question-details');
+
+/* ask-question route */
+Route::get('/ask-question', [AQuestionController::class, 'show'])->name('ask-question.show');
+
+Route::post('/ask-question/store', [AQuestionController::class, 'store'])->name('ask-question.store');
