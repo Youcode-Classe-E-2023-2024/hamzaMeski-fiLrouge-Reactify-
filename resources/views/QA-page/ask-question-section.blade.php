@@ -50,7 +50,7 @@
                 <div id="tagContainer" class="border-2 border-gray-300 h-[46px] flex items-center pl-2"></div>
                 <div id="tags" class="">
                     @foreach($tags as $tag)
-                        <span class="tag text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1 cursor-pointer" data-tag="{{ $tag->name }}">{{ $tag->name }}</span>
+                        <span id="{{ $tag->id }}" class="tag text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1 cursor-pointer" data-tag="{{ $tag->name }}">{{ $tag->name }}</span>
                     @endforeach
                 </div>
             </div>
@@ -99,11 +99,13 @@
         // Event listener for clicking on a tag
         tagsContainer.addEventListener('click', function(event) {
             if (event.target.classList.contains('tag')) {
+                const tagId = event.target.getAttribute('id'); // Get the id attribute value
                 const tagName = event.target.dataset.tag;
                 // Move the clicked tag into the tag container div
                 const newTagDiv = document.createElement('span');
                 newTagDiv.classList.add('tagName', 'text-[13px]', 'text-blue-600', 'bg-blue-200', 'py-1', 'px-2', 'rounded-md', 'mr-1', 'cursor-pointer');
                 newTagDiv.textContent = tagName;
+                newTagDiv.setAttribute('data-id', tagId); // Add data-id attribute to the span for identification
                 tagContainer.appendChild(newTagDiv);
                 // Remove the clicked tag from the tags section
                 event.target.remove();
@@ -113,9 +115,11 @@
         // Event listener for clicking on a tag in the tag container to move it back to tags section
         tagContainer.addEventListener('click', function(event) {
             if (event.target.classList.contains('tagName')) {
+                const tagId = event.target.dataset.id; // Get the data-id attribute value
                 const tagName = event.target.textContent;
-                // Create a new div for the removed tag and append it back to the tags container
+                // Create a new span for the removed tag and append it back to the tags container
                 const newTagDiv = document.createElement('span');
+                newTagDiv.id = tagId; // Assign the tag ID
                 newTagDiv.classList.add('tag', 'text-[13px]', 'text-blue-600', 'bg-blue-200', 'py-1', 'px-2', 'rounded-md', 'mr-1', 'cursor-pointer');
                 newTagDiv.setAttribute('data-tag', tagName);
                 newTagDiv.textContent = tagName;
@@ -133,11 +137,11 @@
             });
             // Create hidden input fields for each tag in the tagContainer and append them to the form
             tagContainer.querySelectorAll('.tagName').forEach(function(tag) {
-                const tagName = tag.textContent;
+                const tagId = tag.getAttribute('data-id'); // Get the id attribute value
                 const hiddenInput = document.createElement('input');
                 hiddenInput.type = 'hidden';
                 hiddenInput.name = 'values[]';
-                hiddenInput.value = tagName;
+                hiddenInput.value = tagId; // Set the value to the id attribute of the span
                 form.appendChild(hiddenInput);
             });
         });
