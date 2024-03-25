@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\Tag;
 use App\Models\QuestionTag;
+use App\Models\Answer;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,9 @@ class HomeController extends Controller
         return view('QA-page.Q-items', compact('questions'));
     }
 
-    public function Q_item_details() {
-        return view('QA-page.Q-item-details');
+    public function Q_item_details(Question $question) {
+        $question = $question->loadCount('answers');
+        $answers = Answer::where('question_id', $question->id)->latest()->get();
+        return view('QA-page.Q-item-details', compact('question', 'answers'));
     }
 }
