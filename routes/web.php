@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\AQuestionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AnswerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +52,6 @@ Route::get('/question-details/{question}', [HomeController::class, 'Q_item_detai
 Route::get('/ask-question', [AQuestionController::class, 'show'])->name('ask-question.show');
 
 Route::post('/ask-question/store', [AQuestionController::class, 'store'])->name('ask-question.store');
+
+/* answer a question route */
+Route::post('/answer-question/{question}/store', [AnswerController::class, 'store'])->name('answer-question.store');

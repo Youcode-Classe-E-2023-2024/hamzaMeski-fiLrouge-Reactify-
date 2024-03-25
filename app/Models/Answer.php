@@ -17,4 +17,9 @@ class Answer extends Model
         'answer',
         'image',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
