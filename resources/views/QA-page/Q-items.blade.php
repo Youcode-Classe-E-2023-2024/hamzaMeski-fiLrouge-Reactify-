@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-end gap-1 mt-2">
-                    <div class="h-[30px] w-[30px] rounded-md bg-gray-900"></div>
+                    <div class="h-[30px] w-[30px] rounded-md bg-black" style="background-image: url('{{asset('http://127.0.0.1:8000/storage/'.$question->user->image )}}'); background-size: cover"></div>
                     <a href="" class="text-blue-500 text-[13px]">{{ $question->user->name }}</a>
                     <span class="text-[13px] text-gray-700">asked on: {{ $question->created_at->diffForHumans() }}</span>
                 </div>

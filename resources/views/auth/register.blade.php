@@ -28,8 +28,7 @@
                 <p class="text-gray-100">
                     or use email your account
                 </p>
-                <form action="{{ route('register.store') }}" method="POST"
-                      class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto text-gray-800">
+                <form action="{{ route('register.store') }}" method="POST" enctype="multipart/form-data" class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto text-gray-800">
                     @csrf
                     <div class="pb-2 pt-4">
                         <input type="text" name="name" id="name" placeholder="Username"
@@ -49,6 +48,16 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="pb-2 bg-white rounded-sm">
+                        <label for="" class="text-[12px]">upload profile pecture</label>
+                        <input name="image" class="block w-full text-sm text-gray-900 pl-2 cursor-pointer focus:outline-none  dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+                        <div class="text-red-500">
+                            @error('image')
+                            {{ $message }}
+                            @enderror
+                        </div>
+                    </div>
+
                     <div class="pb-2 pt-4">
                         <input class="block w-full p-4 text-lg rounded-sm" type="password" name="password" id="password"
                                placeholder="Password">
