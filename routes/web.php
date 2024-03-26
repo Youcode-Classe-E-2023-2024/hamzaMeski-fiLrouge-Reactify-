@@ -6,6 +6,7 @@ use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\AQuestionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +56,8 @@ Route::post('/ask-question/store', [AQuestionController::class, 'store'])->name(
 
 /* answer a question route */
 Route::post('/answer-question/{question}/store', [AnswerController::class, 'store'])->name('answer-question.store');
+
+/* like question controller */
+Route::post('/like-question/{question}', [QuestionController::class, 'like_question'])->name('like_question');
+Route::post('/dislike-question/{question}', [QuestionController::class, 'dislike_question'])->name('dislike_question');
+

@@ -18,15 +18,15 @@
                 <div class="col-span-1">
                     <ul class="flex flex-col items-center gap-2">
                         <li>
-                            <a href="">
+                            <a id="{{ $question->id }}" class="like_question cursor-pointer">
                                 <ion-icon name="caret-up-circle-outline" class="text-4xl"></ion-icon>
                             </a>
                         </li>
                         <li>
-                            <span class="text-2xl">{{ $question->likes }}</span>
+                            <span class="question_likes_content text-2xl">{{ $question->likes }}</span>
                         </li>
                         <li>
-                            <a href="">
+                            <a id="{{ $question->id }}" class="dislike_question cursor-pointer">
                                 <ion-icon name="caret-down-circle-outline" class="text-4xl"></ion-icon>
                             </a>
                         </li>
@@ -80,15 +80,15 @@
                     <div class="col-span-1">
                         <ul class="flex flex-col items-center gap-2">
                             <li>
-                                <a href="">
+                                <a class="like_answer" href="">
                                     <ion-icon name="caret-up-circle-outline" class="text-4xl"></ion-icon>
                                 </a>
                             </li>
                             <li>
-                                <span class="text-2xl">0</span>
+                                <span class="text-2xl">{{ $answer->likes }}</span>
                             </li>
                             <li>
-                                <a href="">
+                                <a class="dislike_answer" href="">
                                     <ion-icon name="caret-down-circle-outline" class="text-4xl"></ion-icon>
                                 </a>
                             </li>
@@ -154,3 +154,33 @@
         })
     </script>
 @endif
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const handleQuestionAction = (id, action) => {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            fetch(`/${action}-question/${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    question_likes_content.textContent = data.likes;
+                });
+        };
+
+        const question_likes_content = document.querySelector('.question_likes_content');
+
+        document.querySelectorAll('.like_question, .dislike_question').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('id');
+                const action = this.classList.contains('like_question') ? 'like' : 'dislike';
+                handleQuestionAction(id, action);
+            });
+        });
+    });
+</script>
