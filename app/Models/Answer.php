@@ -16,6 +16,7 @@ class Answer extends Model
         'question_id',
         'answer',
         'image',
+        'likes'
     ];
 
     public function user()

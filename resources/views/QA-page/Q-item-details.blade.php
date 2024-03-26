@@ -80,15 +80,15 @@
                     <div class="col-span-1">
                         <ul class="flex flex-col items-center gap-2">
                             <li>
-                                <a class="like_answer" href="">
+                                <a id="{{ $answer->id }}" class="like_answer cursor-pointer">
                                     <ion-icon name="caret-up-circle-outline" class="text-4xl"></ion-icon>
                                 </a>
                             </li>
                             <li>
-                                <span class="text-2xl">{{ $answer->likes }}</span>
+                                <span class="answer_likes_content text-2xl">{{ $answer->likes }}</span>
                             </li>
                             <li>
-                                <a class="dislike_answer" href="">
+                                <a id="{{ $answer->id }}" class="dislike_answer cursor-pointer">
                                     <ion-icon name="caret-down-circle-outline" class="text-4xl"></ion-icon>
                                 </a>
                             </li>
@@ -158,6 +158,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
+        /* like question logic */
         const handleQuestionAction = (id, action) => {
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             fetch(`/${action}-question/${id}`, {
@@ -182,5 +183,35 @@
                 handleQuestionAction(id, action);
             });
         });
+
+
+        /* like answer logic */
+        const handleAnswerAction = (id, action) => {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            fetch(`/${action}-answer/${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    // Find the closest '.answer_likes_content' element relative to the clicked button
+                    const answerLikesContent = document.getElementById(id).closest('.grid').querySelector('.answer_likes_content');
+                    if (answerLikesContent) {
+                        answerLikesContent.textContent = data.likes;
+                    }
+                });
+        };
+
+        document.querySelectorAll('.like_answer, .dislike_answer').forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('id');
+                const action = this.classList.contains('like_answer') ? 'like' : 'dislike';
+                handleAnswerAction(id, action);
+            });
+        });
+
     });
 </script>

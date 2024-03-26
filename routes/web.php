@@ -57,7 +57,11 @@ Route::post('/ask-question/store', [AQuestionController::class, 'store'])->name(
 /* answer a question route */
 Route::post('/answer-question/{question}/store', [AnswerController::class, 'store'])->name('answer-question.store');
 
-/* like question controller */
-Route::post('/like-question/{question}', [QuestionController::class, 'like_question'])->name('like_question');
-Route::post('/dislike-question/{question}', [QuestionController::class, 'dislike_question'])->name('dislike_question');
+/* vote a question route */
+Route::post('/like-question/{question}', [QuestionController::class, 'like_question']);
+Route::post('/dislike-question/{question}', [QuestionController::class, 'dislike_question']);
+
+/* vote an answer route */
+Route::post('/like-answer/{answer}', [AnswerController::class, 'like_answer']);
+Route::post('/dislike-answer/{answer}', [AnswerController::class, 'dislike_answer']);
 
