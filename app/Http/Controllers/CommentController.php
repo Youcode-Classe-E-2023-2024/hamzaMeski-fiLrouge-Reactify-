@@ -29,9 +29,11 @@ class CommentController extends Controller
             $commentData['parent_id'] = request()->input('parent_id');
         }
 
-        $comment = Comment::create($commentData);
+        Comment::create($commentData);
 
-        return response()->json(['success' => true, 'comment' => $comment]);
+        $comments = Comment::latest()->get();
+
+        return response()->json(['success' => true, 'comments' => $comments->load('user')]);
     }
 
 }

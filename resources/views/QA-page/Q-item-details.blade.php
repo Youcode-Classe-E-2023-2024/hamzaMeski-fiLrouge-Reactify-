@@ -149,32 +149,8 @@
                     </div>
                 </form>
             </div>
-            @foreach($answer->comments as $comment)
-                <section class="relative flex items-center justify-center antialiased bg-white bg-gray-100 min-w-screen">
-                    <div class="container px-0 mx-auto sm:px-5">
-                        <div
-                            class="flex-col w-full py-4 mx-auto bg-white border-b-2 border-r-2 border-gray-200 sm:px-4 sm:py-4 md:px-4 sm:rounded-lg sm:shadow-sm md:w-2/3">
-                            <div class="flex flex-row">
-                                <img class="object-cover w-12 h-12 border-2 border-gray-300 rounded-full" alt="Noob master's avatar"
-                                     src="{{ 'http://127.0.0.1:8000/storage/'.$comment->user->image }}">
-                                <div class="flex-col mt-1">
-                                    <div class="flex items-center flex-1 px-4 font-bold leading-tight"> {{ $comment->user->name }}
-                                        <span class="ml-2 text-xs font-normal text-gray-500">{{ $comment->created_at->diffForHumans() }}</span>
-                                    </div>
-                                    <div class="flex-1 px-2 ml-2 text-sm font-medium leading-loose text-gray-600"> {{ $comment->comment }}
-                                    </div>
-                                    <div class="flex items-center gap-4 p-2">
-                                        {{--replay--}}
-                                        <ion-icon name="arrow-undo-outline" class="replay_comment cursor-pointer text-xl"></ion-icon>
-                                        {{--like--}}
-                                        <ion-icon name="heart-outline" class="like_comment cursor-pointer text-xl"></ion-icon>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            @endforeach
+            <div class="commentsContainer">
+            </div>
             {{-- user comments section end --}}
         @endforeach
         {{-- Answers Section start --}}
@@ -203,103 +179,8 @@
     </div>
 @endsection
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        /* like question logic */
-        const handleQuestionAction = (id, action) => {
-            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            fetch(`/${action}-question/${id}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrfToken
-                }
-            })
-                .then(res => res.json())
-                .then(data => {
-                    question_likes_content.textContent = data.likes;
-                });
-        };
+{{-- like question answers logic --}}
+<script src="{{ asset('js/Q-item-details/like-question-answers.js') }}"></script>
 
-        const question_likes_content = document.querySelector('.question_likes_content');
-
-        document.querySelectorAll('.like_question, .dislike_question').forEach(button => {
-            button.addEventListener('click', function() {
-                const id = this.getAttribute('id');
-                const action = this.classList.contains('like_question') ? 'like' : 'dislike';
-                handleQuestionAction(id, action);
-            });
-        });
-
-
-        /* like answer logic */
-        const handleAnswerAction = (id, action) => {
-            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            fetch(`/${action}-answer/${id}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrfToken
-                }
-            })
-                .then(res => res.json())
-                .then(data => {
-                    // Find the closest '.answer_likes_content' element relative to the clicked button
-                    const answerLikesContent = document.getElementById(id).closest('.grid').querySelector('.answer_likes_content');
-                    if (answerLikesContent) {
-                        answerLikesContent.textContent = data.likes;
-                    }
-                });
-        };
-
-        document.querySelectorAll('.like_answer, .dislike_answer').forEach(button => {
-            button.addEventListener('click', function() {
-                const id = this.getAttribute('id');
-                const action = this.classList.contains('like_answer') ? 'like' : 'dislike';
-                handleAnswerAction(id, action);
-            });
-        });
-
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const commentsForm = document.querySelector('.commentsForm');
-        const commentTextarea = document.querySelector('.comment');
-        const errorContainer = document.querySelector('.errorContainer');
-
-        commentsForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-
-            const answer_id = this.getAttribute('id');
-            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            fetch(`/comment-on-answer/${answer_id}`, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    // 'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrfToken
-                }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.errors) {
-                        if (data.errors?.comment?.[0] !== undefined) {
-                            console.log(data.errors.comment[0]);
-                            errorContainer.textContent = data.errors.comment[0];
-                        }
-                    } else {
-                        console.log(data.success);
-                        errorContainer.textContent = '';
-                    }
-                })
-                .catch(error => {
-                    // Handle fetch errors
-                    console.error('Error:', error);
-                });
-        });
-    });
-</script>
+{{-- comment on a certain answer script --}}
+<script src="{{ asset('js/Q-item-details/comments.js') }}"></script>

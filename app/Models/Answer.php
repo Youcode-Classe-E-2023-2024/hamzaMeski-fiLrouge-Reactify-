@@ -26,6 +26,6 @@ class Answer extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class, 'answer_id');
+        return $this->hasMany(Comment::class, 'answer_id')->latest();
     }
 }
