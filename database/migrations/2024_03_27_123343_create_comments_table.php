@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('answer_id')->constrained('answers', 'id')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('comment');
+            $table->foreignId('parent_id')->nullable()->constrained('comments', 'id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->text('comment');
             $table->integer('likes')->default(0);
             $table->integer('dislikes')->default(0);
             $table->timestamps();
