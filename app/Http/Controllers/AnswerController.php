@@ -42,5 +42,5 @@ class AnswerController extends Controller
         // Return the new value in the response
         return response()->json(['likes' => $newLikes]);
     }
-
+//
 }
