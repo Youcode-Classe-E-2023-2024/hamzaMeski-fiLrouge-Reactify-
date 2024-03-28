@@ -18,4 +18,29 @@ class AnswerController extends Controller
 
         return redirect()->back()->with('success', '_');
     }
+
+    public function like_answer(Answer $answer){
+        $answer->update([
+            'likes' => $answer->likes + 1
+        ]);
+
+        // Retrieve the updated value of likes
+        $newLikes = $answer->fresh()->likes;
+
+        // Return the new value in the response
+        return response()->json(['likes' => $newLikes]);
+    }
+
+    public function dislike_answer(Answer $answer){
+        $answer->update([
+            'likes' => $answer->likes - 1
+        ]);
+
+        // Retrieve the updated value of likes
+        $newLikes = $answer->fresh()->likes;
+
+        // Return the new value in the response
+        return response()->json(['likes' => $newLikes]);
+    }
+
 }
