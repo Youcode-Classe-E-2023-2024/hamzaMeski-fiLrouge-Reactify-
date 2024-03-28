@@ -180,7 +180,4 @@
 @endsection
 
 {{-- like question answers logic --}}
-<script src="{{ asset('js/Q-item-details/like-question-answers.js') }}"></script>
-
-{{-- comment on a certain answer script --}}
-<script src="{{ asset('js/Q-item-details/comments.js') }}"></script>
+<script src="{{ asset('js/QA-page/Q-item-details/like-question-answers.js') }}"></script>

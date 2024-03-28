@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class CommentController extends Controller
 {
+    public function load_comments(Answer $answer) {
+        $comments = $answer->comments()->latest()->get();
+
+        return response()->json(['comments' => $comments->load('user')]);
+    }
+
     public function store(Answer $answer) {
 
         $validator = Validator::make(request()->all(), [
@@ -31,9 +37,8 @@ class CommentController extends Controller
 
         Comment::create($commentData);
 
-        $comments = Comment::latest()->get();
+        $comments = $answer->comments()->latest()->get();
 
         return response()->json(['success' => true, 'comments' => $comments->load('user')]);
     }
-
 }
