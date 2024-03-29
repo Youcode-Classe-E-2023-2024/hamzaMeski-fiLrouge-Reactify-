@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('question_id')->constrained('questions', 'id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('answer');
+            $table->integer('likes')->default(0);
             $table->string('image')->default('none');
             $table->timestamps();
         });

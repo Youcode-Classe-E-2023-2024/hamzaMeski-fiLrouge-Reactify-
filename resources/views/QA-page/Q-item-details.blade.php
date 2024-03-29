@@ -147,15 +147,6 @@
     </div>
 @endsection
 
-@if(session()->has('success'))
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            Swal.fire("Your answer added successfully!");
-        })
-    </script>
-@endif
-
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         /* like question logic */
@@ -212,6 +203,5 @@
                 handleAnswerAction(id, action);
             });
         });
-
     });
 </script>
