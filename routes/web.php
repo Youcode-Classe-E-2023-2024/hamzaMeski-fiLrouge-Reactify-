@@ -64,4 +64,4 @@ Route::post('/comment-on-answer/{answer}', [CommentController::class, 'store']);
 /* load comment route */
 Route::get('/load-comments/{answer}', [CommentController::class, 'load_comments']);
 
-//dd
+// ok
