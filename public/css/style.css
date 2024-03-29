@@ -1,0 +1,13 @@
+/* nav-bar style */
+.menu_items li {
+    letter-spacing: 1px;
+}
+
+.menu_items li:hover {
+    color: #fe3f40;
+}
+
+/* QA-page side bar */
+.side_item:hover {
+    background-color: #eeeeee;
+}
