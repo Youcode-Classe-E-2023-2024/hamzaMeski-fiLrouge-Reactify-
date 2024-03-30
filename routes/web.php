@@ -64,3 +64,6 @@ Route::post('/comment-on-answer/{answer}', [CommentController::class, 'store']);
 
 /* get comments route */
 Route::get('/comments-of-answer/{answer}', [CommentController::class, 'get_comments']);
+
+/* update comment route */
+Route::post('/update-comment/{comment}', [CommentController::class, 'update']);
