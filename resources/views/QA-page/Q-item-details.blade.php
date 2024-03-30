@@ -112,7 +112,7 @@
                 </div>
                 <div></div>
                 <div class="col-span-7 flex justify-between">
-                    <a href="" class="text-14 ">Add a comment</a>
+                    <a href="" class="addComment text-14">Add a comment</a>
                     <div class="flex items-center justify-end gap-1">
                         <div class="h-[30px] w-[30px] rounded-md bg-black" style="background-image: url('{{asset('http://127.0.0.1:8000/storage/'.$answer->user->image )}}'); background-size: cover"></div>
                         <a href="" class="text-blue-500 text-[13px]">{{ $answer->user->name }}</a>

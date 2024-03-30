@@ -31,9 +31,14 @@ class CommentController extends Controller
 
         Comment::create($commentData);
 
-        $comments = Comment::latest()->get();
+        $comments = Comment::where('answer_id', $answer->id)->latest()->get();
 
         return response()->json(['success' => true, 'comments' => $comments->load('user')]);
     }
 
+    public function get_comments(Answer $answer) {
+        $comments = Comment::where('answer_id', $answer->id)->latest()->get();
+
+        return response()->json(['success' => true, 'comments' => $comments->load('user')]);
+    }
 }

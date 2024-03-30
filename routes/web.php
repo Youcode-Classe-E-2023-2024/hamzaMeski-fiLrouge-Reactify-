@@ -61,3 +61,6 @@ Route::post('/dislike-answer/{answer}', [AnswerController::class, 'dislike_answe
 
 /* store comment route */
 Route::post('/comment-on-answer/{answer}', [CommentController::class, 'store']);
+
+/* get comments route */
+Route::get('/comments-of-answer/{answer}', [CommentController::class, 'get_comments']);
