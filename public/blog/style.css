@@ -43,9 +43,9 @@ section{
     width: 100%;
 }
 
-a{
-    color: #fff;
-}
+/*a{*/
+/*    color: #fff;*/
+/*}*/
 
 /* Header */
 header{
@@ -517,35 +517,3 @@ footer p{
         height: 340px;
     }
 }
-
-/* Footer Media Query */
-@media (max-width: 991px){
-    footer{
-        padding: 40px;
-        font-size: 20px;
-    }
-
-    footer .footer-container{
-        flex-direction: column;
-    }
-
-    footer .footer-container .sec{
-        margin-right: 0;
-        margin-bottom: 40px;
-    }
-
-    footer .footer-container .sec.aboutus{
-        width: 100% !important;
-    }
-
-    footer .footer-container .quicklinks{
-        width: 100%;
-    }
-
-    footer .footer-container .contactBx{
-        width: 100%;
-    }
-}
-
-
-

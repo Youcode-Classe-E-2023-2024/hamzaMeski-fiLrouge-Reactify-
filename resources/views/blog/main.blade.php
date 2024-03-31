@@ -37,7 +37,7 @@
             <div class="post-box tech">
                 <img src="{{ 'https://source.unsplash.com/600x600/?' . $article->title }}" alt="" class="post-img">
                 <h2 class="category">Tech</h2>
-                <a href="#" class="post-title">{{ $article->title }}</a>
+                <a href="{{ route('article_details', $article->id) }}" class="post-title">{{ $article->title }}</a>
                 <span class="post-date">{{ $article->created_at }}</span>
                 <p class="post-description">{{ $article->content }}</p>
                 <div class="profile">

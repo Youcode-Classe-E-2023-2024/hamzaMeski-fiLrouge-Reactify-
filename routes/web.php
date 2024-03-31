@@ -76,3 +76,6 @@ Route::get('/execute-script', [AIController::class, 'executeCommands']);
 
 /* Blog route */
 Route::get('/blog-main', [BlogController::class, 'main'])->name('blog-main');
+
+/* article details route */
+Route::get('/article-details/{article}', [BlogController::class, 'article_details'])->name('article_details');

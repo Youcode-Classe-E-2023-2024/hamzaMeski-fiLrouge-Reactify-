@@ -11,4 +11,8 @@ class BlogController extends Controller
         $articles = Blog::latest()->get();
         return view('blog.main', compact('articles'));
     }
+
+    public function article_details(Blog $article) {
+        return view('blog.article-details', compact('article'));
+    }
 }
