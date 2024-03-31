@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\Tag;
 use App\Models\QuestionTag;
+use App\Models\Blog;
 
 class AQuestionController extends Controller
 {
@@ -29,6 +30,30 @@ class AQuestionController extends Controller
         }
 
         $new_question = Question::create($validated);
+
+        /*********************/
+        // AI based on answer
+        $prompt = \request()->title;
+        $directory = 'C:\\Users\\Dell\\Desktop\\ChatAPP';
+
+        $command = 'cmd /c "cd '.$directory." && conda activate chatapp && python app.py $prompt";
+
+        exec($command, $output, $returnCode);
+
+        if ($returnCode !== 0) {
+            return [
+                'error' => 'Command execution failed',
+                'output' => $output
+            ];
+        }
+
+        $outputString = implode("\n", $output);
+        Blog::create([
+            'question_id' => $new_question->id,
+            'title' => \request()->title,
+            'content' => $outputString
+        ]);
+        /********************/
 
         foreach (request()->tags as $tag_id) {
             QuestionTag::create([

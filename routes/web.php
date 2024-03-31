@@ -8,6 +8,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\AIController;
+use App\Http\Controllers\BlogController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -67,3 +70,9 @@ Route::get('/comments-of-answer/{answer}', [CommentController::class, 'get_comme
 
 /* update comment route */
 Route::post('/update-comment/{comment}', [CommentController::class, 'update']);
+
+/* AI route */
+Route::get('/execute-script', [AIController::class, 'executeCommands']);
+
+/* Blog route */
+Route::get('/blog-main', [BlogController::class, 'main'])->name('blog-main');
