@@ -10,6 +10,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AIController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\MeetingController;
 
 
 /*
@@ -79,3 +80,6 @@ Route::get('/blog-main', [BlogController::class, 'main'])->name('blog-main');
 
 /* article details route */
 Route::get('/article-details/{article}', [BlogController::class, 'article_details'])->name('article_details');
+
+/* meeting user route */
+Route::get('/create-meet', [MeetingController::class, 'meetingUser'])->name('create-meet');
