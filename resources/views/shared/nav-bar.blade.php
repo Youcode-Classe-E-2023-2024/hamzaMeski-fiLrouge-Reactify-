@@ -9,7 +9,7 @@
         <ul class="menu_items flex items-center justify-end gap-10 w-full inline-block" style="font-weight: 500">
             <li class=""><a href="{{ route('main') }}" class="active">Home</a></li>
             <li class="scroll-to-section"><a href="{{ route('blog-main') }}">Articles</a></li>
-            <li class="scroll-to-section"><a href="{{ route('create-meet') }}">Meet</a></li>
+            <li class="scroll-to-section"><a href="{{ route('meeting-user') }}">Meet</a></li>
             <li class="scroll-to-section"><a href="#portfolio">Top IT fields</a></li>
             <li class="scroll-to-section"><a href="#blog">Top questions</a></li>
             <li class="scroll-to-section"><a href="#contact">Message Us</a></li>

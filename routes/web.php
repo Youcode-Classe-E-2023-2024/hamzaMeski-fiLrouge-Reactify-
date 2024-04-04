@@ -82,4 +82,7 @@ Route::get('/blog-main', [BlogController::class, 'main'])->name('blog-main');
 Route::get('/article-details/{article}', [BlogController::class, 'article_details'])->name('article_details');
 
 /* meeting user route */
-Route::get('/create-meet', [MeetingController::class, 'meetingUser'])->name('create-meet');
+Route::get('/meeting-page', [MeetingController::class, 'meetingUser'])->name('meeting-user');
+Route::post('/create-meet', [MeetingController::class, 'createMeeting'])->name('create-meet');
+Route::get('/joinMeeting/{url?}', [MeetingController::class, 'joinMeeting'])->name('joinMeeting');
+

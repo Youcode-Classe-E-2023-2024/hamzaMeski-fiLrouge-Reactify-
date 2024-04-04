@@ -3,35 +3,6 @@
 @section('content')
     <link rel="stylesheet" href="{{ asset('create-meeting/CSS/responsive.css') }}">
 
-{{--    <!-- header section  -->--}}
-{{--    <header class="text-gray-600 body-font">--}}
-{{--        <div class="container mx-auto flex flex-wrap p-5 flex-row md:flex-row items-center">--}}
-{{--            <a href="#" class="flex w-40">--}}
-{{--                <img src="{{ asset('create-meeting/images/logo.svg') }}" alt="logo" class="cursor-pointer">--}}
-{{--            </a>--}}
-{{--            <nav aria-label="navigational links"--}}
-{{--                 class="md:ml-auto md:mr-auto md:flex md:flex-wrap md:items-center md:text-base md:justify-center hidden">--}}
-
-{{--                <a href="https://workspace.google.com/intl/en_in/?utm_source=google&utm_medium=cpc&utm_campaign=1011352-Workspace-APAC-IN-en-BKWS-EXA-HV&utm_content=text-ad-none-none-DEV_c-CRE_608344336739-ADGP_Hybrid+%7C+BKWS+-+EXA+%7C+Txt+~+G+Suite_1-KWID_43700071931903936-kwd-35154496839&userloc_9302611-network_g&utm_term=KW_google%20suits&gclid=Cj0KCQjw94WZBhDtARIsAKxWG--hDQkZ4ujQiyJjaOAGwqlzkbz8arPgJzMwgXBnBm0dbhqm3r1FIqQaAoLQEALw_wcB&gclsrc=aw.ds"--}}
-{{--                   class="mr-10 cursor-pointer hover:text-gray-900">Solutions</a>--}}
-
-{{--                <a href="https://workspace.google.com/intl/en_in/pricing.html" target="_blank"--}}
-{{--                   class="mr-10 cursor-pointer hover:text-gray-900">Plans &amp; Pricing</a>--}}
-
-{{--                <a href="https://workspace.google.com/intl/en_in/contact-form/?source=gafb-pricing-enterprise-en-IN"--}}
-{{--                   target="_blank" class="mr-10 cursor-pointer hover:text-gray-900">Contact Sales</a>--}}
-
-{{--                <a href="https://workspace.google.com/intl/en_in/training/"--}}
-{{--                   class="mr-10 cursor-pointer hover:text-gray-900">Resources</a>--}}
-{{--            </nav>--}}
-{{--            <button type="button" id="header_join_btn"--}}
-{{--                    class="md:inline-flex md:items-center md:bg-white md:text-blue-600 md:border md:border-gray-300 md:py-2 md:px-4 md:mx-2 md:focus:outline-none md:hover:bg-white md:hover:border md:hover:border-blue-600 md:rounded md:text-base md:mt-4 md:mt-0 hidden">Join--}}
-{{--                a meeting</button>--}}
-{{--            <button type="button"--}}
-{{--                    class="md:inline-flex md:items-center md:bg-blue-600 md:text-white md:border-0 md:py-2 md:px-4 md:focus:outline-none md:hover:bg-blue-800 md:rounded md:text-base md:mt-4 md:mt-0 hidden">Start--}}
-{{--                a meeting</button>--}}
-{{--        </div>--}}
-{{--    </header>--}}
 
     <section class="text-gray-600 body-font">
         <div class="container mx-auto flex md:px-16 px-5 md:py-24 py-12 md:flex-row flex-col items-center">
@@ -46,18 +17,20 @@
                     device.
                 </p>
                 <div class="flex md:flex-row md:justify-center items-center flex-col start_meeting">
+                    <form action="{{ route('create-meet') }}" method="POST">
+                        @csrf
+                        <button type="submit"
+                                class="md:inline-flex text-white bg-blue-600 border-0 py-2 px-6 md:mb-0 mb-4 focus:outline-none             hover:bg-blue-800 rounded text-lg flex justify-center">
+                            <i class="fa-solid fa-video pr-2 py-1.5"></i>
+                            Start a meeting
+                        </button>
+                    </form>
 
-                    <button type="button"
-                            class="md:inline-flex text-white bg-blue-600 border-0 py-2 px-6 md:mb-0 mb-4 focus:outline-none             hover:bg-blue-800 rounded text-lg flex justify-center">
-                        <i class="fa-solid fa-video pr-2 py-1.5"></i>
-                        Start a meeting
-                    </button>
-
-                    <input type="text" id="join_meeting_input"
+                    <input type="text" id="linkUrl"
                            class="md:ml-2 pl-5 inline-flex font-normal placeholder:text-gray-500 bg-white border border-gray-300 py-2 px-2 outline-gray-500 rounded text-lg relative"
                            placeholder="Enter a meeting code">
 
-                    <p class="md:ml-4 mt-2.5 text-gray-500 font-semibold cursor-pointer text-[17px]">Join</p>
+                    <button onclick="joinUserMeeting()" class="md:ml-4 mt-2.5 text-gray-500 font-semibold cursor-pointer px-4 text-[17px]">Join</button>
                 </div>
 
                 <a href="https://support.google.com/accounts/answer/27441?hl=en" class="mt-10 font-medium">
@@ -183,3 +156,33 @@
         </div>
     </section>
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    function joinUserMeeting () {
+        var link = $('#linkUrl').val();
+        // console.log(link);
+        if(link.trim() == '' || link.length < 1) {
+            alert('plz enter the link');
+            return;
+        }else {
+            window.location.href = link;
+        }
+
+    }
+</script>
+
+{{--<script>--}}
+{{--    function joinUserMeeting() {--}}
+{{--        var link = document.getElementById('linkUrl').value;--}}
+{{--        console.log(link);--}}
+{{--        if (link.trim() == '' || link.length < 1) {--}}
+{{--            alert('Please enter the link');--}}
+{{--            return;--}}
+{{--        } else {--}}
+{{--            // Your code here if link is not empty--}}
+{{--        }--}}
+{{--    }--}}
+
+{{--</script>--}}
+
