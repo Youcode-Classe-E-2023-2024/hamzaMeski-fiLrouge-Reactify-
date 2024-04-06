@@ -10,6 +10,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AIController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -79,3 +80,10 @@ Route::get('/blog-main', [BlogController::class, 'main'])->name('blog-main');
 
 /* article details route */
 Route::get('/article-details/{article}', [BlogController::class, 'article_details'])->name('article_details');
+
+/* top users route */
+Route::get('/top-users', [UserController::class, 'get_top_users'])->name('get_top_users');
+
+/* top user details route */
+Route::get('/top-user-details/{user}', [UserController::class, 'get_top_user_details'])->name('get_top_user_details');
+

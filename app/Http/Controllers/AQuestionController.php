@@ -48,26 +48,33 @@ class AQuestionController extends Controller
         }
 
         $outputString = implode("\n", $output);
-        // Remove leading and trailing whitespace
-        $outputString = trim($outputString);
+//        dd($outputString);
+        $outputString = preg_replace('/New.*?####\s*/', '', $outputString);
 
-        // Replace consecutive newlines with a single newline
-        $outputString = preg_replace('/\n+/', "\n", $outputString);
+//        // Remove leading and trailing whitespace
+//        $outputString = trim($outputString);
+//
+//        // Remove consecutive newlines
+//        $outputString = preg_replace('/\n{2,}/', "\n", $outputString);
+//
+//        // Replace multiple spaces with a single space
+//        $outputString = preg_replace('/\s+/', ' ', $outputString);
+//
+//        // Remove excessive whitespace around punctuation marks
+//        $outputString = preg_replace('/\s*([.,!?])\s*/', '$1 ', $outputString);
+//
+//        // Add line breaks after sentences
+//        $outputString = preg_replace('/(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s/', "\n", $outputString);
+//
+//        // Remove excessive blank lines
+//        $outputString = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $outputString);
+//
+//        // Replace double quotes with backticks
+//        $outputString = str_replace('"', '`', $outputString);
+//
+//        // Remove any remaining consecutive spaces
+//        $outputString = preg_replace('/\s+/', ' ', $outputString);
 
-        // Convert multiple spaces into a single space
-        $outputString = preg_replace('/\s+/', ' ', $outputString);
-
-        // Remove excessive whitespace around punctuation marks
-        $outputString = preg_replace('/\s*([.,!?])\s*/', '$1 ', $outputString);
-
-        // Add line breaks after sentences
-        $outputString = preg_replace('/(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s/', "\n", $outputString);
-
-        // Remove excessive blank lines
-        $outputString = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $outputString);
-
-        // Remove any remaining consecutive spaces
-        $outputString = preg_replace('/\s+/', ' ', $outputString);
         Blog::create([
             'question_id' => $new_question->id,
             'title' => \request()->title,
