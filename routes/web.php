@@ -26,14 +26,14 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('front-page');
-});
+})->name('front-page');
 
 /* auth route */
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'store'])->name('register.store');
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login.authenticate');
-
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 //Route::delete('/user/delete', [AuthController::class, 'destroy'])->name('user.delete');
 
 /* forget-password route */
@@ -86,4 +86,5 @@ Route::get('/top-users', [UserController::class, 'get_top_users'])->name('get_to
 
 /* top user details route */
 Route::get('/top-user-details/{user}', [UserController::class, 'get_top_user_details'])->name('get_top_user_details');
+
 
