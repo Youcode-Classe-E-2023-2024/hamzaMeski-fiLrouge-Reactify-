@@ -87,4 +87,7 @@ Route::get('/top-users', [UserController::class, 'get_top_users'])->name('get_to
 /* top user details route */
 Route::get('/top-user-details/{user}', [UserController::class, 'get_top_user_details'])->name('get_top_user_details');
 
-
+/* 3d-landing page */
+Route::get('/td-landing', function() {
+    return view('3d-landing.main');
+})->name('td-landing');

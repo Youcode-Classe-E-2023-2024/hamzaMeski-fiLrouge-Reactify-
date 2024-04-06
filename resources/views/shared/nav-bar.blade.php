@@ -1,5 +1,5 @@
 <header class="shadow-md z-4">
-    <nav class="h-[50px] flex items-center px-[114px] fixed bg-white shadow-md w-full">
+    <nav class="h-[50px] flex items-center px-[114px] fixed bg-white shadow-md w-full"  style="z-index: 100;background-color: rgba(255, 255, 255, 0);backdrop-filter: blur(5px);">
         <!-- ***** Logo Start ***** -->
         <a href="#" class="text-[24px] font-bold">
             <h4 class="text-[#03a4ed] tracking-[2px]">REAC<span class="text-[#fe3f40]">TIFY</span></h4>
@@ -7,6 +7,7 @@
         <!-- ***** Logo End ***** -->
         <!-- ***** Menu Start ***** -->
         <ul class="menu_items flex items-center justify-end gap-10 w-full inline-block" style="font-weight: 500">
+            <li class=""><a href="{{ route('td-landing') }}" class="active">About</a></li>
             <li class=""><a href="{{ route('main') }}" class="active">Home</a></li>
             <li class="scroll-to-section"><a href="{{ route('blog-main') }}">Articles</a></li>
             <li class="scroll-to-section"><a href="#services">Services</a></li>
