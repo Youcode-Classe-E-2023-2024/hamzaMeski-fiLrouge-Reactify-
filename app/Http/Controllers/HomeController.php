@@ -7,6 +7,7 @@ use App\Models\Question;
 use App\Models\Tag;
 use App\Models\QuestionTag;
 use App\Models\Answer;
+use App\Models\Blog;
 
 class HomeController extends Controller
 {
@@ -21,7 +22,11 @@ class HomeController extends Controller
             ->with('tags')
             ->latest()
             ->get();
-        return view('QA-page.Q-items', compact('questions'));
+
+        $mostLikedBlogs = Blog::orderBy('likes', 'desc')
+            ->take(3)
+            ->get();
+        return view('QA-page.Q-items', compact('questions', 'mostLikedBlogs'));
     }
 
     public function Q_item_details(Question $question) {

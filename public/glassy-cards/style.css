@@ -1,0 +1,37 @@
+.glassy_cards_container {
+    height: 91vh;
+    background: rgb(0,3,36);
+    background: linear-gradient(90deg, rgba(0,3,36,0.8940710073091737) 0%, rgba(118,9,121,1) 35%, rgba(255,72,0,1) 100%);
+    border-radius: 25px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.container {
+    height: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px 25px;
+    grid-template-areas:
+    "box1 box1 box3"
+    "box2 box2 box3";
+}
+
+.box1 {
+    grid-area: box1;
+    background-color: white;
+    border-radius: 10px;
+}
+.box2 {
+    grid-area: box2;
+    background-color: white;
+    border-radius: 10px;
+
+}
+.box3 {
+    grid-area: box3;
+    background-color: white;
+    border-radius: 10px;
+
+}
