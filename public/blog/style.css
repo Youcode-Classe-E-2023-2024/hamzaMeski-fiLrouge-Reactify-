@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,600;0,700;1,400&display=swap');
 *{
-    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
@@ -25,10 +24,6 @@ a{
     text-decoration: none;
 }
 
-li{
-    list-style: none;
-}
-
 img{
     width: 100%;
 }
@@ -46,26 +41,6 @@ section{
 /*a{*/
 /*    color: #fff;*/
 /*}*/
-
-/* Header */
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 200;
-}
-
-header.shadow{
-    background: var(--bg-color);
-    box-shadow: 0 1px 4px hsl(0 4% 14% / 10%);
-    transition: .5s;
-}
-
-header.shadow .logo{
-    color: var(--text-color);
-}
-
 
 .logo{
     font-size: 1.5rem;
