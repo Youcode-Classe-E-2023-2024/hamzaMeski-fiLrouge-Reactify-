@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('question_id')->constrained('questions', 'id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->text('title');
             $table->text('content');
+            $table->integer('likes')->default(0);
             $table->timestamps();
         });
     }

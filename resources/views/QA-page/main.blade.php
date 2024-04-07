@@ -1,7 +1,7 @@
 @extends('shared.layout')
 
 @section('content')
-    <section class="h-[91vh] flex">
+    <section class="h-[91vh] flex gap-2">
         <section class="h-[91vh] flex">
             <ul class="bg-gradient-to-br from-violet-700 to-red-500 w-[280px] flex flex-col justify-between rounded-[30px] overflow-hidden border-[1px] border-solid border-gray-700 py-2" style="box-shadow: 8px 7px 11px -6px rgba(180,0,155,0.45);">
                 <li class="flex  justify-between px-2 pr-0">
@@ -72,7 +72,6 @@
                 <li class="px-4 text-[14px] font-bold hover:text-blue-500">Explore all collectives</li>
             </ul>
         </section>
-
 
         <main class="b h-full w-full overflow-auto">
             @yield('main-content')
