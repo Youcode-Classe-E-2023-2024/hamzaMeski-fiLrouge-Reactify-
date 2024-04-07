@@ -10,6 +10,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AIController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -25,14 +26,14 @@ use App\Http\Controllers\BlogController;
 
 Route::get('/', function () {
     return view('front-page');
-});
+})->name('front-page');
 
 /* auth route */
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'store'])->name('register.store');
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticate'])->name('login.authenticate');
-
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 //Route::delete('/user/delete', [AuthController::class, 'destroy'])->name('user.delete');
 
 /* forget-password route */
@@ -79,3 +80,14 @@ Route::get('/blog-main', [BlogController::class, 'main'])->name('blog-main');
 
 /* article details route */
 Route::get('/article-details/{article}', [BlogController::class, 'article_details'])->name('article_details');
+
+/* top users route */
+Route::get('/top-users', [UserController::class, 'get_top_users'])->name('get_top_users');
+
+/* top user details route */
+Route::get('/top-user-details/{user}', [UserController::class, 'get_top_user_details'])->name('get_top_user_details');
+
+/* 3d-landing page */
+Route::get('/td-landing', function() {
+    return view('3d-landing.main');
+})->name('td-landing');
