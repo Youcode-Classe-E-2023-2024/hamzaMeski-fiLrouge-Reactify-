@@ -7,16 +7,16 @@
         <div id="main">
             <div id="page">
                 <div id="loop">
+                    <h1 class="text-orange-500"><b>DEVELOPER</b>FICTION IS THE <b><i>REAL</i></b> <span>STORY</span> IN THE <span><i>CODEVERSE.</i></span></h1>
                     <h1><b>DEVELOPER</b>FICTION IS THE <b><i>REAL</i></b> <span>STORY</span> IN THE <span><i>CODEVERSE.</i></span></h1>
-                    <h1><b>DEVELOPER</b>FICTION IS THE <b><i>REAL</i></b> <span>STORY</span> IN THE <span><i>CODEVERSE.</i></span></h1>
-                    <h1><b>DEVELOPER</b>FICTION IS THE <b><i>REAL</i></b> <span>STORY</span> IN THE <span><i>CODEVERSE.</i></span></h1>
+                    <h1 class="text-violet-500"><b>DEVELOPER</b>FICTION IS THE <b><i>REAL</i></b> <span>STORY</span> IN THE <span><i>CODEVERSE.</i></span></h1>
                 </div>
                 <h3>REACTIFY AIMS TO BE A DECENTRALIZED COMMUNITY THAT CAN <br> CREATE NEW VALUES AND PROFITS THROUGH INTERACTION IN THE <br> DIGITAL WORLD.</h3>
                 <h4>...SCROLL TO READ</h4>
                 <canvas></canvas>
             </div>
             <div id="page1">
-                <div id="right-text">
+                <div id="right-text" class="text-violet-500">
                     <h3>REACTIFY / KEY WORD</h3>
                     <h1>HAVE FUN
                         <br>
@@ -24,7 +24,7 @@
                         <br>
                         JUST BE TOGETHER</h1>
                 </div>
-                <div id="left-text">
+                <div id="left-text" class="text-orange-500">
                     <h1>MAKE A STORY
                         <br>
                         TAKE A CHANCE
@@ -36,7 +36,7 @@
             <div id="page2">
                 <div id="text1">
                     <h3>REACTIFY / HAVE FUN</h3>
-                    <h1>LET'S
+                    <h1 class="text-violet-600">LET'S
                         <br>
                         CODE
                         <br>
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div id="page3">
-                <div id="text3">
+                <div id="text3" class="text-orange-500">
                     <h3>DEVELOPERFICTION / PLAYGROUND</h3>
                     <h1>
                         DEVFIELD

@@ -2,7 +2,6 @@
     margin: 0%;
     padding: 0%;
     box-sizing: border-box;
-    font-family: gilroy;
 }
 html,body{
     height: 100%;
@@ -72,28 +71,7 @@ canvas{
         transform: translateX(-100%);
     }
 }
-#nav{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 7%;
-    width: 100%;
-    position: fixed;
-    z-index: 99;
-    padding: 0px 30px;
-}
-#nav>h3{
-    font-family: gilroy;
-    font-weight: 400;
-    font-size: 22px;
-}
-#nav>button{
-    padding: 10px 20px;
-    border-radius: 50px;
-    background-color: #000;
-    color: #fff;
-    border: none;
-}
+
 #page>h3{
     position: absolute;
     top: 55%;
