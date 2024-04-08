@@ -91,3 +91,8 @@ Route::get('/top-user-details/{user}', [UserController::class, 'get_top_user_det
 Route::get('/td-landing', function() {
     return view('3d-landing.main');
 })->name('td-landing');
+
+/* chat app route */
+Route::get('/chat', function() {
+    return view('QA-page.chat.main');
+})->name('chat');

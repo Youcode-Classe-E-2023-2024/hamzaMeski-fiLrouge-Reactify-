@@ -56,7 +56,7 @@
                     <ion-icon name="information-circle" class="text-2xl text-blue-500"></ion-icon>
                 </li>
                 <li class="px-4">
-                    <a href="#" class="side_item flex items-center justify-between hover:text-blue-500">
+                    <a href="{{route('chat')}}" class="side_item flex items-center justify-between hover:text-blue-500">
                         <ion-icon name="chatbubbles" class="text-xl text-green-500"></ion-icon> <!-- Changed to text-white -->
                         <span class="font-bold text-white">Discussions</span> <!-- Changed to text-white -->
                         <div class="h-[25px] w-[25px] border border-gray-300 rounded-full bg-red-500 flex items-center justify-center">
