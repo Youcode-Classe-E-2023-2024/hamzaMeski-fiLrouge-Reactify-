@@ -20,18 +20,28 @@
 
 .box1 {
     grid-area: box1;
-    background-color: white;
-    border-radius: 10px;
 }
 .box2 {
     grid-area: box2;
-    background-color: white;
-    border-radius: 10px;
-
 }
 .box3 {
     grid-area: box3;
-    background-color: white;
-    border-radius: 10px;
+}
 
+.box1, .box2, .box3 {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    /*background-color: white;*/
+    color: #e5e1e1;
+    border-radius: 10px;
+    border: 1px solid white;
+    overflow: hidden;
+}
+/* animated text */
+.three-d {
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    border: 1px solid #888;
+    border-radius: 5px;
+    padding: 10px 20px;
+    display: inline-block;
 }

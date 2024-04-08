@@ -79,7 +79,7 @@
                 @endif
             @endforeach
         </main>
-        <h1 class="text-4xl font-bold text-white mt-8">Top 3 Articles Powered by Artificial Intelligence</h1>
+        <h1 class="text-4xl font-bold text-white mt-8 three-d">Top 3 Articles Powered by Artificial Intelligence</h1>
         <script src="{{ asset('glassy-cards/app.js') }}"></script>
     </section>
     {{--    home carousel container end     --}}
