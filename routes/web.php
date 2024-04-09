@@ -11,6 +11,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AIController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ChatController;
 
 
 /*
@@ -93,6 +94,6 @@ Route::get('/td-landing', function() {
 })->name('td-landing');
 
 /* chat app route */
-Route::get('/chat', function() {
-    return view('QA-page.chat.main');
-})->name('chat');
+Route::get('/chat-app', [ChatController::class, 'index'])->name('chat');
+
+Route::post('/send-message', [ChatController::class, 'sendMessage']);
