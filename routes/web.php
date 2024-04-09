@@ -97,3 +97,13 @@ Route::get('/td-landing', function() {
 Route::get('/chat-app', [ChatController::class, 'index'])->name('chat');
 
 Route::post('/send-message', [ChatController::class, 'sendMessage']);
+
+Route::get('get-friend-messages/{user}', [ChatController::class, 'get_friend_messages']);
+
+/* logged user route */
+Route::get('/user', function () {
+    return auth()->id();
+})->middleware('auth');
+
+/* last inserted message */
+Route::get('/get_last_inserted_message', [ChatController::class, 'get_last_inserted_message']);

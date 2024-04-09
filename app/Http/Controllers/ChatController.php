@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Events\MessageSent;
 use App\Models\Message;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
     public function index() {
-        return view('QA-page.chat.main');
+        $friends = User::all();
+        return view('QA-page.chat.main', compact('friends'));
     }
 
     public function sendMessage(Request $request)
@@ -37,5 +39,25 @@ class ChatController extends Controller
 
         // Return a JSON response indicating success
         return response()->json(['status' => 'Message Sent!']);
+    }
+
+    public function get_friend_messages(User $user) {
+        $messages = Message::where(function ($query) use ($user) {
+                                $query->where('sender_id', auth()->id())
+                                    ->where('receiver_id', $user->id);
+                            })
+                            ->orWhere(function ($query) use ($user) {
+                                $query->where('sender_id', $user->id)
+                                    ->where('receiver_id', auth()->id());
+                            })
+                            ->get();
+
+        return response()->json($messages);
+    }
+
+    public function get_last_inserted_message() {
+        $last_message = Message::latest()->first();
+
+        return response()->json($last_message);
     }
 }
