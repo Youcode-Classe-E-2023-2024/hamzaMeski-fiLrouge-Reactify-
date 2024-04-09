@@ -51,7 +51,7 @@
             <div class="bg-gray-100 px-4 py-2">
                 <form id="message-form" class="flex items-center">
 {{--                    <input type="hidden" name="receiver_id" value="2">--}}
-                    <input name="message" class="w-full border rounded-full py-2 px-4 mr-2" type="text" placeholder="Type your message...">
+                    <input id="message-input" name="message" class="w-full border rounded-full py-2 px-4 mr-2" type="text" placeholder="Type your message...">
                     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full">
                         Send
                     </button>

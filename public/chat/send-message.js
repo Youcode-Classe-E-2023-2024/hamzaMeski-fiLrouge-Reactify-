@@ -1,4 +1,6 @@
 const messageForm = document.getElementById('message-form');
+const messageInput = document.getElementById('message-input');
+
 messageForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(this);
@@ -12,5 +14,8 @@ messageForm.addEventListener('submit', function(e) {
         }
     })
         .then(res => res.text())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            messageInput.value = '';
+        })
 })

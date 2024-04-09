@@ -6,8 +6,7 @@ fetch('/user', {
     }
 })
     .then(res => res.json())
-    .then(id => {
-        const logged_user_id = id
+    .then(logged_user_id => {
         const messagesContainer = document.getElementById('messages-container');
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
         const friends = document.querySelectorAll('.friends');

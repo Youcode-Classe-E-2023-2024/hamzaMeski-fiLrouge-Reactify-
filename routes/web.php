@@ -104,3 +104,6 @@ Route::get('get-friend-messages/{user}', [ChatController::class, 'get_friend_mes
 Route::get('/user', function () {
     return auth()->id();
 })->middleware('auth');
+
+/* last inserted message */
+Route::get('/get_last_inserted_message', [ChatController::class, 'get_last_inserted_message']);

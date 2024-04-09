@@ -54,4 +54,10 @@ class ChatController extends Controller
 
         return response()->json($messages);
     }
+
+    public function get_last_inserted_message() {
+        $last_message = Message::latest()->first();
+
+        return response()->json($last_message);
+    }
 }
