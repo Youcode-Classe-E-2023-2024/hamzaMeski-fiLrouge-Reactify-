@@ -12665,14 +12665,14 @@ window.Echo.channel("chat").listen('MessageSent', function (e) {
   var messagesContainer = document.getElementById('messages-container');
   if (messagesContainer) {
     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    fetch('/user', {
+    fetch('/auth-user', {
       method: 'GET',
       headers: {
         'X-CSRF-TOKEN': csrfToken
       }
     }).then(function (res) {
       return res.json();
-    }).then(function (logged_user_id) {
+    }).then(function (logged_user) {
       fetch('/get_last_inserted_message', {
         method: 'GET',
         headers: {
@@ -12681,10 +12681,11 @@ window.Echo.channel("chat").listen('MessageSent', function (e) {
       }).then(function (res) {
         return res.json();
       }).then(function (data) {
-        if (data.sender_id === logged_user_id) messagesContainer.innerHTML += "<div class=\"flex items-center justify-end mt-1\">\n                                                                <div class=\"bg-blue-500 text-white rounded-lg p-2 shadow mr-2 max-w-sm\">\n                                                                    ".concat(e.message, "\n                                                                </div>\n                                                            </div>");
-        if (data.sender_id !== logged_user_id) {
+        if (data.sender_id === logged_user.id) messagesContainer.innerHTML += "<div class=\"flex items-center justify-end mt-1\">\n                                                                <div class=\"bg-blue-500 text-white rounded-lg p-2 shadow mr-2 max-w-sm\">\n                                                                    ".concat(e.message, "\n                                                                </div>\n                                                            </div>");
+        if (data.sender_id !== logged_user.id) {
           messagesContainer.innerHTML += "<div class=\"bg-white rounded-lg p-2 shadow mb-2 max-w-sm mt-1\">\n                                                                ".concat(e.message, "\n                                                            </div>");
         }
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
       });
     });
   }

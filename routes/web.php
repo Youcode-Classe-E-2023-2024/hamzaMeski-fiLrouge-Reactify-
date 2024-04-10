@@ -101,9 +101,11 @@ Route::post('/send-message', [ChatController::class, 'sendMessage']);
 Route::get('get-friend-messages/{user}', [ChatController::class, 'get_friend_messages']);
 
 /* logged user route */
-Route::get('/user', function () {
-    return auth()->id();
-})->middleware('auth');
+Route::get('/auth-user', [UserController::class, 'get_logged_user']);
+
+/* get certain user route */
+Route::get('/get-user/{user}', [UserController::class, 'get_user']);
 
 /* last inserted message */
 Route::get('/get_last_inserted_message', [ChatController::class, 'get_last_inserted_message']);
+
