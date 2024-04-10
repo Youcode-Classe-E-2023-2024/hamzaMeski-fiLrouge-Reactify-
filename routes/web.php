@@ -112,3 +112,6 @@ Route::get('/get_last_inserted_message', [ChatController::class, 'get_last_inser
 
 /* friends home route */
 Route::get('/friends-home', [FriendController::class, 'friends_home'])->name('friends_home');
+
+/* suggestions home route */
+Route::get('/suggestions', [FriendController::class, 'suggestions'])->name('suggestions');

@@ -11,4 +11,9 @@ class FriendController extends Controller
         $users = User::latest()->get();
         return view('friends.home', compact('users'));
     }
+
+    public function suggestions() {
+        $users = User::latest()->get();
+        return view('friends.suggestions', compact('users'));
+    }
 }

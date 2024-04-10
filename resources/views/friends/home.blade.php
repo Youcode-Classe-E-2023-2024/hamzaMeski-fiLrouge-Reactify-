@@ -4,7 +4,7 @@
     <section class="h-[91vh] rounded-[30px] bg-gradient-to-b from-gray-800 to-black p-4 overflow-auto">
         <div class="flex items-center justify-between mb-4">
             <div class="font-semibold text-xl text-white">People you may know</div>
-            <a href="#" class="text-blue-700">See all</a>
+            <a href="{{ route('suggestions') }}" class="text-blue-700">See all</a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             @foreach($users as $user)

@@ -24,7 +24,7 @@
                     <h1 class="font-bold">Friends</h1>
                 </li>
                 <li class="px-4">
-                    <a href="#" class="flex items-center gap-1 text-white bg-gradient-to-b from-gray-800 to-black p-2 rounded-lg">
+                    <a href="{{ route('friends_home') }}" class="flex items-center gap-1 text-white bg-gradient-to-b from-gray-800 to-black p-2 rounded-lg">
                         <div class="flex items-center justify-center p-1 rounded-full bg-red-500">
                             <ion-icon name="people" class="text-2xl"></ion-icon>
                         </div>
@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li class="px-4">
-                    <a href="#" class="flex items-center justify-between text-white">
+                    <a href="{{ route('suggestions') }}" class="flex items-center justify-between text-white">
                         <div class="flex items-center gap-1">
                             <div class="flex items-center justify-center p-1 rounded-full bg-gray-400">
                                 <ion-icon name="person-add" class="text-2xl"></ion-icon>
