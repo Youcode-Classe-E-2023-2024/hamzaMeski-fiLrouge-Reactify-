@@ -41,7 +41,7 @@
         <div id="chat-container" class="col-span-3 flex flex-col h-[91vh]">
             <div class="flex items-center bg-gray-300 py-2">
                 <div id="receiver-image" class="w-10 h-10 rounded-full mr-2" style="" ></div>
-                <div id="receiver-name" class="font-medium">John Doe</div>
+                <div id="receiver-name" class="font-medium"></div>
             </div>
 
             <section id="messages-container" class="flex-1 overflow-auto bg-gray-200 px-2">
