@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class FriendController extends Controller
 {
-    public function friends_index() {
-        return view('friends.main');
-    }
-
     public  function  friends_home() {
-        return view('friends.home');
+        $users = User::latest()->get();
+        return view('friends.home', compact('users'));
     }
 }

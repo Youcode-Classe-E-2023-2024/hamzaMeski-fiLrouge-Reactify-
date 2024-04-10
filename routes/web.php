@@ -110,8 +110,5 @@ Route::get('/get-user/{user}', [UserController::class, 'get_user']);
 /* last inserted message route */
 Route::get('/get_last_inserted_message', [ChatController::class, 'get_last_inserted_message']);
 
-/* friends-index route */
-Route::get('/friends-index', [FriendController::class, 'friends_index'])->name('friends_index');
-
 /* friends home route */
 Route::get('/friends-home', [FriendController::class, 'friends_home'])->name('friends_home');

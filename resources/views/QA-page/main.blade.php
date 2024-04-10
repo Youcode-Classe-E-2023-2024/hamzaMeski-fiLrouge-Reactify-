@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li class="px-4">
-                    <a href="{{route('friends_index')}}" class="flex items-center justify-between gap-1 hover:text-blue-500">
+                    <a href="{{route('friends_home')}}" class="flex items-center justify-between gap-1 hover:text-blue-500">
                         <ion-icon name="people" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
                         <span class="font-bold text-white" style="text-decoration: underline;">Friends</span> <!-- Changed to text-white -->
                     </a>
