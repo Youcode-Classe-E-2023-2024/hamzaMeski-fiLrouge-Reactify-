@@ -3,7 +3,7 @@
 @section('content')
     <section class="h-[91vh] flex gap-2">
         <section class="h-[91vh] flex">
-            <ul class="bg-gradient-to-br from-violet-700 to-red-500 w-[280px] flex flex-col justify-between rounded-[30px] overflow-hidden border-[1px] border-solid border-gray-700 py-2" style="box-shadow: 8px 7px 11px -6px rgba(180,0,155,0.45);">
+            <ul class="bg-gradient-to-br from-violet-700 to-red-500 w-[280px] flex flex-col gap-6 rounded-[30px] overflow-hidden border-[1px] border-solid border-gray-700 py-2" style="box-shadow: 8px 7px 11px -6px rgba(180,0,155,0.45);">
                 <li class="flex  justify-between px-2 pr-0">
                     <div class="p-1 h-[52px] w-[52px] border-2 border-solid border-gray-400 rounded-full flex items-center justify-center cursor-pointer">
                         <div class="h-full w-full bg-black rounded-full" style="background-image: url('{{asset('http://127.0.0.1:8000/storage/'.auth()->user()->image )}}'); background-size: cover"></div>
@@ -39,13 +39,7 @@
                     </a>
                 </li>
                 <li class="px-4">
-                    <a href="#" class="flex items-center justify-between gap-1 hover:text-blue-500">
-                        <ion-icon name="people" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
-                        <span class="font-bold text-white" style="text-decoration: underline;">Users</span> <!-- Changed to text-white -->
-                    </a>
-                </li>
-                <li class="px-4">
-                    <a href="#" class="flex items-center justify-between gap-1 hover:text-blue-500">
+                    <a href="{{route('friends_index')}}" class="flex items-center justify-between gap-1 hover:text-blue-500">
                         <ion-icon name="people" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
                         <span class="font-bold text-white" style="text-decoration: underline;">Friends</span> <!-- Changed to text-white -->
                     </a>
