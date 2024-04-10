@@ -32,6 +32,7 @@ window.Echo.channel("chat").listen('MessageSent', (e) => {
                                                                 ${e.message}
                                                             </div>`;
                         }
+                        messagesContainer.scrollTop = messagesContainer.scrollHeight;
                     })
             })
     }

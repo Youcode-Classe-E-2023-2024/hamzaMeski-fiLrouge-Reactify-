@@ -1,6 +1,9 @@
 @extends('QA-page.main')
 
 @section('main-content')
+    {{-- styles links --}}
+    <link rel="stylesheet" href="{{asset('chat/css/open-friend-session.css')}}">
+
     <section class="grid grid-cols-4 gap-2 h-full w-full">
         <div class="col-span-1 bg-red-">
             <div class="rounded-full py-2 px-10 flex items-center justify-between" style="background: rgba(224,17,59,0.88);background: linear-gradient(90deg, rgba(0,7,36,0.82) 0%, rgba(118,9,121,1) 35%, rgba(255,72,0,1) 100%);">
@@ -50,7 +53,6 @@
             </div>
             <div class="bg-gray-100 px-4 py-2">
                 <form id="message-form" class="flex items-center">
-{{--                    <input type="hidden" name="receiver_id" value="2">--}}
                     <input id="message-input" name="message" class="w-full border rounded-full py-2 px-4 mr-2" type="text" placeholder="Type your message...">
                     <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full">
                         Send
@@ -60,14 +62,14 @@
         </div>
     </section>
 
-    {{--  send-message script  --}}
-    <script src="{{ asset('chat/send-message.js') }}"></script>
-
     {{--  js pusher script  --}}
     <script src="{{ asset('js/app.js') }}"></script>
 
+    {{--  send-message script  --}}
+    <script src="{{ asset('chat/js/send-message.js') }}"></script>
+
     {{--  open-friend-session script  --}}
-    <script src="{{ asset('chat/open-friend-session.js') }}"></script>
+    <script src="{{ asset('chat/js/open-friend-session.js') }}"></script>
 
 
 @endsection

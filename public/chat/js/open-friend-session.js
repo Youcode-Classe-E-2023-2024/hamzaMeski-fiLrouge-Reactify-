@@ -31,6 +31,12 @@ fetch('/user', {
 
         /* displaying conversations of the last clicked friend in the messagesContainer */
         if (localStorage.getItem('receiverId')) {
+             friends.forEach(friend => {
+                if(friend.getAttribute('receiverId') === localStorage.getItem('receiverId')) {
+                    friend.classList.add('selected')
+                }
+             });
+
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
             fetch('/get-friend-messages/' + localStorage.getItem('receiverId'), {
                 method: 'GET',
@@ -49,6 +55,12 @@ fetch('/user', {
         /* displaying conversations based on the clicked friend */
         for (const friendSession of friends) {
             friendSession.addEventListener('click', function (e) {
+                // Remove the 'selected' class from all friend sessions
+                friends.forEach(friend => friend.classList.remove('selected'));
+
+                // Add the 'selected' class to the clicked friend session
+                this.classList.add('selected');
+
                 const receiverId = this.getAttribute('receiverId');
                 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                 fetch('/get-friend-messages/' + receiverId, {
@@ -65,5 +77,6 @@ fetch('/user', {
                     });
             });
         }
+
         /* */
     });

@@ -12685,6 +12685,7 @@ window.Echo.channel("chat").listen('MessageSent', function (e) {
         if (data.sender_id !== logged_user_id) {
           messagesContainer.innerHTML += "<div class=\"bg-white rounded-lg p-2 shadow mb-2 max-w-sm mt-1\">\n                                                                ".concat(e.message, "\n                                                            </div>");
         }
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
       });
     });
   }
