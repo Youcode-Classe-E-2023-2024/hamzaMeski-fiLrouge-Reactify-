@@ -3,6 +3,7 @@
 @section('main-content')
     {{-- styles links --}}
     <link rel="stylesheet" href="{{asset('chat/css/open-friend-session.css')}}">
+    <link rel="stylesheet" href="{{asset('chat/css/style.css')}}">
 
     <section class="grid grid-cols-4 gap-2 h-full w-full">
         <div class="col-span-1 bg-red-">
@@ -37,13 +38,13 @@
                 @endforelse
             </ul>
         </div>
-        <div class="col-span-3 flex flex-col gap-1 h-[91vh]">
-            <div class="flex items-center mb-2 bg-gray-300 py-2">
+        <div id="chat-container" class="col-span-3 flex flex-col h-[91vh]">
+            <div class="flex items-center bg-gray-300 py-2">
                 <div id="receiver-image" class="w-10 h-10 rounded-full mr-2" style="" ></div>
                 <div id="receiver-name" class="font-medium">John Doe</div>
             </div>
 
-            <section id="messages-container" class="flex-1 overflow-auto">
+            <section id="messages-container" class="flex-1 overflow-auto bg-gray-200 px-2">
                 <!-- Content goes here -->
             </section>
 
@@ -55,6 +56,9 @@
                     </button>
                 </form>
             </div>
+        </div>
+        <div id="empty-chat-container" class="col-span-3 bg-red-500 gap-1 h-[91vh]">
+            <h1>start a discussion!</h1>
         </div>
 
     </section>

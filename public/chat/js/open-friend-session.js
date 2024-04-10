@@ -7,12 +7,21 @@ fetch('/auth-user', {
 })
     .then(res => res.json())
     .then(logged_user => {
+        const chatContainer = document.getElementById('chat-container');
+        const emptyChatContainer = document.getElementById('empty-chat-container');
+        chatContainer.classList.add('hidden');
+        emptyChatContainer.style.display = 'flex';
+
         const messagesContainer = document.getElementById('messages-container');
         const friends = document.querySelectorAll('.friends');
         const receiverImage = document .getElementById('receiver-image');
         const receiverName = document.getElementById('receiver-name');
 
         function updateMessagesContainer(messages, friend) {
+            chatContainer.classList.remove('hidden');
+            // emptyChatContainer.classList.add('hidden');
+            emptyChatContainer.style.display = 'none';
+
             messagesContainer.innerHTML = '';
             for (let i = 0; i < messages.length; i++) {
                 if (messages[i].sender_id === logged_user.id) {
@@ -32,8 +41,6 @@ fetch('/auth-user', {
 
             const image = friend.children[0].children[0].children[0].getAttribute('style');
             const name = friend.children[0].children[1].children[0].textContent;
-            console.log(image);
-            console.log(name);
 
             receiverImage.setAttribute('style', image);
             receiverName.textContent = name;
@@ -53,7 +60,6 @@ fetch('/auth-user', {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log(data);
                             updateMessagesContainer(data, friend);
                         });
                 }
@@ -80,7 +86,6 @@ fetch('/auth-user', {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         localStorage.setItem('receiverId', receiverId);
                         updateMessagesContainer(data, friendSession);
                     });
