@@ -1,19 +1,21 @@
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-fetch('/user', {
+fetch('/auth-user', {
     method: 'GET',
     headers: {
         'X-CSRF-TOKEN': csrfToken
     }
 })
     .then(res => res.json())
-    .then(logged_user_id => {
+    .then(logged_user => {
         const messagesContainer = document.getElementById('messages-container');
         const friends = document.querySelectorAll('.friends');
+        const receiverImage = document .getElementById('receiver-image');
+        const receiverName = document.getElementById('receiver-name');
 
-        function updateMessagesContainer(messages) {
+        function updateMessagesContainer(messages, friend) {
             messagesContainer.innerHTML = '';
             for (let i = 0; i < messages.length; i++) {
-                if (messages[i].sender_id === logged_user_id) {
+                if (messages[i].sender_id === logged_user.id) {
                     messagesContainer.innerHTML += `<div class="flex items-center justify-end mt-1">
                                                         <div class="bg-blue-500 text-white rounded-lg p-2 shadow mr-2 max-w-sm">
                                                             ${messages[i].message}
@@ -27,6 +29,14 @@ fetch('/user', {
             }
             // Scroll to the bottom after updating messagesContainer
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+            const image = friend.children[0].children[0].children[0].getAttribute('style');
+            const name = friend.children[0].children[1].children[0].textContent;
+            console.log(image);
+            console.log(name);
+
+            receiverImage.setAttribute('style', image);
+            receiverName.textContent = name;
         }
 
         /* displaying conversations of the last clicked friend in the messagesContainer */
@@ -34,21 +44,20 @@ fetch('/user', {
              friends.forEach(friend => {
                 if(friend.getAttribute('receiverId') === localStorage.getItem('receiverId')) {
                     friend.classList.add('selected')
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                    fetch('/get-friend-messages/' + localStorage.getItem('receiverId'), {
+                        method: 'GET',
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken
+                        }
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            updateMessagesContainer(data, friend);
+                        });
                 }
              });
-
-            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            fetch('/get-friend-messages/' + localStorage.getItem('receiverId'), {
-                method: 'GET',
-                headers: {
-                    'X-CSRF-TOKEN': csrfToken
-                }
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    updateMessagesContainer(data);
-                });
         }
         /* */
 
@@ -73,7 +82,7 @@ fetch('/user', {
                     .then(data => {
                         console.log(data);
                         localStorage.setItem('receiverId', receiverId);
-                        updateMessagesContainer(data);
+                        updateMessagesContainer(data, friendSession);
                     });
             });
         }

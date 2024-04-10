@@ -16,7 +16,7 @@
                     <span class="text-white text-[12px]">groups</span>
                 </a>
             </div>
-            <ul class="mt-2 flex flex-col overflow-auto h-[80vh]">
+            <ul class="mt-2 flex flex-col overflow-auto h-[75vh]">
                 @forelse($friends as $friend)
                     <li>
                         <a href="#" receiverId="{{$friend->id}}" class="friends py-1 flex items-center justify-between border-b border-gray-300">
@@ -37,20 +37,16 @@
                 @endforelse
             </ul>
         </div>
-        <div class="col-span-3 h-full flex flex-col">
-            <div class="bg-gray-200 flex-1 overflow-y-scroll">
-                <div class="px-4 py-2">
-                    <div class="flex items-center mb-2">
-                        <img class="w-8 h-8 rounded-full mr-2" src="" alt="User Avatar">
-                        <div class="font-medium">John Doe</div>
-                    </div>
-
-                    <section id="messages-container" class="h-[70vh] overflow-auto">
-
-                    </section>
-
-                </div>
+        <div class="col-span-3 flex flex-col gap-1 h-[91vh]">
+            <div class="flex items-center mb-2 bg-gray-300 py-2">
+                <div id="receiver-image" class="w-10 h-10 rounded-full mr-2" style="" ></div>
+                <div id="receiver-name" class="font-medium">John Doe</div>
             </div>
+
+            <section id="messages-container" class="flex-1 overflow-auto">
+                <!-- Content goes here -->
+            </section>
+
             <div class="bg-gray-100 px-4 py-2">
                 <form id="message-form" class="flex items-center">
                     <input id="message-input" name="message" class="w-full border rounded-full py-2 px-4 mr-2" type="text" placeholder="Type your message...">
@@ -60,6 +56,7 @@
                 </form>
             </div>
         </div>
+
     </section>
 
     {{--  js pusher script  --}}
