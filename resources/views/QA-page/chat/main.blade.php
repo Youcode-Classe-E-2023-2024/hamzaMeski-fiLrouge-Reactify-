@@ -42,7 +42,7 @@
                         <div class="font-medium">John Doe</div>
                     </div>
 
-                    <section id="messages-container" class="h-[70vh]">
+                    <section id="messages-container" class="h-[70vh] overflow-auto">
 
                     </section>
 
