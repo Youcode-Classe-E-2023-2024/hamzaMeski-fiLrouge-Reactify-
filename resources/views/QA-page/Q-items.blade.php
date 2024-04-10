@@ -3,7 +3,7 @@
 @section('main-content')
     {{-- Questions Section start --}}
     {{--  home carousel container start  --}}
-    <section class="glassy_cards_container">
+    <section class="h-[91vh] rounded-[30px] bg-gradient-to-b from-gray-800 to-black p-4">
         <link rel="stylesheet" href="{{asset('glassy-cards/style.css')}}">
         <main class="container">
             @php
@@ -15,7 +15,7 @@
                 @endphp
                 @if($i == 1)
                     <div class="box1 grid grid-cols-5 gap-4" data-tilt data-tilt-glare>
-                        <div class="col-span-4 bg-red-500 p-4">
+                        <div class="col-span-4  p-4">
                             <div>
                                 <p class="text-[15px]">{{substr($blog->content, 0, 600)}}...</p>
                                 <a href="{{ route('article_details', $blog->id) }}" class="font-bold text-2xl">{{$blog->title}}</a>
@@ -36,7 +36,7 @@
                     </div>
                 @elseif($i == 2)
                     <div class="box2 grid grid-cols-5 gap-4" data-tilt data-tilt-glare>
-                        <div class="col-span-4 bg-red-500 p-4">
+                        <div class="col-span-4 p-4">
                             <div>
                                 <p class="text-[15px]">{{substr($blog->content, 0, 600)}}...</p>
                                 <a href="{{ route('article_details', $blog->id) }}" class="font-bold text-2xl">{{$blog->title}}</a>
@@ -58,7 +58,7 @@
                     </div>
                 @else
                     <div class="box3 grid grid-cols-1 grid-rows-5 gap-4" data-tilt data-tilt-glare>
-                        <div class="row-span-4 bg-red-500 p-4">
+                        <div class="row-span-4 p-4">
                             <div>
                                 <p class="text-[15px]">{{substr($blog->content, 0, 600)}}...</p>
                                 <a href="{{ route('article_details', $blog->id) }}" class="font-bold text-2xl">{{$blog->title}}</a>

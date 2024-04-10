@@ -12,6 +12,7 @@ use App\Http\Controllers\AIController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\FriendController;
 
 
 /*
@@ -106,6 +107,11 @@ Route::get('/auth-user', [UserController::class, 'get_logged_user']);
 /* get certain user route */
 Route::get('/get-user/{user}', [UserController::class, 'get_user']);
 
-/* last inserted message */
+/* last inserted message route */
 Route::get('/get_last_inserted_message', [ChatController::class, 'get_last_inserted_message']);
 
+/* friends home route */
+Route::get('/friends-home', [FriendController::class, 'friends_home'])->name('friends_home');
+
+/* suggestions home route */
+Route::get('/suggestions', [FriendController::class, 'suggestions'])->name('suggestions');

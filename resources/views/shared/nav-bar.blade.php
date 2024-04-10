@@ -11,6 +11,7 @@
         <li><a href="{{ route('blog-main') }}">Articles</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#portfolio">Top IT fields</a></li>
+        <li><a href="{{ route('get_top_users') }}">Top Users</a></li>
         <li><a href="#blog">Top questions</a></li>
         <li><a href="#contact">Message Us</a></li>
         <li><div class="main-red-button"><a href="http://127.0.0.1:8000/login">Get Started</a></div></li>
