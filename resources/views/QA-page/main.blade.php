@@ -39,9 +39,15 @@
                     </a>
                 </li>
                 <li class="px-4">
-                    <a href="{{ route('get_top_users') }}" class="flex items-center justify-between gap-1 hover:text-blue-500">
+                    <a href="#" class="flex items-center justify-between gap-1 hover:text-blue-500">
                         <ion-icon name="people" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
                         <span class="font-bold text-white" style="text-decoration: underline;">Users</span> <!-- Changed to text-white -->
+                    </a>
+                </li>
+                <li class="px-4">
+                    <a href="#" class="flex items-center justify-between gap-1 hover:text-blue-500">
+                        <ion-icon name="people" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
+                        <span class="font-bold text-white" style="text-decoration: underline;">Friends</span> <!-- Changed to text-white -->
                     </a>
                 </li>
                 <hr class="border-gray-600">
