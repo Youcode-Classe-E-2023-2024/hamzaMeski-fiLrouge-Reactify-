@@ -85,17 +85,16 @@ if(friendsHomeContainer) {
                         </div>
                         <div>
                             <p class="font-semibold">${user.name}</p>
-                            <p class="text-sm text-gray-400">${user.status}</p>
                         </div>
                     </a>
-                    <div class="flex">
-                        <form receiverId="${user.id}" class="add-friend-form w-[80%]">
-                            <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
+                    <div class="flex items-center gap-2 px-2">
+                        <form receiverId="${user.id}" class="add-friend-form">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
                                 Add friend
                             </button>
                         </form>
-                        <form receiverId="${user.id}" class="remove-friend-form w-[80%]">
-                            <button type="submit" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
+                        <form receiverId="${user.id}" class="remove-friend-form">
+                            <button type="submit" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
                                 Remove
                             </button>
                         </form>
@@ -111,13 +110,12 @@ if(friendsHomeContainer) {
                         </div>
                         <div>
                             <p class="font-semibold">${user.name}</p>
-                            <p class="text-sm text-gray-400">${user.status}</p>
                         </div>
                     </a>
-                    <div class="flex">
+                    <div class="flex items-center gap-2 px-2">
                         <div class="text-gray-400">Request sent</div>
-                        <form receiverId="${user.id}" class="cancel-request-form w-[80%]">
-                            <button type="submit" class="w-full bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
+                        <form receiverId="${user.id}" class="cancel-request-form">
+                            <button type="submit" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
                                 Cancel request
                             </button>
                         </form>

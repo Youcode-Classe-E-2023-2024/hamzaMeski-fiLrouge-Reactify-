@@ -3,7 +3,7 @@
 @section('content')
     <section class="h-[91vh] flex gap-2">
         <section class="h-[91vh] flex">
-            <ul class="bg-gradient-to-br from-violet-700 to-red-500 w-[280px] flex flex-col gap-6 rounded-[30px] overflow-hidden border-[1px] border-solid border-gray-700 py-2" style="box-shadow: 8px 7px 11px -6px rgba(180,0,155,0.45);">
+            <ul class="bg-gradient-to-br from-violet-700 to-red-500 w-[280px] flex flex-col gap-4 rounded-[30px] overflow-hidden border-[1px] border-solid border-gray-700 py-2" style="box-shadow: 8px 7px 11px -6px rgba(180,0,155,0.45);">
                 <li class="flex  justify-between px-2 pr-0">
                     <div class="p-1 h-[52px] w-[52px] border-2 border-solid border-gray-400 rounded-full flex items-center justify-center cursor-pointer">
                         <div class="h-full w-full bg-black rounded-full" style="background-image: url('{{asset('http://127.0.0.1:8000/storage/'.auth()->user()->image )}}'); background-size: cover"></div>
@@ -24,17 +24,17 @@
                     <h1 class="font-bold">Friends</h1>
                 </li>
                 <li class="px-4">
-                    <a href="{{ route('friends_home') }}" class="flex items-center gap-1 text-white bg-gradient-to-b from-gray-800 to-black p-2 rounded-lg">
-                        <div class="flex items-center justify-center p-1 rounded-full bg-red-500">
+                    <a href="{{ route('friends_home') }}" class="nav-link flex items-center text-white gap-1 p-2 {{$clicked === 'home' ? ' bg-gradient-to-b from-gray-800 to-black rounded-lg': ''}}">
+                        <div class="flex items-center justify-center p-1 rounded-full {{$clicked === 'home' ? 'bg-red-500': 'bg-gray-400'}}">
                             <ion-icon name="people" class="text-2xl"></ion-icon>
                         </div>
                         <span class="font-bold">Home</span>
                     </a>
                 </li>
                 <li class="px-4">
-                    <a href="{{ route('friend_requests') }}" class="flex items-center justify-between text-white">
+                    <a href="{{ route('friend_requests_index') }}" class="nav-link flex items-center text-white gap-1 p-2 justify-between {{$clicked === 'friend-requests' ? ' bg-gradient-to-b from-gray-800 to-black rounded-lg': ''}}">
                         <div class="flex items-center gap-1">
-                            <div class="flex items-center justify-center p-1 rounded-full bg-gray-400">
+                            <div class="flex items-center justify-center p-1 rounded-full bg-gray-400 {{$clicked === 'friend-requests' ? 'bg-red-500': 'bg-gray-400'}}">
                                 <ion-icon name="person-remove" class="text-2xl"></ion-icon>
                             </div>
                             <span class="font-bold">Friend requests</span>
@@ -43,9 +43,9 @@
                     </a>
                 </li>
                 <li class="px-4">
-                    <a href="{{ route('suggestions') }}" class="flex items-center justify-between text-white">
+                    <a href="{{ route('suggestions') }}" class="nav-link flex items-center text-white gap-1 p-2 justify-between {{$clicked === 'suggestions' ? ' bg-gradient-to-b from-gray-800 to-black rounded-lg': ''}}">
                         <div class="flex items-center gap-1">
-                            <div class="flex items-center justify-center p-1 rounded-full bg-gray-400">
+                            <div class="flex items-center justify-center p-1 rounded-full bg-gray-400 {{$clicked === 'suggestions' ? 'bg-red-500': 'bg-gray-400'}}">
                                 <ion-icon name="person-add" class="text-2xl"></ion-icon>
                             </div>
                             <span class="font-bold">Suggestions</span>
@@ -54,9 +54,9 @@
                     </a>
                 </li>
                 <li class="px-4">
-                    <a href="{{ route('all_friends') }}" class="flex items-center justify-between text-white">
+                    <a href="{{ route('all_friends') }}" class="nav-link flex items-center text-white gap-1 p-2 justify-between {{$clicked === 'all-friends' ? ' bg-gradient-to-b from-gray-800 to-black rounded-lg': ''}}">
                         <div class="flex items-center gap-1">
-                            <div class="flex items-center justify-center p-1 rounded-full bg-gray-400">
+                            <div class="flex items-center justify-center p-1 rounded-full bg-gray-400 {{$clicked === 'all-friends' ? 'bg-red-500': 'bg-gray-400'}}">
                                 <ion-icon name="people-circle" class="text-2xl"></ion-icon>
                             </div>
                             <span class="font-bold">All friends</span>

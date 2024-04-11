@@ -87,6 +87,7 @@ class FriendController extends Controller
     public function cancel_friend_req(User $receiver) {
         Friendship::where('sender_id', auth()->id())
             ->where('receiver_id', $receiver->id)
+            ->where('status', 'pending')
             ->delete();
 
         return response()->json(['message' => 'friend request deleted successfully']);
@@ -102,6 +103,32 @@ class FriendController extends Controller
         return response()->json(['message' => 'Suggested friend removed successfully']);
     }
 
+    public function accept_friend(User $sender) {
+        $friendship = Friendship::where('sender_id', $sender->id)
+                    ->where('receiver_id', auth()->id())
+                    ->where('status', 'pending')
+                    ->first();
+
+        $friendship->update([
+            'status' => 'accepted'
+        ]);
+
+        return response()->json(['message' => 'friend request accepted successfully']);
+    }
+
+    public function ignore_friend(User $sender) {
+        $friendship = Friendship::where('sender_id', $sender->id)
+            ->where('receiver_id', auth()->id())
+            ->where('status', 'pending')
+            ->first();
+
+        if($friendship) {
+            $friendship->delete();
+            return response()->json(['message' => 'friend request ignored successfully']);
+        }
+
+        return response()->json(['message' => 'No pending friend request found from this user']);
+    }
 
     public function destroy_friend() {
 
@@ -119,24 +146,49 @@ class FriendController extends Controller
 
 
 
+
     /* blade indexes */
     public  function  friends_home() {
         $users = User::latest()->get();
-        return view('friends.home', compact('users'));
+
+        $clicked = 'home';
+        return view('friends.home', compact('users', 'clicked'));
     }
 
     public function suggestions() {
         $users = User::latest()->get();
-        return view('friends.suggestions', compact('users'));
+
+        $clicked = 'suggestions';
+        return view('friends.suggestions', compact('users', 'clicked'));
     }
 
     public function all_friends() {
-        $users = User::latest()->get();
-        return view('friends.all-friends', compact('users'));
+        $users = User::join('friendships', function($join) {
+            $join->on('users.id', '=', 'friendships.sender_id')
+                ->where('friendships.receiver_id', '=', auth()->id())
+                ->where('friendships.status', '=', 'accepted');
+        })
+            ->select('users.*')
+            ->get();
+
+        $clicked = 'all-friends';
+        return view('friends.all-friends', compact('users', 'clicked'));
     }
 
     public function friend_requests() {
-        $users = User::latest()->get();
-        return view('friends.friend-requests', compact('users'));
+        $users = User::join('friendships', function($join) {
+            $join->on('users.id', '=', 'friendships.sender_id')
+                ->where('friendships.receiver_id', '=', auth()->id())
+                ->where('friendships.status', '=', 'pending');
+        })
+            ->select('users.*')
+            ->get();
+
+        return response()->json($users);
+    }
+
+    public function friend_requests_index() {
+        $clicked = 'friend-requests';
+        return view('friends.friend-requests', compact( 'clicked'));
     }
 }
