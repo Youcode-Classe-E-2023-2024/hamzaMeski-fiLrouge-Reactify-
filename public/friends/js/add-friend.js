@@ -12,6 +12,7 @@ function keep_html_trucking() {
     })
         .then(res => res.json())
         .then(data => {
+            // console.log(data)
             const users = data.users;
             usersContainer.innerHTML = '';
             users.forEach(user => {
@@ -25,6 +26,10 @@ function keep_html_trucking() {
             /********************** cancel friend request start **************************/
             cancelFriendRequest();
             /********************** cancel friend request end **************************/
+
+            /********************** remmove friend from suggestions start **************************/
+            removeFriendFromSuggestions();
+            /********************** remmove friend from suggestions end **************************/
         })
 }
 
@@ -39,7 +44,7 @@ function render_users_cards_html(user) {
                     Add friend
                 </button>
             </form>
-            <form class="remove-friend-form w-[80%]">
+            <form receiverId="${user.id}" class="remove-friend-form w-[80%]">
                 <button type="submit" class="remove-friend-button w-full bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:scale-105">
                     Remove
                 </button>
@@ -64,7 +69,7 @@ function addFriend() {
     const addFriendForms = document.querySelectorAll('.add-friend-form');
 
     for(const addFriendForm of addFriendForms) {
-        addFriendForm.addEventListener('click', function(e) {
+        addFriendForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const receiverId = this.getAttribute('receiverId');
             fetch(`/add-friend/` + receiverId, {
@@ -86,10 +91,32 @@ function cancelFriendRequest() {
     const cancelRequestForms = document.querySelectorAll('.cancel-request-form');
 
     for(const cancelRequestForm of cancelRequestForms) {
-        cancelRequestForm.addEventListener('click', function(e) {
+        cancelRequestForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const receiverId = this.getAttribute('receiverId');
             fetch(`/cancel-friend-request/` + receiverId, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                }
+            })
+                .then(res => res.json())
+                .then(msg => {
+                    console.log(msg)
+                    keep_html_trucking();
+                })
+        })
+    }
+}
+
+function removeFriendFromSuggestions() {
+    const removeFriendForms = document.querySelectorAll('.remove-friend-form');
+
+    for(const removeFriendForm of removeFriendForms) {
+        removeFriendForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const receiverId = this.getAttribute('receiverId');
+            fetch(`/remove-friend/` + receiverId, {
                 method: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': csrfToken
