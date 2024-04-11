@@ -129,7 +129,7 @@ Route::get('/suggested-users', [FriendController::class, 'suggested_users']);
 Route::post('/add-friend/{receiver}', [FriendController::class, 'add_friend']);
 
 /* remove friend */
-Route::post('/remove-friend/{receiver}', [FriendController::class, 'remove_friend']);
+Route::delete('/remove-friend/{receiver}', [FriendController::class, 'remove_friend']);
 
 /* destroy friend */
 Route::delete('/destroy-friend/{receiver}', [FriendController::class, 'destroy_friend']);

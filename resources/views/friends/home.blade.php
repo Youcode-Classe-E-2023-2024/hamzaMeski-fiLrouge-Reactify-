@@ -1,7 +1,7 @@
 @extends('friends.main')
 
 @section('main-content')
-    <section class="h-[91vh] rounded-[30px] bg-gradient-to-b from-gray-800 to-black p-4 overflow-auto">
+    <section id="friends-home-container" class="h-[91vh] rounded-[30px] bg-gradient-to-b from-gray-800 to-black p-4 overflow-auto">
         <div class="flex items-center justify-between mb-4">
             <div class="font-semibold text-xl text-white">People you may know</div>
             <a href="{{ route('suggestions') }}" class="text-blue-700">See all</a>
