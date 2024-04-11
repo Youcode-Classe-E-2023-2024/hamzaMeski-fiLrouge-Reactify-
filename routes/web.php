@@ -115,3 +115,27 @@ Route::get('/friends-home', [FriendController::class, 'friends_home'])->name('fr
 
 /* suggestions home route */
 Route::get('/suggestions', [FriendController::class, 'suggestions'])->name('suggestions');
+
+/* all friends home route */
+Route::get('/all-friends', [FriendController::class, 'all_friends'])->name('all_friends');
+
+/* suggestions home route */
+Route::get('/friend-requests', [FriendController::class, 'friend_requests'])->name('friend_requests');
+
+/* suggested users route*/
+Route::get('/suggested-users', [FriendController::class, 'suggested_users']);
+
+/* add friend */
+Route::post('/add-friend/{receiver}', [FriendController::class, 'add_friend']);
+
+/* remove friend */
+Route::post('/remove-friend/{receiver}', [FriendController::class, 'remove_friend']);
+
+/* destroy friend */
+Route::delete('/destroy-friend/{receiver}', [FriendController::class, 'destroy_friend']);
+
+/* cancel friend request */
+Route::delete('/cancel-friend-request/{receiver}', [FriendController::class, 'cancel_friend_req']);
+
+/* block friend */
+Route::post('/block-friend/{receiver}', [FriendController::class, 'block_friend']);
