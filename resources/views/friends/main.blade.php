@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="px-4">
-                    <a href="{{ route('friend_requests') }}" class="nav-link flex items-center text-white gap-1 p-2 justify-between {{$clicked === 'friend-requests' ? ' bg-gradient-to-b from-gray-800 to-black rounded-lg': ''}}">
+                    <a href="{{ route('friend_requests_index') }}" class="nav-link flex items-center text-white gap-1 p-2 justify-between {{$clicked === 'friend-requests' ? ' bg-gradient-to-b from-gray-800 to-black rounded-lg': ''}}">
                         <div class="flex items-center gap-1">
                             <div class="flex items-center justify-center p-1 rounded-full bg-gray-400 {{$clicked === 'friend-requests' ? 'bg-red-500': 'bg-gray-400'}}">
                                 <ion-icon name="person-remove" class="text-2xl"></ion-icon>

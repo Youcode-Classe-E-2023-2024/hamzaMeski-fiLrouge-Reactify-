@@ -120,7 +120,10 @@ Route::get('/suggestions', [FriendController::class, 'suggestions'])->name('sugg
 Route::get('/all-friends', [FriendController::class, 'all_friends'])->name('all_friends');
 
 /* suggestions home route */
-Route::get('/friend-requests', [FriendController::class, 'friend_requests'])->name('friend_requests');
+Route::get('/friend-requests-index', [FriendController::class, 'friend_requests_index'])->name('friend_requests_index');
+Route::get('/friend-requests', [FriendController::class, 'friend_requests']);
+Route::post('/accept-friend/{sender}', [FriendController::class, 'accept_friend']);
+Route::delete('/ignore-friend/{sender}', [FriendController::class, 'ignore_friend']);
 
 /* suggested users route*/
 Route::get('/suggested-users', [FriendController::class, 'suggested_users']);
