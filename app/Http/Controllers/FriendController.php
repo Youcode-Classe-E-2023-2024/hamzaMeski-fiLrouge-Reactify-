@@ -122,21 +122,29 @@ class FriendController extends Controller
     /* blade indexes */
     public  function  friends_home() {
         $users = User::latest()->get();
-        return view('friends.home', compact('users'));
+
+        $clicked = 'home';
+        return view('friends.home', compact('users', 'clicked'));
     }
 
     public function suggestions() {
         $users = User::latest()->get();
-        return view('friends.suggestions', compact('users'));
+
+        $clicked = 'suggestions';
+        return view('friends.suggestions', compact('users', 'clicked'));
     }
 
     public function all_friends() {
         $users = User::latest()->get();
-        return view('friends.all-friends', compact('users'));
+
+        $clicked = 'all-friends';
+        return view('friends.all-friends', compact('users', 'clicked'));
     }
 
     public function friend_requests() {
         $users = User::latest()->get();
-        return view('friends.friend-requests', compact('users'));
+
+        $clicked = 'friend-requests';
+        return view('friends.friend-requests', compact('users', 'clicked'));
     }
 }
