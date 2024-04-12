@@ -246,3 +246,37 @@ class FriendController extends Controller
         return view('friends.friend-requests', compact( 'clicked'));
     }
 }
+
+
+/************/
+//public function all_friends() {
+//    $users = User::join('friendships', function($join) {
+//        $join->on('users.id', '=', 'friendships.sender_id')
+//            ->where('friendships.receiver_id', '=', auth()->id())
+//            ->where('friendships.status', '=', 'accepted')
+//            ->orWhere(function($query) {
+//                $query->on('users.id', '=', 'friendships.receiver_id')
+//                    ->where('friendships.sender_id', '=', auth()->id())
+//                    ->where('friendships.status', '=', 'accepted');
+//            })
+//            ->orWhere(function($query) {
+//                $query->on('users.id', '=', 'friendships.sender_id')
+//                    ->where('friendships.receiver_id', '=', auth()->id())
+//                    ->where('friendships.status', '=', 'blocked');
+//            })
+//            ->orWhere(function($query) {
+//                $query->on('users.id', '=', 'friendships.receiver_id')
+//                    ->where('friendships.sender_id', '=', auth()->id())
+//                    ->where('friendships.status', '=', 'blocked');
+//            });
+//    })
+//        ->leftJoin('block_friend', 'friendships.id', '=', 'block_friend.friendship_id')
+//        ->select('users.*', 'block_friend.blocked_by_id', 'block_friend.blocked_user_id', 'friendships.status as friendship_status')
+//        ->get();
+//
+//    return response()->json([
+//        'users' => $users,
+//        'auth' => auth()->user()
+//    ]);
+//}
+/********************/
