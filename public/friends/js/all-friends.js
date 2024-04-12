@@ -12,18 +12,14 @@ function keep_html_trucking() {
         }
     })
         .then(res => res.json())
-        .then(data => {
-            const users = data.users;
-            const auth = data.auth;
-            console.log(users)
-            console.log(auth)
+        .then(users => {
             if(!users) {
                 allFriendsContainer.innerHTML = '<div class="text-gray-300 text-[14px]">Currently you have no friend yet.</div>';
                 return;
             }
             allFriendsContainer.innerHTML = '';
             users.forEach(user => {
-                render_users_cards_html(user, auth);
+                render_users_cards_html(user);
             })
 
             /********************** display options **************************/
@@ -38,9 +34,8 @@ function keep_html_trucking() {
 }
 
 
-function render_users_cards_html(user, auth) {
-    if(user.friendship_status === 'accepted') {
-        allFriendsContainer.innerHTML += `
+function render_users_cards_html(user) {
+    allFriendsContainer.innerHTML += `
         <li class="relative flex items-center gap-14 justify-between py-2 border-b border-gray-700 pr-2">
             <a href="#" class="w-full flex items-center gap-4">
                 <div class="h-12 w-12 rounded-full overflow-hidden">
@@ -70,59 +65,6 @@ function render_users_cards_html(user, auth) {
             </div>
         </li>
         `;
-    }else if(user.friendship_status === 'blocked' && user.blocked_by_id === auth.id) {
-        allFriendsContainer.innerHTML += `
-        <li class="relative flex items-center gap-14 justify-between py-2 border-b border-gray-700 pr-2">
-            <a href="#" class="w-full flex items-center gap-4">
-                <div class="h-12 w-12 rounded-full overflow-hidden">
-                    <img src='http://127.0.0.1:8000/storage/${user.image}' alt="Profile Picture" class="object-cover h-full w-full">
-                </div>
-                <div>
-                    <p class="font-semibold">${user.name}</p>
-                </div>
-            </a>
-            <ion-icon name="ellipsis-horizontal" class="options-btns cursor-pointer text-2xl text-white"></ion-icon>
-
-            <div class="options hidden absolute border border-gray-500 w-[200px] h-[100px] selected text-white rounded-lg top-[70%] right-[0%] z-[200] p-2 shadow-md">
-                <div class="h-full border border-gray-500 rounded-lg flex flex-col justify-between p-2 font-bold text-[14px]">
-                    <form userId="${user.id}" class="block-friend-form">
-                        <div class="flex items-center gap-1">
-                            <ion-icon name="ban"></ion-icon>
-                            <button>Unblock friend</button>
-                        </div>
-                    </form>
-                     <form userId="${user.id}" class="delete-friend-form">
-                        <div class="flex items-center gap-1">
-                            <ion-icon name="person-remove"></ion-icon>
-                            <button>Unfollow friend</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </li>
-        `;
-    }else if(user.friendship_status === 'blocked' && user.blocked_user_id === auth.id) {
-        allFriendsContainer.innerHTML += `
-        <li class="relative flex items-center gap-14 justify-between py-2 border-b border-gray-700 pr-2">
-            <a href="#" class="w-full flex items-center gap-4">
-                <div class="h-12 w-12 rounded-full overflow-hidden">
-                    <img src='http://127.0.0.1:8000/storage/${user.image}' alt="Profile Picture" class="object-cover h-full w-full">
-                </div>
-                <div>
-                    <p class="font-semibold">${user.name}</p>
-                </div>
-            </a>
-            <ion-icon name="ellipsis-horizontal" class="options-btns cursor-pointer text-2xl text-white"></ion-icon>
-
-            <div class="options hidden absolute border border-gray-500 w-[200px] h-[100px] selected text-white rounded-lg top-[70%] right-[0%] z-[200] p-2 shadow-md">
-                <div class="h-full border border-gray-500 rounded-lg flex flex-col justify-between p-2 font-bold text-[14px]">
-                    Your are blocked
-                </div>
-            </div>
-        </li>
-        `;
-    }
-
 }
 
 function blockFriend() {
