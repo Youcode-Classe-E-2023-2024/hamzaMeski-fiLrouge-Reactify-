@@ -19,8 +19,11 @@ function keep_html_trucking() {
     })
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
             const users = data.users;
+            if(!users) {
+                friendsSuggestionsContainer.innerHTML = '<div class="text-gray-300 text-[14px]">There is no friend suggestions for you.</div>';
+                return;
+            }
             usersContainer.innerHTML = '';
             users.forEach(user => {
                 render_users_cards_html(user);

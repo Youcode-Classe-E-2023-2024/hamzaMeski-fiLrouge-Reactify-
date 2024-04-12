@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li class="px-4">
-                    <a href="{{ route('all_friends') }}" class="nav-link flex items-center text-white gap-1 p-2 justify-between {{$clicked === 'all-friends' ? ' bg-gradient-to-b from-gray-800 to-black rounded-lg': ''}}">
+                    <a href="{{ route('all_friends_index') }}" class="nav-link flex items-center text-white gap-1 p-2 justify-between {{$clicked === 'all-friends' ? ' bg-gradient-to-b from-gray-800 to-black rounded-lg': ''}}">
                         <div class="flex items-center gap-1">
                             <div class="flex items-center justify-center p-1 rounded-full bg-gray-400 {{$clicked === 'all-friends' ? 'bg-red-500': 'bg-gray-400'}}">
                                 <ion-icon name="people-circle" class="text-2xl"></ion-icon>

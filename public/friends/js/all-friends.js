@@ -1,11 +1,11 @@
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-let friendsRequestsContainer = document.getElementById('friends-requests-container');
+let allFriendsContainer = document.getElementById('all-friends-container');
 
 keep_html_trucking();
 
 function keep_html_trucking() {
-    fetch(`/friend-requests`, {
+    fetch(`/all-friends`, {
         method: 'GET',
         headers: {
             'X-CSRF-TOKEN': csrfToken
@@ -13,11 +13,12 @@ function keep_html_trucking() {
     })
         .then(res => res.json())
         .then(users => {
-            if(!users.length) {
-                friendsRequestsContainer.innerHTML = '<div class="text-gray-300 text-[14px]">Currently There is no friends requests for you.</div>';
+            console.log(users)
+            if(!users) {
+                allFriendsContainer.innerHTML = '<div class="text-gray-300 text-[14px]">Currently you have no friend yet.</div>';
                 return;
             }
-            friendsRequestsContainer.innerHTML = '';
+            allFriendsContainer.innerHTML = '';
             users.forEach(user => {
                 render_users_cards_html(user);
             })
@@ -34,8 +35,8 @@ function keep_html_trucking() {
 
 
 function render_users_cards_html(user) {
-    friendsRequestsContainer.innerHTML += `
-    <li class="flex flex-col items-end justify-between py-2 border-b border-gray-700">
+    allFriendsContainer.innerHTML += `
+    <li class="flex items-center gap-14 justify-between py-2 border-b border-gray-700 pr-2">
         <a href="#" class="w-full flex items-center gap-4">
             <div class="h-12 w-12 rounded-full overflow-hidden">
                 <img src='http://127.0.0.1:8000/storage/${user.image}' alt="Profile Picture" class="object-cover h-full w-full">
@@ -44,14 +45,7 @@ function render_users_cards_html(user) {
                 <p class="font-semibold">${user.name}</p>
             </div>
         </a>
-        <div class="flex">
-            <form senderId="${user.id}" class="accept-request-form">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg mr-2">Accept</button>
-            </form>
-            <form senderId="${user.id}" class="ignore-request-form">
-                <button type="submit" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg mr-2">Ignore</button>
-            </form>
-        </div>
+        <ion-icon name="ellipsis-horizontal" class="cursor-pointer text-2xl text-white"></ion-icon>
     </li>
     `;
 }

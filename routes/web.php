@@ -117,7 +117,8 @@ Route::get('/friends-home', [FriendController::class, 'friends_home'])->name('fr
 Route::get('/suggestions', [FriendController::class, 'suggestions'])->name('suggestions');
 
 /* all friends home route */
-Route::get('/all-friends', [FriendController::class, 'all_friends'])->name('all_friends');
+Route::get('/all-friends-index', [FriendController::class, 'all_friends_index'])->name('all_friends_index');
+Route::get('/all-friends', [FriendController::class, 'all_friends']);
 
 /* suggestions home route */
 Route::get('/friend-requests-index', [FriendController::class, 'friend_requests_index'])->name('friend_requests_index');

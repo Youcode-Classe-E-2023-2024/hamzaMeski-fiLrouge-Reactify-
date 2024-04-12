@@ -171,8 +171,12 @@ class FriendController extends Controller
             ->select('users.*')
             ->get();
 
+        return response()->json($users);
+    }
+
+    public function all_friends_index() {
         $clicked = 'all-friends';
-        return view('friends.all-friends', compact('users', 'clicked'));
+        return view('friends.all-friends', compact( 'clicked'));
     }
 
     public function friend_requests() {
