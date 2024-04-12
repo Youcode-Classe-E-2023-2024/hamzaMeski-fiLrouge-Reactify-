@@ -133,13 +133,14 @@ Route::get('/suggested-users', [FriendController::class, 'suggested_users']);
 Route::post('/add-friend/{receiver}', [FriendController::class, 'add_friend']);
 
 /* remove friend */
-Route::delete('/remove-friend/{receiver}', [FriendController::class, 'remove_friend']);
+Route::delete('/remove-suggested-friend/{receiver}', [FriendController::class, 'remove_suggested_friend']);
 
 /* destroy friend */
-Route::delete('/destroy-friend/{receiver}', [FriendController::class, 'destroy_friend']);
+Route::delete('/delete-friend/{user}', [FriendController::class, 'delete_friend']);
 
 /* cancel friend request */
 Route::delete('/cancel-friend-request/{receiver}', [FriendController::class, 'cancel_friend_req']);
 
 /* block friend */
-Route::post('/block-friend/{receiver}', [FriendController::class, 'block_friend']);
+Route::post('/block-friend/{user}', [FriendController::class, 'block_friend']);
+

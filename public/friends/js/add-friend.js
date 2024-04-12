@@ -128,7 +128,6 @@ if(friendsHomeContainer) {
     }
 }
 
-
 function addFriend() {
     const addFriendForms = document.querySelectorAll('.add-friend-form');
 
@@ -180,7 +179,7 @@ function removeFriendFromSuggestions() {
         removeFriendForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const receiverId = this.getAttribute('receiverId');
-            fetch(`/remove-friend/` + receiverId, {
+            fetch(`/remove-suggested-friend/` + receiverId, {
                 method: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': csrfToken
