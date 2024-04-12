@@ -13,7 +13,10 @@ function keep_html_trucking() {
     })
         .then(res => res.json())
         .then(users => {
-            console.log(users)
+            if(!users.length) {
+                friendsRequestsContainer.innerHTML = '<div class="text-gray-300 text-[14px]">Currently There is no friends requests for you.</div>';
+                return;
+            }
             friendsRequestsContainer.innerHTML = '';
             users.forEach(user => {
                 render_users_cards_html(user);

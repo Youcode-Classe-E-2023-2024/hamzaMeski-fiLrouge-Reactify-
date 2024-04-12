@@ -19,8 +19,11 @@ function keep_html_trucking() {
     })
         .then(res => res.json())
         .then(data => {
-            // console.log(data)
             const users = data.users;
+            if(!users) {
+                friendsSuggestionsContainer.innerHTML = '<div class="text-gray-300 text-[14px]">There is no friend suggestions for you.</div>';
+                return;
+            }
             usersContainer.innerHTML = '';
             users.forEach(user => {
                 render_users_cards_html(user);
@@ -125,7 +128,6 @@ if(friendsHomeContainer) {
     }
 }
 
-
 function addFriend() {
     const addFriendForms = document.querySelectorAll('.add-friend-form');
 
@@ -177,7 +179,7 @@ function removeFriendFromSuggestions() {
         removeFriendForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const receiverId = this.getAttribute('receiverId');
-            fetch(`/remove-friend/` + receiverId, {
+            fetch(`/remove-suggested-friend/` + receiverId, {
                 method: 'DELETE',
                 headers: {
                     'X-CSRF-TOKEN': csrfToken

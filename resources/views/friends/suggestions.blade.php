@@ -8,7 +8,6 @@
             </ul>
         </div>
 
-
         <div class="col-span-5 h-full w-full flex items-center justify-center">
             <h1 class="text-white font-semibold text-2xl">Select people's names to preview their profile.</h1>
         </div>

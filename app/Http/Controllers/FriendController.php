@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Friendship;
 use App\Models\SuggestedFriend;
+use App\Models\BlockFriend;
 
 class FriendController extends Controller
 {
@@ -93,7 +94,7 @@ class FriendController extends Controller
         return response()->json(['message' => 'friend request deleted successfully']);
     }
 
-    public function remove_friend(User $receiver) {
+    public function remove_suggested_friend(User $receiver) {
         SuggestedFriend::create([
             'user_id' => auth()->id(),
             'suggested_id' => $receiver->id,
@@ -130,13 +131,55 @@ class FriendController extends Controller
         return response()->json(['message' => 'No pending friend request found from this user']);
     }
 
-    public function destroy_friend() {
+    public function delete_friend(User $user) {
+        $friendship = Friendship::where(function($query) use ($user) {
+            $query->where('sender_id', $user->id)
+                ->where('receiver_id', auth()->id())
+                ->where('status', 'accepted');
+        })
+            ->orWhere(function($query) use ($user) {
+                $query->where('sender_id', auth()->id())
+                    ->where('receiver_id', $user->id)
+                    ->where('status', 'accepted');
+            })
+            ->first();
 
+        $friendship->delete();
+        return response()->json(['message' => 'Friend deleted successfully']);
     }
 
-    public function block_friend() {
+    public function block_friend(User $user) {
+        $friendship = Friendship::where(function($query) use ($user) {
+            $query->where('sender_id', $user->id)
+                ->where('receiver_id', auth()->id());
+        })
+            ->orWhere(function($query) use ($user) {
+                $query->where('sender_id', auth()->id())
+                    ->where('receiver_id', $user->id);
+            })
+            ->where('status', 'accepted')
+            ->first();
 
+        if($friendship) {
+            // Update status to 'blocked'
+            $friendship->update(['status' => 'blocked']);
+
+            // Create a new record in the block_friend table
+            BlockFriend::create([
+                'friendship_id' => $friendship->id,
+                'blocked_by_id' => auth()->id(),
+                'blocked_user_id' => $user->id
+            ]);
+
+            return response()->json([
+                'message' => 'Friend blocked successfully'
+            ]);
+        }
+
+        return response()->json(['message' => 'No pending friend request found between these users']);
     }
+
+
 
 
 
@@ -149,30 +192,53 @@ class FriendController extends Controller
 
     /* blade indexes */
     public  function  friends_home() {
-        $users = User::latest()->get();
-
         $clicked = 'home';
-        return view('friends.home', compact('users', 'clicked'));
+        return view('friends.home', compact( 'clicked'));
     }
 
     public function suggestions() {
-        $users = User::latest()->get();
-
         $clicked = 'suggestions';
-        return view('friends.suggestions', compact('users', 'clicked'));
+        return view('friends.suggestions', compact( 'clicked'));
     }
+
 
     public function all_friends() {
         $users = User::join('friendships', function($join) {
             $join->on('users.id', '=', 'friendships.sender_id')
                 ->where('friendships.receiver_id', '=', auth()->id())
-                ->where('friendships.status', '=', 'accepted');
+                ->where('friendships.status', '=', 'accepted')
+                ->orWhere(function($query) {
+                    $query->on('users.id', '=', 'friendships.receiver_id')
+                        ->where('friendships.sender_id', '=', auth()->id())
+                        ->where('friendships.status', '=', 'accepted');
+                })
+                ->orWhere(function($query) {
+                    $query->on('users.id', '=', 'friendships.sender_id')
+                        ->where('friendships.receiver_id', '=', auth()->id())
+                        ->where('friendships.status', '=', 'blocked');
+                })
+                ->orWhere(function($query) {
+                    $query->on('users.id', '=', 'friendships.receiver_id')
+                        ->where('friendships.sender_id', '=', auth()->id())
+                        ->where('friendships.status', '=', 'blocked');
+                });
         })
-            ->select('users.*')
+            ->leftJoin('block_friend', 'friendships.id', '=', 'block_friend.friendship_id')
+            ->select('users.*', 'block_friend.blocked_by_id', 'block_friend.blocked_user_id', 'friendships.status as friendship_status')
             ->get();
 
+        return response()->json([
+            'users' => $users,
+            'auth' => auth()->user()
+        ]);
+    }
+
+
+
+
+    public function all_friends_index() {
         $clicked = 'all-friends';
-        return view('friends.all-friends', compact('users', 'clicked'));
+        return view('friends.all-friends', compact( 'clicked'));
     }
 
     public function friend_requests() {
