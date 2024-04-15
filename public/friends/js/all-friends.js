@@ -30,6 +30,9 @@ function keep_html_trucking() {
 
             /********************** remove friend start **************************/
             deleteFriend();
+
+            /********************** see friend profile **************************/
+            seeFriendProfile();
         })
 }
 
@@ -37,7 +40,7 @@ function keep_html_trucking() {
 function render_users_cards_html(user) {
     allFriendsContainer.innerHTML += `
         <li class="relative flex items-center gap-14 justify-between py-2 border-b border-gray-700 pr-2">
-            <a href="#" class="w-full flex items-center gap-4">
+            <a href="#" userId="${user.id}" class="see-profile w-full flex items-center gap-4">
                 <div class="h-12 w-12 rounded-full overflow-hidden">
                     <img src='http://127.0.0.1:8000/storage/${user.image}' alt="Profile Picture" class="object-cover h-full w-full">
                 </div>
@@ -130,6 +133,18 @@ function displayOptions() {
                     optionsList.classList.add('hidden');
                 }
             })
+        })
+    }
+}
+
+function seeFriendProfile() {
+    const userProfileContainer = document.getElementById('user-profile-container');
+    const seeProfiles = document.querySelectorAll('.see-profile');
+    for(const seeProfile of seeProfiles) {
+        seeProfile.addEventListener('click', function() {
+            console.log(this.getAttribute('userId'))
+            userProfileContainer.innerHTML = `
+            `;
         })
     }
 }
