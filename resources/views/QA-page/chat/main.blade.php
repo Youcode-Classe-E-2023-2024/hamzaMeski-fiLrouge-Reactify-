@@ -57,11 +57,20 @@
                 </form>
             </div>
         </div>
+
         <div id="empty-chat-container" class="col-span-3 bg-red-500 gap-1 h-[91vh]">
             <h1>start a discussion!</h1>
         </div>
 
     </section>
+
+    @if(isset($receiverId))
+        <script>
+            localStorage.setItem('receiverId', {{$receiverId->id}});
+            console.log('ok');
+        </script>
+    @endif
+
 
     {{--  js pusher script  --}}
     <script src="{{ asset('js/app.js') }}"></script>
