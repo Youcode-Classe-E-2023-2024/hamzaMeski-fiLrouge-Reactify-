@@ -97,6 +97,8 @@ Route::get('/td-landing', function() {
 /* chat app route */
 Route::get('/chat-app', [ChatController::class, 'index'])->name('chat');
 
+Route::get('/chat-app/{receiverId}', [ChatController::class, 'connect_user'])->name('connect_user');
+
 Route::post('/send-message', [ChatController::class, 'sendMessage']);
 
 Route::get('get-friend-messages/{user}', [ChatController::class, 'get_friend_messages']);
@@ -144,3 +146,7 @@ Route::delete('/cancel-friend-request/{receiver}', [FriendController::class, 'ca
 /* block friend */
 Route::post('/block-friend/{user}', [FriendController::class, 'block_friend']);
 
+/* contact us */
+Route::get('/contact_us', function() {
+    return view('contact-us.main');
+})->name('contact_us');

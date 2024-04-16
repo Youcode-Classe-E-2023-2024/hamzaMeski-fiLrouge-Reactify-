@@ -11,7 +11,7 @@ class UserController extends Controller
     public function get_top_users() {
         $users = User::all();
 
-        return view('QA-page.top-users', compact('users'));
+        return view('top-users.main', compact('users'));
     }
 
     public function get_top_user_details(User $user) {

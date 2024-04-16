@@ -7,12 +7,43 @@ use App\Events\MessageSent;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class ChatController extends Controller
 {
     public function index() {
-        $friends = User::all();
+        $userId = auth()->id();
+
+        $friends = DB::table('friendships')
+            ->join('users', function ($join) use ($userId) {
+                $join->on('users.id', '=', 'friendships.sender_id')
+                    ->where('friendships.receiver_id', $userId)
+                    ->orWhere(function ($query) use ($userId) {
+                        $query->on('users.id', '=', 'friendships.receiver_id')
+                            ->where('friendships.sender_id', $userId);
+                    });
+            })
+            ->where('friendships.status', 'accepted')
+            ->get();
         return view('QA-page.chat.main', compact('friends'));
+    }
+
+    public function connect_user(User $receiverId) {
+        $userId = auth()->id();
+
+        $friends = DB::table('friendships')
+            ->join('users', function ($join) use ($userId) {
+                $join->on('users.id', '=', 'friendships.sender_id')
+                    ->where('friendships.receiver_id', $userId)
+                    ->orWhere(function ($query) use ($userId) {
+                        $query->on('users.id', '=', 'friendships.receiver_id')
+                            ->where('friendships.sender_id', $userId);
+                    });
+            })
+            ->where('friendships.status', 'accepted')
+            ->get();
+        return view('QA-page.chat.main', compact('friends', 'receiverId'));
     }
 
     public function sendMessage(Request $request)
