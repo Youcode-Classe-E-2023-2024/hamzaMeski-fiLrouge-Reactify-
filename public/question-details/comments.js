@@ -21,6 +21,8 @@ function getQuestionAnswers() {
             for(const answer of answers) {
                 render_answers_cards(answer);
             }
+            //
+            highlight_code();
 
             //
             delete_my_answer();
@@ -64,12 +66,10 @@ function render_answers_cards(answer) {
                         </ul>
                     </div>
                     <div class="col-span-7 text-gray-200">
-                        <p class="">
+                        <p class="answerContent">
                             ${answer.answer}
                         </p>
                     </div>
-
-
                 </div>
                 <div class="w-full flex items-center justify-between">
                     <div class="col-span-7 flex gap-2 text-gray-700 text-[13px] flex items-center gap-4">
@@ -141,12 +141,24 @@ function answer_question() {
 
 /* delete my answer */
 function delete_my_answer() {
+    const deleteAnswerOverlay = document.getElementById('delete-answer-overlay');
+    const cancelDelete1 = document.getElementById('cancel-delete-1');
+    const cancelDelete2 = document.getElementById('cancel-delete-2');
+
+    console.log(cancelDelete1)
+    console.log(cancelDelete2)
+    cancelDelete1.addEventListener('click', function() {
+        deleteAnswerOverlay.classList.add('hidden')
+    })
+    cancelDelete2.addEventListener('click', function() {
+        deleteAnswerOverlay.classList.add('hidden')
+    })
+
     const deleteBtns = document.querySelectorAll('.delete-btn');
     for(const deleteBtn of deleteBtns) {
         deleteBtn.addEventListener('click', function() {
             const answerId = deleteBtn.getAttribute('answerId');
 
-            const deleteAnswerOverlay = document.getElementById('delete-answer-overlay');
             deleteAnswerOverlay.classList.remove('hidden');
 
             const deleteAnswerForm = document.getElementById('delete-answer-form');
@@ -170,4 +182,38 @@ function delete_my_answer() {
     }
 }
 
+function highlight_code() {
+    const answersContent = document.querySelectorAll('.answerContent');
+    answersContent.forEach(answerContent => {
+        let content = answerContent.innerHTML;
 
+        // Match code blocks enclosed within triple backticks
+        const codeRegex = /```([^`]+)```/g;
+
+        // Replace code blocks with styled pre elements
+        content = content.replace(codeRegex, (match, group) => {
+            const code = group.trim();
+
+            // Highlighting keywords and special characters
+            const highlightedCode = code.replace(/\b(int|char|let|var|const|print|printf|console\.log|#|include)\b/g, match => {
+                switch(match) {
+                    case '{':
+                    case '}':
+                        return `<span class="text-red-500">${match}</span>`;
+                    case ';':
+                        return `<span class="text-yellow-500">${match}</span>`;
+                    case '[':
+                    case ']':
+                        return `<span class="text-green-500">${match}</span>`;
+                    default:
+                        // Add a default case to ensure that other matches are wrapped with <span> tags
+                        return `<span class="text-yellow-400">${match}</span>`;
+                }
+            });
+
+            return `<pre class="bg-gray-900 rounded-lg p-4 my-4"><code class="language-c">${highlightedCode}</code></pre>`;
+        });
+
+        answerContent.innerHTML = content;
+    });
+}

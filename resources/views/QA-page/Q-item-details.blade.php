@@ -97,7 +97,7 @@
             <div class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
                 <form id="delete-answer-form" class="bg-gray-800 rounded-lg shadow-lg p-8 max-w-md">
                     <div class="text-white text-center mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-red-500 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
+                        <svg id="cancel-delete-1" xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-red-500 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M3.293 3.293a1 1 0 011.414 0L10 8.586l5.293-5.293a1 1 0 111.414 1.414L11.414 10l5.293 5.293a1 1 0 01-1.414 1.414L10 11.414l-5.293 5.293a1 1 0 01-1.414-1.414L8.586 10 3.293 4.707a1 1 0 010-1.414z" clip-rule="evenodd" />
                         </svg>
                         <h2 class="text-lg font-semibold">Are you sure you want to delete this answer?</h2>
@@ -105,7 +105,7 @@
                     </div>
                     <div class="flex justify-center">
                         <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded mr-2">Delete</button>
-                        <span class="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white font-semibold px-4 py-2 rounded ml-2">Cancel</span>
+                        <span id="cancel-delete-2" class="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white font-semibold px-4 py-2 rounded ml-2">Cancel</span>
                     </div>
                 </form>
             </div>
