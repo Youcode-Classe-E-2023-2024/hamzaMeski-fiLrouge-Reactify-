@@ -112,6 +112,7 @@ background: linear-gradient(90deg, rgba(10,107,170,1) 35%, rgba(13,152,117,1) 72
         // Calculate the new cursor position
         var newX = event.clientX - offsetX;
         var newY = event.clientY - offsetY;
+        // if newx > window.width /2      switch icon   //  dispatch icon
         // Set the element's new position
         draggableElement.style.left = newX + "px";
         draggableElement.style.top = newY + "px";
