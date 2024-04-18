@@ -64,7 +64,7 @@ background: linear-gradient(90deg, rgba(10,107,170,1) 35%, rgba(13,152,117,1) 72
             <a href="{{route('chat')}}" class="side_item flex items-center justify-between hover:text-blue-500">
                 <ion-icon name="chatbubbles" class="text-xl text-green-500"></ion-icon> <!-- Changed to text-white -->
                 <span class="font-bold text-white">Discussions</span> <!-- Changed to text-white -->
-                <div class="h-[25px] w-[25px] border border-gray-300 rounded-full bg-red-500 flex items-center justify-center">
+                <div class="h-[25px] w-[25px]  rounded-full bg-red-600 flex items-center justify-center">
                     <div class="text-center text-white">4</div> <!-- Added text-center class -->
                 </div>
             </a>
@@ -74,7 +74,7 @@ background: linear-gradient(90deg, rgba(10,107,170,1) 35%, rgba(13,152,117,1) 72
             <ion-icon name="add-circle" class="text-2xl text-blue-500"></ion-icon>
         </li>
         <li class="px-4 text-[12px] text-white">Communities for your favorite technologies.</li> <!-- Changed to text-white -->
-        <li class="px-4 text-[14px] font-bold hover:text-blue-500">Explore all collectives</li>
+        <li class="px-4 text-[14px] text-[10px] text-green-500 hover:text-blue-500">Explore all collectives</li>
     </ul>
 
     <section id="shared-yield" class="">

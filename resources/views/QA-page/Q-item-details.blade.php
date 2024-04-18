@@ -1,7 +1,7 @@
 @extends('QA-page.main')
 
 @section('main-content')
-    <div class="col-span-3 h-full pt-6 px-6 ">
+    <div class="col-span-3 h-full pt-6 px-20 ">
         {{-- Question Section start --}}
         <div>
             <h1 class="text-2xl font-bold text-gray-300">
@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div class="w-full grid grid-cols-8 hover:scale-[1.01] transition duration-300 ease-in-out  mt-6 gap-y-4 pt-4 rounded-2xl bg-gradient-to-r from-gray-900 to-gray-700 rounded-2xl p-6 backdrop-filter backdrop-blur-lg" style="box-shadow: 0px 0px 2px 0px rgba(0, 128, 0, 1.75)">
+        <div class="w-full grid grid-cols-8 hover:scale-[1.01] transition duration-300 ease-in-out  mt-6 gap-y-4 rounded-2xl bg-gradient-to-r from-gray-900 to-gray-700 backdrop-filter backdrop-blur-lg p-6" style="box-shadow: 0px 0px 2px 0px rgba(0, 128, 0, 1.75)">
             <div class="col-span-1">
                 <ul class="flex flex-col items-center gap-2 text-green-500">
                     <li>
@@ -66,18 +66,14 @@
 
         <div class="mt-20">
             <span class="text-2xl text-gray-900 bg--500 rounded-sm px-8 py-1 flex items-center justify-start gap-1">
-                <span>
-                    {{ $question->answers_count }} {{$question->answers_count > 9 ?'Answers': 'Answer' }}
+                <span class="font-bold">
+                    ANSWERS SECTION/ {{ $question->answers_count }}
                 </span>
                 <a href="#">
                     <ion-icon name="chevron-down-circle" class="text-white"></ion-icon>
                 </a>
             </span>
-            <div class="flex gap-4 text-gray-700 text-[13px]">
-                <span>Asked yesterday</span>
-                <span>Modified today</span>
-                <span>3 answers</span>
-            </div>
+
         </div>
 
 
@@ -90,75 +86,48 @@
 
         {{-- Answers Section start --}}
         @foreach($answers as $answer)
-            <div class="w-full grid grid-cols-8 border-t-[1px] border-gray-300 mt-6 gap-y-4 pt-4">
-                <div class="col-span-1">
-                    <ul class="flex flex-col items-center gap-2">
-                        <li>
-                            <a id="{{ $answer->id }}" class="like_answer cursor-pointer">
-                                <ion-icon name="caret-up-circle-outline" class="text-4xl"></ion-icon>
-                            </a>
-                        </li>
-                        <li>
-                            <span class="answer_likes_content text-2xl" data-answer-id="{{ $answer->id }}">{{ $answer->likes }}</span>
-                        </li>
-                        <li>
-                            <a id="{{ $answer->id }}" class="dislike_answer cursor-pointer">
-                                <ion-icon name="caret-down-circle-outline" class="text-4xl"></ion-icon>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <ion-icon name="bookmark-outline" class="text-3xl"></ion-icon>
-                            </a>
-                        </li>
-                    </ul>
+            <div class="mt-10 hover:scale-[1.01] transition duration-300 ease-in-out rounded-xl p-6 bg-gradient-to-r from-gray-900 to-gray-700 backdrop-filter backdrop-blur-lg">
+                <div class="flex gap-4 text-gray-700 text-[13px]">
+                    <span>Asked yesterday</span>
+                    <span>Modified today</span>
+                    <span>3 answers</span>
                 </div>
-                <div class="col-span-7">
-                    <p>
-                        {!!   $answer->answer !!}
-                    </p>
-                </div>
-                <div></div>
-                <div></div>
-                <div class="col-span-7 flex gap-2 text-gray-700 text-[13px]">
-                    <a href="">Share</a>
-                    <a href="">Follow</a>
-                </div>
-                <div></div>
-                <div class="col-span-7 flex justify-between">
-                    <a href="" class="addComment text-14">Add a comment</a>
-                    <div class="flex items-center justify-end gap-1">
-                        <div class="h-[30px] w-[30px] rounded-md bg-black" style="background-image: url('{{asset('http://127.0.0.1:8000/storage/'.$answer->user->image )}}'); background-size: cover"></div>
-                        <a href="" class="text-blue-500 text-[13px]">{{ $answer->user->name }}</a>
-                        <span class="text-[13px] text-gray-700">asked 1 min ago</span>
+                <div class="w-full grid grid-cols-8 border-1 border-solid border-gray-300   gap-y-4 pt-4 ">
+                    <div class="col-span-1">
+                        <ul class="flex flex-col items-center gap-2  text-gray-300">
+                            <li>
+                                <a id="{{ $answer->id }}" class="like_answer cursor-pointer hover:text-gray-200">
+                                    <ion-icon name="caret-up-circle-outline" class="text-4xl"></ion-icon>
+                                </a>
+                            </li>
+                            <li>
+                                <span class="answer_likes_content text-2xl hover:text-gray-200" data-answer-id="{{ $answer->id }}">{{ $answer->likes }}</span>
+                            </li>
+                            <li>
+                                <a id="{{ $answer->id }}" class="dislike_answer cursor-pointer hover:text-gray-200">
+                                    <ion-icon name="caret-down-circle-outline" class="text-4xl"></ion-icon>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <ion-icon name="bookmark" class="text-3xl"></ion-icon>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </div>
+                    <div class="col-span-7 text-gray-200">
+                        <p class="">
+                            {!!   $answer->answer !!}
+                        </p>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <div class="col-span-7 flex gap-2 text-gray-700 text-[13px]">
+                        <a href="">Share</a>
+                    </div>
+                    <div></div>
 
-            {{-- user comments section start --}}
-            <div class="w-full mx-auto">
-                <form id="{{ $answer->id }}" class="commentsForm shadow-md grid grid-cols-10 w-full p-2 bg-gray-300 gap-2">
-                    <div class="col-span-8">
-                        {{--<input type="hidden" name="parent_id" value="2">--}}
-                        <input type="text"
-                               class="shadow appearance-none border rounded w-full h-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                               id="comment"
-                               name="comment"
-                               placeholder="Write your comment here..."
-                        >
-                        <div class="errorContainer text-red-500 h-[20px]">
-                            {{-- errors section --}}
-                        </div>
-                    </div>
-                    <button
-                        class="col-span-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg"
-                        type="submit"
-                    >
-                        Post Comment
-                    </button>
-                </form>
-            </div>
-            <div class="commentsContainer">
+                </div>
             </div>
             {{-- user comments section end --}}
         @endforeach
