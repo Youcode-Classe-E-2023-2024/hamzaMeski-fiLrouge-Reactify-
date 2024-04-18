@@ -1,7 +1,8 @@
 <nav class="custom-nav">
     <!-- ***** Logo Start ***** -->
     <a href="{{ route('front-page') }}" class="text-logo-font">
-        <h4 class="text-reactify-blue tracking-reactify-font">REAC<span class="text-reactify-red">TIFY</span></h4>
+{{--        <img src="{{asset('images/logo.png')}}" class="w-[150px]" alt="">--}}
+        <div class="text-gray-300" style="font-family: cursive ">Reactify</div>
     </a>
     <!-- ***** Logo End ***** -->
     <!-- ***** Menu Start ***** -->
@@ -34,8 +35,10 @@
         left: 0;
         right: 0;
         z-index: 100;
-        background: rgb(0,7,36);
-        background: linear-gradient(90deg, rgba(0,7,36,1) 0%, rgba(118,9,121,1) 35%, rgba(255,72,0,1) 100%);
+        /*!*background: rgb(0,7,36);*!*/
+        /*background: linear-gradient(90deg, rgba(0,7,36,1) 0%, rgba(118,9,121,1) 35%, rgba(255,72,0,1) 100%);*/
+        background: rgb(10,107,170);
+        background: linear-gradient(90deg, rgba(10,107,170,1) 35%, rgba(13,152,117,1) 72%, rgba(2,214,87,1) 100%);
     }
 
     .menu-items {

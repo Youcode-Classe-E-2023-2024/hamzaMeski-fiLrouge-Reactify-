@@ -15,4 +15,4 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
-<body>
+<body class="bg-gradient-to-br from-gray-700 to-black">
