@@ -127,10 +127,10 @@
                     <div class="col-span-8">
                         {{--<input type="hidden" name="parent_id" value="2">--}}
                         <input type="text"
-                            class="shadow appearance-none border rounded w-full h-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="comment"
-                            name="comment"
-                            placeholder="Write your comment here..."
+                               class="shadow appearance-none border rounded w-full h-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                               id="comment"
+                               name="comment"
+                               placeholder="Write your comment here..."
                         >
                         <div class="errorContainer text-red-500 h-[20px]">
                             {{-- errors section --}}
