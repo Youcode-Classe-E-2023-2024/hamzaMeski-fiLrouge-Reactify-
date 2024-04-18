@@ -1,43 +1,43 @@
 @extends('QA-page.main')
 
 @section('main-content')
-    <div class="col-span-3 h-full pt-6 pl-6">
+    <div class="col-span-3 h-full pt-6 px-6 ">
         {{-- Question Section start --}}
         <div>
-            <h1 class="text-2xl">
+            <h1 class="text-2xl font-bold text-gray-300">
                 {{ $question->title }}
             </h1>
-            <div class="flex gap-4 text-gray-700 text-[13px]">
+            <div class="flex gap-4 text-gray-500 text-[13px]">
                 <span>Asked yesterday</span>
                 <span>Modified today</span>
                 <span>3 answers</span>
             </div>
         </div>
 
-        <div class="w-full grid grid-cols-8 border-t-[1px] border-gray-300 mt-6 gap-y-4 pt-4">
+        <div class="w-full grid grid-cols-8 hover:scale-[1.01] transition duration-300 ease-in-out  mt-6 gap-y-4 pt-4 rounded-2xl bg-gradient-to-r from-gray-900 to-gray-700 rounded-2xl p-6 backdrop-filter backdrop-blur-lg" style="box-shadow: 0px 0px 2px 0px rgba(0, 128, 0, 1.75)">
             <div class="col-span-1">
-                <ul class="flex flex-col items-center gap-2">
+                <ul class="flex flex-col items-center gap-2 text-green-500">
                     <li>
-                        <a id="{{ $question->id }}" class="like_question cursor-pointer">
+                        <a id="{{ $question->id }}" class="like_question cursor-pointer hover:text-green-600">
                             <ion-icon name="caret-up-circle-outline" class="text-4xl"></ion-icon>
                         </a>
                     </li>
                     <li>
-                        <span class="question_likes_content text-2xl">{{ $question->likes }}</span>
+                        <span class="question_likes_content text-2xl hover:text-green-600 font-bold">{{ $question->likes }}</span>
                     </li>
                     <li>
-                        <a id="{{ $question->id }}" class="dislike_question cursor-pointer">
+                        <a id="{{ $question->id }}" class="dislike_question cursor-pointer hover:text-green-600">
                             <ion-icon name="caret-down-circle-outline" class="text-4xl"></ion-icon>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="" class="hover:text-green-600">
                             <ion-icon name="bookmark-outline" class="text-3xl"></ion-icon>
                         </a>
                     </li>
                 </ul>
             </div>
-            <div class="col-span-7">
+            <div class="col-span-7 text-gray-300">
                 <p>
                     {{ $question->description }}
                 </p>
@@ -49,7 +49,7 @@
                 @endforeach
             </div>
             <div></div>
-            <div class="col-span-7 flex gap-2 text-gray-700 text-[13px]">
+            <div class="col-span-7 flex gap-2 text-gray-500 text-[13px]">
                 <a href="">Share</a>
                 <a href="">Follow</a>
             </div>
@@ -64,16 +64,30 @@
         </div>
         {{-- Question Section end --}}
 
-        <div>
-            <h1 class="text-2xl">
-                {{ $question->answers_count }} {{$question->answers_count > 9 ?'Answers': 'Answer' }}
-            </h1>
+        <div class="mt-20">
+            <span class="text-2xl text-gray-900 bg--500 rounded-sm px-8 py-1 flex items-center justify-start gap-1">
+                <span>
+                    {{ $question->answers_count }} {{$question->answers_count > 9 ?'Answers': 'Answer' }}
+                </span>
+                <a href="#">
+                    <ion-icon name="chevron-down-circle" class="text-white"></ion-icon>
+                </a>
+            </span>
             <div class="flex gap-4 text-gray-700 text-[13px]">
                 <span>Asked yesterday</span>
                 <span>Modified today</span>
                 <span>3 answers</span>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
         {{-- Answers Section start --}}
         @foreach($answers as $answer)
             <div class="w-full grid grid-cols-8 border-t-[1px] border-gray-300 mt-6 gap-y-4 pt-4">
@@ -101,7 +115,7 @@
                 </div>
                 <div class="col-span-7">
                     <p>
-                        {{ $answer->answer }}
+                        {!!   $answer->answer !!}
                     </p>
                 </div>
                 <div></div>
@@ -175,7 +189,7 @@
 @endsection
 
 {{-- like question answers logic --}}
-<script src="{{ asset('js/QA-page/Q-item-details/likes.js') }}"></script>
+<script src="{{ asset('Q-item-details/likes.js') }}"></script>
 
 {{-- comment on a certain answer script --}}
-<script src="{{ asset('js/QA-page/Q-item-details/comments.js') }}"></script>
+<script src="{{ asset('Q-item-details/comments.js') }}"></script>
