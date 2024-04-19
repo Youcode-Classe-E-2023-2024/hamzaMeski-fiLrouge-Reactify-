@@ -1,181 +1,143 @@
 @extends('QA-page.main')
 
 @section('main-content')
-    <div class="col-span-3 h-full pt-6 pl-6">
-        {{-- Question Section start --}}
-        <div>
-            <h1 class="text-2xl">
-                {{ $question->title }}
-            </h1>
-            <div class="flex gap-4 text-gray-700 text-[13px]">
-                <span>Asked yesterday</span>
-                <span>Modified today</span>
-                <span>3 answers</span>
-            </div>
-        </div>
-
-        <div class="w-full grid grid-cols-8 border-t-[1px] border-gray-300 mt-6 gap-y-4 pt-4">
-            <div class="col-span-1">
-                <ul class="flex flex-col items-center gap-2">
-                    <li>
-                        <a id="{{ $question->id }}" class="like_question cursor-pointer">
-                            <ion-icon name="caret-up-circle-outline" class="text-4xl"></ion-icon>
-                        </a>
-                    </li>
-                    <li>
-                        <span class="question_likes_content text-2xl">{{ $question->likes }}</span>
-                    </li>
-                    <li>
-                        <a id="{{ $question->id }}" class="dislike_question cursor-pointer">
-                            <ion-icon name="caret-down-circle-outline" class="text-4xl"></ion-icon>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <ion-icon name="bookmark-outline" class="text-3xl"></ion-icon>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-span-7">
-                <p>
-                    {{ $question->description }}
-                </p>
-            </div>
-            <div></div>
-            <div class="col-span-7">
-                @foreach($question->tags as $tag)
-                    <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">{{ $tag->name }}</a>
-                @endforeach
-            </div>
-            <div></div>
-            <div class="col-span-7 flex gap-2 text-gray-700 text-[13px]">
-                <a href="">Share</a>
-                <a href="">Follow</a>
-            </div>
-            <div></div>
-            <div class="col-span-7 flex justify-end">
-                <div class="flex items-center justify-end gap-1">
-                    <div class="h-[30px] w-[30px] rounded-md bg-black" style="background-image: url('{{asset('http://127.0.0.1:8000/storage/'.$question->user->image )}}'); background-size: cover"></div>
-                    <a href="" class="text-blue-500 text-[13px]">{{ $question->user->name }}</a>
-                    <span class="text-[13px] text-gray-700">asked 1 min ago</span>
+    <section class="relative">
+        <div class="md:col-span-3 h-full pt-6 px-4 md:px-20">
+            {{-- Question Section start --}}
+            <div>
+                <h1 class="text-2xl md:text-3xl font-bold text-gray-300">
+                    {{ $question->title }}
+                </h1>
+                <div class="flex flex-col md:flex-row gap-4 text-gray-500 text-xs md:text-sm">
+                    <span>Asked yesterday</span>
+                    <span>Modified today</span>
+                    <span>3 answers</span>
                 </div>
             </div>
-        </div>
-        {{-- Question Section end --}}
 
-        <div>
-            <h1 class="text-2xl">
-                {{ $question->answers_count }} {{$question->answers_count > 9 ?'Answers': 'Answer' }}
-            </h1>
-            <div class="flex gap-4 text-gray-700 text-[13px]">
-                <span>Asked yesterday</span>
-                <span>Modified today</span>
-                <span>3 answers</span>
-            </div>
-        </div>
-        {{-- Answers Section start --}}
-        @foreach($answers as $answer)
-            <div class="w-full grid grid-cols-8 border-t-[1px] border-gray-300 mt-6 gap-y-4 pt-4">
+            <div class="w-full grid grid-cols-1 md:grid-cols-8 hover:scale-[1.01] transition duration-300 ease-in-out mt-6 gap-y-4 rounded-2xl bg-gradient-to-r from-gray-900 to-gray-700 backdrop-filter backdrop-blur-lg p-6" style="box-shadow: 0px 0px 2px 0px rgba(0, 128, 0, 0.75)">
                 <div class="col-span-1">
-                    <ul class="flex flex-col items-center gap-2">
+                    <ul class="flex flex-col items-center gap-2 text-green-500">
                         <li>
-                            <a id="{{ $answer->id }}" class="like_answer cursor-pointer">
+                            <a id="{{ $question->id }}" class="like_question cursor-pointer hover:text-green-600">
                                 <ion-icon name="caret-up-circle-outline" class="text-4xl"></ion-icon>
                             </a>
                         </li>
                         <li>
-                            <span class="answer_likes_content text-2xl" data-answer-id="{{ $answer->id }}">{{ $answer->likes }}</span>
+                            <span class="question_likes_content text-2xl hover:text-green-600 font-bold">{{ $question->likes }}</span>
                         </li>
                         <li>
-                            <a id="{{ $answer->id }}" class="dislike_answer cursor-pointer">
+                            <a id="{{ $question->id }}" class="dislike_question cursor-pointer hover:text-green-600">
                                 <ion-icon name="caret-down-circle-outline" class="text-4xl"></ion-icon>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="" class="hover:text-green-600">
                                 <ion-icon name="bookmark-outline" class="text-3xl"></ion-icon>
                             </a>
                         </li>
                     </ul>
                 </div>
-                <div class="col-span-7">
+                <div class="col-span-7 text-gray-300">
                     <p>
-                        {{ $answer->answer }}
+                        {{ $question->description }}
                     </p>
                 </div>
                 <div></div>
+                <div class="col-span-7">
+                    @foreach($question->tags as $tag)
+                        <a href="" class="text-[13px] text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">{{ $tag->name }}</a>
+                    @endforeach
+                </div>
                 <div></div>
-                <div class="col-span-7 flex gap-2 text-gray-700 text-[13px]">
+                <div class="col-span-7 flex gap-2 text-gray-500 text-[13px]">
                     <a href="">Share</a>
                     <a href="">Follow</a>
                 </div>
                 <div></div>
-                <div class="col-span-7 flex justify-between">
-                    <a href="" class="addComment text-14">Add a comment</a>
+                <div class="col-span-7 flex justify-end">
                     <div class="flex items-center justify-end gap-1">
-                        <div class="h-[30px] w-[30px] rounded-md bg-black" style="background-image: url('{{asset('http://127.0.0.1:8000/storage/'.$answer->user->image )}}'); background-size: cover"></div>
-                        <a href="" class="text-blue-500 text-[13px]">{{ $answer->user->name }}</a>
+                        <div class="h-[30px] w-[30px] rounded-md bg-black" style="background-image: url('{{asset('http://127.0.0.1:8000/storage/'.$question->user->image )}}'); background-size: cover"></div>
+                        <a href="" class="text-blue-500 text-[13px]">{{ $question->user->name }}</a>
                         <span class="text-[13px] text-gray-700">asked 1 min ago</span>
                     </div>
                 </div>
             </div>
+            {{-- Question Section end --}}
 
-            {{-- user comments section start --}}
-            <div class="w-full mx-auto">
-                <form id="{{ $answer->id }}" class="commentsForm shadow-md grid grid-cols-10 w-full p-2 bg-gray-300 gap-2">
-                    <div class="col-span-8">
-                        {{--<input type="hidden" name="parent_id" value="2">--}}
-                        <input type="text"
-                               class="shadow appearance-none border rounded w-full h-full py-1 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                               id="comment"
-                               name="comment"
-                               placeholder="Write your comment here..."
-                        >
-                        <div class="errorContainer text-red-500 h-[20px]">
-                            {{-- errors section --}}
-                        </div>
+            <div id="top-target" class="mt-20">
+            <span class="text-2xl text-gray-300 bg--500 rounded-sm px-8 py-1 flex items-center justify-start gap-1">
+                <span class="font-bold">
+                    ANSWERS SECTION/ {{ $question->answers_count }}
+                </span>
+                <a href="#">
+                    <ion-icon name="chevron-down-circle" class="text-white"></ion-icon>
+                </a>
+            </span>
+            </div>
+
+            {{-- Answers Section start --}}
+            <section questionId="{{$question->id}}" id="answers-container">
+
+            </section>
+
+            <form id="answer-question-form" class="border border-solid border-gray-700 rounded-md p-4 mt-28 flex flex-col items-center">
+                <strong class="text-white">ADD YOUR ANSWER</strong>
+                <textarea id="answer-textarea" name="answer" class="border border-gray-700 bg-gray-800 text-white px-3 py-2 w-full mt-2" rows="5"></textarea>
+
+                <div id="error-container" class="text-red-500 mt-2">
+                </div>
+
+                <button type="submit" class="py-2 px-12 bg-blue-500 text-white hover:bg-blue-400 rounded-md">Submit</button>
+            </form>
+        </div>
+
+        {{--  delete my answer  --}}
+        <section id="delete-answer-overlay" class="fixed hidden flex items-center justify-center w-full h-screen shadow-lg backdrop-filter backdrop-blur-md top-0 left-0">
+
+            <div class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
+                <form id="delete-answer-form" class="bg-gray-800 rounded-lg shadow-lg p-8 max-w-md">
+                    <div class="text-white text-center mb-4">
+                        <svg id="cancel-delete-1" xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-red-500 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M3.293 3.293a1 1 0 011.414 0L10 8.586l5.293-5.293a1 1 0 111.414 1.414L11.414 10l5.293 5.293a1 1 0 01-1.414 1.414L10 11.414l-5.293 5.293a1 1 0 01-1.414-1.414L8.586 10 3.293 4.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                        <h2 class="text-lg font-semibold">Are you sure you want to delete this answer?</h2>
+                        <p class="text-sm mt-2">This action cannot be undone.</p>
                     </div>
-                    <button
-                        class="col-span-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg"
-                        type="submit"
-                    >
-                        Post Comment
-                    </button>
+                    <div class="flex justify-center">
+                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded mr-2">Delete</button>
+                        <span id="cancel-delete-2" class="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white font-semibold px-4 py-2 rounded ml-2">Cancel</span>
+                    </div>
                 </form>
             </div>
-            <div class="commentsContainer">
-            </div>
-            {{-- user comments section end --}}
-        @endforeach
-        {{-- Answers Section start --}}
-        {{-- Add your answer Section start --}}
-        <form method="POST" action="{{ route('answer-question.store', $question->id) }}">
-            @csrf
-            <div class="w-full border border-solid border-gray-400 rounded-md p-4 mt-20">
-                <div class="">
-                    <div class="w-full bg-white overflow-hidden shadow-sm">
-                        <div class="w-full bg-white border-b border-gray-200">
-                            <div class="mb-8">
-                                <strong class="pb-4 inline-block">Add your answer </strong></br>
-                                <textarea name="answer" class="border-2 border-gray-500"></textarea>
-                            </div>
-                            <button type="submit" class="p-3 bg-blue-500 text-white hover:bg-blue-400 rounded-md">Submit</button>
+
+        </section>
+
+        {{--  update my answer  --}}
+        <section id="update-answer-overlay" class="fixed hidden flex items-center justify-center w-full h-screen shadow-lg backdrop-filter backdrop-blur-md top-0 left-0">
+            <div class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
+                <form id="update-answer-form"
+                      class="bg-gray-800 shadow-md rounded-lg p-4 max-w-md w-full space-y-6 sm:px-10 sm:py-8 sm:space-y-8 text-lg">
+                    <h1 class="text-2xl font-bold text-white text-center">update answer</h1>
+                    <div>
+                        <label for="answer" class="block text-sm font-medium text-gray-300">Answer</label>
+                        <textarea id="update-answer-textarea" name="answer"
+                                  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-700 rounded-md py-3 px-4 h-32 bg-gray-700 text-gray-300"></textarea>
+                        <div id="update-error-container" class="text-red-500 mt-2">
                         </div>
                     </div>
-                </div>
+                    <div class="flex justify-center">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded mr-2">Submit</button>
+                        <span id="cancel-answer-update"  class="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white font-semibold px-4 py-2 rounded ml-2">Cancel</span>
+                    </div>
+                </form>
             </div>
-            <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
-            <script>
-                CKEDITOR.replace( 'answer' );
-            </script>
-        </form>
-        {{-- Add your answer Section end --}}
-    </div>
+        </section>
+
+    </section>
+
+    {{--  comments script  --}}
+    <script src="{{ asset('question-details/comments.js') }}"></script>
+    <script src="{{ asset('question-details/my-answer-crud.js') }}"></script>
 @endsection
 
-{{-- like question answers logic --}}
-<script src="{{ asset('js/QA-page/Q-item-details/likes.js') }}"></script>
-
-{{-- comment on a certain answer script --}}
-<script src="{{ asset('js/QA-page/Q-item-details/comments.js') }}"></script>

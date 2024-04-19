@@ -7,7 +7,6 @@ sideBarDisappearBtn.classList.add(`top-[${((innerHeight - 50)/2  - 50)}px]`)
 const sideBarAppearBtn = document.getElementById('side-bar-appear-btn');
 const sideBarAppearCnt = document.getElementById('side-bar-appear-cnt');
 sideBarAppearCnt.classList.add(`h-[${innerHeight - 50}px]`)
-console.log(sideBarAppearBtn.clientWidth )
 
 const initialState = localStorage.getItem('appear');
 

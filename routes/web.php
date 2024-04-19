@@ -54,9 +54,6 @@ Route::get('/question-details/{question}', [HomeController::class, 'Q_item_detai
 Route::get('/ask-question', [AQuestionController::class, 'show'])->name('ask-question.show');
 Route::post('/ask-question/store', [AQuestionController::class, 'store'])->name('ask-question.store');
 
-/* answer a question route */
-Route::post('/answer-question/{question}/store', [AnswerController::class, 'store'])->name('answer-question.store');
-
 /* vote a question route */
 Route::post('/like-question/{question}', [QuestionController::class, 'like_question']);
 Route::post('/dislike-question/{question}', [QuestionController::class, 'dislike_question']);
@@ -150,3 +147,15 @@ Route::post('/block-friend/{user}', [FriendController::class, 'block_friend']);
 Route::get('/contact_us', function() {
     return view('contact-us.main');
 })->name('contact_us');
+
+
+/* json get a question answers */
+Route::get('/question-answers/{question}', [QuestionController::class, 'get_question_answers']);
+
+Route::post('/answer-question/{question}', [QuestionController::class, 'answer_question']);
+
+Route::delete('/delete-answer/{answer}', [QuestionController::class, 'delete_answer']);
+
+Route::post('/update-answer/{answer}', [QuestionController::class, 'update_answer']);
+
+
