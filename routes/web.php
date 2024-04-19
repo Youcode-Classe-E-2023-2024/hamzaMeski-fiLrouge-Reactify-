@@ -156,4 +156,4 @@ Route::post('/answer-question/{question}', [QuestionController::class, 'answer_q
 
 Route::delete('/delete-answer/{answer}', [QuestionController::class, 'delete_answer']);
 
-
+Route::put('/update-answer/{answer}', [QuestionController::class, 'update_answer']);

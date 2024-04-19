@@ -28,6 +28,7 @@ function getQuestionAnswers() {
             delete_my_answer();
 
             //
+            update_my_answer();
         })
 }
 
@@ -78,7 +79,7 @@ function render_answers_cards(answer) {
                             <ion-icon name="arrow-redo-outline" class="text-2xl"></ion-icon>
                         </a>
                         <!--  update my answer  -->
-                        <a href="" class="text-blue-500">
+                        <a answerId="${answer.id}" class="update-btn text-blue-500 cursor-pointer">
                             <ion-icon name="create-outline" class="text-2xl"></ion-icon>
                         </a>
                         <!--  delete my answer  -->
@@ -139,14 +140,47 @@ function answer_question() {
 }
 
 
+
+function highlight_code() {
+    const answersContent = document.querySelectorAll('.answerContent');
+    answersContent.forEach(answerContent => {
+        let content = answerContent.innerHTML;
+
+        const codeRegex = /```([^`]+)```/g;
+
+        content = content.replace(codeRegex, (match, group) => {
+            const code = group.trim();
+
+            const highlightedCode = code.replace(/\b(int|char|let|var|const|print|printf|console\.log|#|include)\b/g, match => {
+                switch(match) {
+                    case '{':
+                    case '}':
+                        return `<span class="text-red-500">${match}</span>`;
+                    case ';':
+                        return `<span class="text-yellow-500">${match}</span>`;
+                    case '[':
+                    case ']':
+                        return `<span class="text-green-500">${match}</span>`;
+                    default:
+                        return `<span class="text-yellow-400">${match}</span>`;
+                }
+            });
+
+            return `<pre class="bg-gray-900 rounded-lg p-4 my-4"><code class="language-c">${highlightedCode}</code></pre>`;
+        });
+
+        answerContent.innerHTML = content;
+    });
+}
+
+
+
 /* delete my answer */
 function delete_my_answer() {
     const deleteAnswerOverlay = document.getElementById('delete-answer-overlay');
     const cancelDelete1 = document.getElementById('cancel-delete-1');
     const cancelDelete2 = document.getElementById('cancel-delete-2');
 
-    console.log(cancelDelete1)
-    console.log(cancelDelete2)
     cancelDelete1.addEventListener('click', function() {
         deleteAnswerOverlay.classList.add('hidden')
     })
@@ -182,38 +216,114 @@ function delete_my_answer() {
     }
 }
 
-function highlight_code() {
-    const answersContent = document.querySelectorAll('.answerContent');
-    answersContent.forEach(answerContent => {
-        let content = answerContent.innerHTML;
 
-        // Match code blocks enclosed within triple backticks
-        const codeRegex = /```([^`]+)```/g;
+// function update_my_answer() {
+//     const updateAnswerOverlay = document.getElementById('update-answer-overlay');
+//     const updateAnswerForm = document.getElementById('update-answer-form');
+//     const cancelAnswerUpdate = document.getElementById('cancel-answer-update');
+//     const updateErrorContainer = document.getElementById('update-error-container');
+//     const updateAnswerTextarea = document.getElementById('update-answer-textarea');
+//
+//     let submitListenerAdded = false;
+//     let answerId;
+//
+//     cancelAnswerUpdate.addEventListener('click', function() {
+//         updateAnswerOverlay.classList.add('hidden');
+//         if (submitListenerAdded) {
+//             updateAnswerForm.removeEventListener('submit', handleSubmit);
+//             submitListenerAdded = false;
+//         }
+//     });
+//
+//     const handleSubmit = function(event) {
+//         event.preventDefault();
+//         console.log(updateAnswerForm)
+//         console.log(answerId)
+//
+//         const formData = new FormData(updateAnswerForm);
+//         fetch(`/update-answer/${answerId}`, {
+//             method: 'PUT',
+//             body: formData,
+//             headers: {
+//                 'X-CSRF-TOKEN': csrfToken
+//             }
+//         })
+//             .then(response => response.text())
+//             .then(data => {
+//                 // updateErrorContainer.textContent = '';
+//                 console.log(data)
+//                 // if (data.errors) {
+//                 //     updateErrorContainer.textContent = data?.errors?.answer[0]
+//                 // }else {
+//                 //     updateAnswerOverlay.classList.add('hidden');
+//                 //     updateAnswerTextarea.value = '';
+//                 //     getQuestionAnswers();
+//                 // }
+//             })
+//     };
+//
+//     const updateBtns = document.querySelectorAll('.update-btn');
+//     for(const updateBtn of updateBtns) {
+//         updateBtn.addEventListener('click', function() {
+//             answerId = updateBtn.getAttribute('answerId');
+//             updateAnswerOverlay.classList.remove('hidden');
+//             if (!submitListenerAdded) {
+//                 updateAnswerForm.addEventListener('submit', handleSubmit);
+//                 submitListenerAdded = true;
+//             }
+//         });
+//     }
+// }
 
-        // Replace code blocks with styled pre elements
-        content = content.replace(codeRegex, (match, group) => {
-            const code = group.trim();
+function update_my_answer() {
+    const updateAnswerOverlay = document.getElementById('update-answer-overlay');
+    const updateAnswerForm = document.getElementById('update-answer-form');
+    const cancelAnswerUpdate = document.getElementById('cancel-answer-update');
+    let submitListenerAdded = false; // Flag to track whether event listener is added
+    let answerId;
 
-            // Highlighting keywords and special characters
-            const highlightedCode = code.replace(/\b(int|char|let|var|const|print|printf|console\.log|#|include)\b/g, match => {
-                switch(match) {
-                    case '{':
-                    case '}':
-                        return `<span class="text-red-500">${match}</span>`;
-                    case ';':
-                        return `<span class="text-yellow-500">${match}</span>`;
-                    case '[':
-                    case ']':
-                        return `<span class="text-green-500">${match}</span>`;
-                    default:
-                        // Add a default case to ensure that other matches are wrapped with <span> tags
-                        return `<span class="text-yellow-400">${match}</span>`;
-                }
-            });
-
-            return `<pre class="bg-gray-900 rounded-lg p-4 my-4"><code class="language-c">${highlightedCode}</code></pre>`;
-        });
-
-        answerContent.innerHTML = content;
+    cancelAnswerUpdate.addEventListener('click', function() {
+        updateAnswerOverlay.classList.add('hidden');
+        if (submitListenerAdded) {
+            updateAnswerForm.removeEventListener('submit', handleSubmit);
+            submitListenerAdded = false; // Reset the flag
+        }
     });
+
+    const handleSubmit = function(event) {
+        event.preventDefault();
+        const formData = new FormData(updateAnswerForm);
+        console.log(formData)
+        fetch(`/update-answer/${answerId}`, {
+            method: 'PUT',
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            }
+        })
+            .then(response => response.text())
+            .then(data => {
+                // updateErrorContainer.textContent = '';
+                console.log(data)
+                // if (data.errors) {
+                //     updateErrorContainer.textContent = data?.errors?.answer[0]
+                // }else {
+                //     updateAnswerOverlay.classList.add('hidden');
+                //     updateAnswerTextarea.value = '';
+                //     getQuestionAnswers();
+                // }
+            })
+    };
+
+    const updateBtns = document.querySelectorAll('.update-btn');
+    for(const updateBtn of updateBtns) {
+        updateBtn.addEventListener('click', function() {
+            updateAnswerOverlay.classList.remove('hidden');
+            if (!submitListenerAdded) {
+                answerId = updateBtn.getAttribute('answerId');
+                updateAnswerForm.addEventListener('submit', handleSubmit);
+                submitListenerAdded = true; // Set the flag
+            }
+        });
+    }
 }

@@ -94,6 +94,7 @@
 
         {{--  delete my answer  --}}
         <section id="delete-answer-overlay" class="fixed hidden flex items-center justify-center w-full h-screen shadow-lg backdrop-filter backdrop-blur-md top-0 left-0">
+
             <div class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
                 <form id="delete-answer-form" class="bg-gray-800 rounded-lg shadow-lg p-8 max-w-md">
                     <div class="text-white text-center mb-4">
@@ -106,6 +107,28 @@
                     <div class="flex justify-center">
                         <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded mr-2">Delete</button>
                         <span id="cancel-delete-2" class="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white font-semibold px-4 py-2 rounded ml-2">Cancel</span>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+
+        {{--  update my answer  --}}
+        <section id="update-answer-overlay" class="fixed hidden flex items-center justify-center w-full h-screen shadow-lg backdrop-filter backdrop-blur-md top-0 left-0">
+            <div class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
+                <form id="update-answer-form"
+                      class="bg-gray-800 shadow-md rounded-lg p-4 max-w-md w-full space-y-6 sm:px-10 sm:py-8 sm:space-y-8 text-lg">
+                    <h1 class="text-2xl font-bold text-white text-center">update answer</h1>
+                    <div>
+                        <label for="answer" class="block text-sm font-medium text-gray-300">Answer</label>
+                        <textarea id="update-answer-textarea" name="answer"
+                                  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-700 rounded-md py-3 px-4 h-32 bg-gray-700 text-gray-300"></textarea>
+                        <div id="update-error-container" class="text-red-500 mt-2">
+                        </div>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded mr-2">Submit</button>
+                        <span id="cancel-answer-update"  class="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white font-semibold px-4 py-2 rounded ml-2">Cancel</span>
                     </div>
                 </form>
             </div>

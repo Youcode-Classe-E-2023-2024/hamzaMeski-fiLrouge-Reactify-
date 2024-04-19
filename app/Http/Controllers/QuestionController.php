@@ -62,6 +62,18 @@ class QuestionController extends Controller
         ]);
     }
 
+    public function update_answer(Answer $answer) {
+        echo  request()->answer;
+//        Answer::where('id', $answer->id)->update([
+//            'answer' => $answer->answer
+//        ]);
+//
+//        return response()->json([
+//            'message' => 'Answer updated successfully'
+//        ]);
+    }
+
+
     public function delete_answer(Answer $answer) {
         try {
             $answer->delete();
