@@ -63,28 +63,46 @@ class QuestionController extends Controller
     }
 
     public function update_answer(Answer $answer) {
-        echo  request()->answer;
-//        Answer::where('id', $answer->id)->update([
-//            'answer' => $answer->answer
-//        ]);
-//
-//        return response()->json([
-//            'message' => 'Answer updated successfully'
-//        ]);
+        if($answer->user_id == auth()->id()) {
+            $validator = Validator::make(request()->all(), [
+                'answer' => 'required|min:10',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()], 422);
+            }
+
+            $data = $validator->validated();
+
+            $answer->update($data);
+
+            return response()->json([
+                'message' => 'Answer updated successfully'
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'unauthorized user'
+        ]);
     }
 
 
     public function delete_answer(Answer $answer) {
         try {
-            $answer->delete();
+            if($answer->user_id == auth()->id()) {
+                $answer->delete();
+                return response()->json([
+                    'success' => 'Answer deleted successfully'
+                ], 200);
+            }
             return response()->json([
-                'success' => 'Answer deleted successfully'
-            ], 200);
+                'message' => 'unauthorized user'
+            ]);
+
         } catch (\Exception $e) {
             return response()->json([
                 'error' => $e->getMessage()
             ], 500);
         }
     }
-
 }
