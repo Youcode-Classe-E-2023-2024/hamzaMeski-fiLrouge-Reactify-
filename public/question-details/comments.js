@@ -26,7 +26,7 @@ function getQuestionAnswers() {
             })
                 .then(res => res.json())
                 .then(answers => {
-                    console.log(answers)
+                    // console.log(answers)
                     answersContainer.innerHTML = '';
                     for(const answer of answers) {
                         render_answers_cards(answer, auth);
@@ -53,24 +53,17 @@ function render_answers_cards(answer, auth) {
                 </div>
                 <div class="w-full grid grid-cols-8 border-1 border-solid border-gray-300">
                     <div class="col-span-1">
-                        <ul class="flex flex-col items-center gap-2 text-gray-300">
+                        <ul class="flex flex-col items-center gap-4 text-gray-300">
                             <li>
-                                <a id="${answer.id}" class="like_answer cursor-pointer hover:text-gray-200">
+                                <a id="${answer.id}" class="like_answer cursor-pointer hover:text-gray-200" title="like answer">
                                     <ion-icon name="caret-up-circle-outline" class="text-4xl"></ion-icon>
                                 </a>
                             </li>
-                            <li>
-                                <span class="answer_likes_content text-2xl hover:text-gray-200" data-answer-id="{{ $answer->id }}">${answer.likes}</span>
+                            <li class="mb-2">
+                                <span class="answer_nmb_likes text-2xl hover:text-gray-200" data-answer-id="{{ $answer->id }}">${answer.likes}</span>
                             </li>
-
                             <li>
-                                <a id="${answer.id}" class="dislike_answer cursor-pointer hover:text-gray-200">
-                                    <ion-icon name="caret-down-circle-outline" class="text-4xl"></ion-icon>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="">
+                                <a class="cursor-pointer" title="save answer">
                                     <ion-icon name="bookmark" class="text-3xl"></ion-icon>
                                 </a>
                             </li>

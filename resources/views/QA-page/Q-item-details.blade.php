@@ -17,22 +17,18 @@
 
             <div class="w-full grid grid-cols-1 md:grid-cols-8 hover:scale-[1.01] transition duration-300 ease-in-out mt-6 gap-y-4 rounded-2xl bg-gradient-to-r from-gray-900 to-gray-700 backdrop-filter backdrop-blur-lg p-6" style="box-shadow: 0px 0px 2px 0px rgba(0, 128, 0, 0.75)">
                 <div class="col-span-1">
-                    <ul class="flex flex-col items-center gap-2 text-green-500">
+                    <ul class="flex flex-col items-center gap-4 text-green-500">
                         <li>
-                            <a id="{{ $question->id }}" class="like_question cursor-pointer hover:text-green-600">
+                            <a id="like_question" questionId="{{ $question->id }}" class=" cursor-pointer hover:text-green-600" title="Like Question">
                                 <ion-icon name="caret-up-circle-outline" class="text-4xl"></ion-icon>
                             </a>
                         </li>
-                        <li>
-                            <span class="question_likes_content text-2xl hover:text-green-600 font-bold">{{ $question->likes }}</span>
+                        <li class="mb-2">
+                            <span id="question_likes_nmb" class=" text-2xl hover:text-green-600 font-bold">{{ $question->likes }}</span>
                         </li>
+
                         <li>
-                            <a id="{{ $question->id }}" class="dislike_question cursor-pointer hover:text-green-600">
-                                <ion-icon name="caret-down-circle-outline" class="text-4xl"></ion-icon>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="hover:text-green-600">
+                            <a id="save_question" class="hover:text-green-600 cursor-pointer" title="Save Question">
                                 <ion-icon name="bookmark-outline" class="text-3xl"></ion-icon>
                             </a>
                         </li>
@@ -138,6 +134,7 @@
 
     {{--  comments script  --}}
     <script src="{{ asset('question-details/comments.js') }}"></script>
-    <script src="{{ asset('question-details/my-answer-crud.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('question-details/like-save-question.js') }}"></script>
 @endsection
 

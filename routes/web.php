@@ -54,14 +54,6 @@ Route::get('/question-details/{question}', [HomeController::class, 'Q_item_detai
 Route::get('/ask-question', [AQuestionController::class, 'show'])->name('ask-question.show');
 Route::post('/ask-question/store', [AQuestionController::class, 'store'])->name('ask-question.store');
 
-/* vote a question route */
-Route::post('/like-question/{question}', [QuestionController::class, 'like_question']);
-Route::post('/dislike-question/{question}', [QuestionController::class, 'dislike_question']);
-
-/* vote an answer route */
-Route::post('/like-answer/{answer}', [AnswerController::class, 'like_answer']);
-Route::post('/dislike-answer/{answer}', [AnswerController::class, 'dislike_answer']);
-
 /* store comment route */
 Route::post('/comment-on-answer/{answer}', [CommentController::class, 'store']);
 
@@ -159,3 +151,13 @@ Route::delete('/delete-answer/{answer}', [QuestionController::class, 'delete_ans
 Route::post('/update-answer/{answer}', [QuestionController::class, 'update_answer']);
 
 
+/* vote a question route */
+Route::post('/like-question/{question}', [QuestionController::class, 'like_question']);
+Route::post('/dislike-question/{question}', [QuestionController::class, 'dislike_question']);
+
+/* save a question route */
+Route::post('/save-question/{question}', [QuestionController::class, 'save_question']);
+
+/* vote an answer route */
+Route::post('/like-answer/{answer}', [AnswerController::class, 'like_answer']);
+Route::post('/dislike-answer/{answer}', [AnswerController::class, 'dislike_answer']);
