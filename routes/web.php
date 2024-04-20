@@ -160,5 +160,5 @@ Route::post('/save-question/{question}', [QuestionController::class, 'save_quest
 /* vote an answer route */
 Route::post('/like-answer/{answer}', [AnswerController::class, 'like_answer']);
 
-/* save a answer route */
+/* save an answer route */
 Route::post('/save-answer/{answer}', [AnswerController::class, 'save_answer']);

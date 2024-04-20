@@ -1,6 +1,8 @@
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 let allFriendsContainer = document.getElementById('all-friends-container');
+let myFriendsContainer = document.getElementById('my-friends-container');
+myFriendsContainer.classList.add(`h-[${innerHeight - 50}px]`);
 let profileContainer = document.getElementById('profile-container');
 
 keep_html_trucking();
@@ -41,7 +43,7 @@ function keep_html_trucking() {
 function render_users_cards_html(user) {
     allFriendsContainer.innerHTML += `
         <li class="relative flex items-center gap-14 justify-between py-2 border-b border-gray-700 pr-2">
-            <a href="#" userId="${user.id}" class="see-profile w-full flex items-center gap-4">
+            <a userId="${user.id}" class="see-profile w-full flex items-center gap-4 cursor-pointer">
                 <div class="h-12 w-12 rounded-full overflow-hidden">
                     <img src='http://127.0.0.1:8000/storage/${user.image}' alt="Profile Picture" class="object-cover h-full w-full">
                 </div>

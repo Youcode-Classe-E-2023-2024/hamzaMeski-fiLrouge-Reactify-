@@ -3,9 +3,6 @@ const answersContainer = document.getElementById('answers-container');
 const questionId = answersContainer.getAttribute('questionId');
 const topTarget = document.getElementById('top-target');
 
-
-
-
 getQuestionAnswers();
 function getQuestionAnswers() {
     fetch(`/auth-user`, {

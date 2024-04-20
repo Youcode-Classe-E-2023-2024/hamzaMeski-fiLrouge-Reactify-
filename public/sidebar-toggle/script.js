@@ -1,6 +1,4 @@
 
-
-
 /* sidebar */
 const sideBarDisappearBtn = document.getElementById('side-bar-disappear-btn');
 sideBarDisappearBtn.classList.add(`top-[${((innerHeight - 50)/2  - 50)}px]`)

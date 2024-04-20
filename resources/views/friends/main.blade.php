@@ -1,80 +1,44 @@
 @extends('shared.layout')
 
 @section('content')
-    <section class="h-[91vh] flex gap-2">
-        <section class="h-[91vh] flex">
-            <ul class="bg-gradient-to-br from-violet-700 to-red-500 w-[280px] flex flex-col gap-4 rounded-[30px] overflow-hidden border-[1px] border-solid border-gray-700 py-2" style="box-shadow: 8px 7px 11px -6px rgba(180,0,155,0.45);">
-                <li class="flex  justify-between px-2 pr-0">
-                    <div class="p-1 h-[52px] w-[52px] border-2 border-solid border-gray-400 rounded-full flex items-center justify-center cursor-pointer">
-                        <div class="h-full w-full bg-black rounded-full" style="background-image: url('{{asset('http://127.0.0.1:8000/storage/'.auth()->user()->image )}}'); background-size: cover"></div>
-                    </div>
-                    <div class="cursor-pointer">
-                        <p class="font-bold">{{ auth()->user()->name }}</p>
-                        <p class="text-[14px] text-white">Manager</p> <!-- Changed to text-white -->
-                    </div>
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="h-full bg-green-500 w-[60px] flex items-center justify-center rounded-tl-[30px] rounded-bl-[30px]">
-                            <ion-icon name="arrow-back-outline" class="text-white font-bold text-xl"></ion-icon>
-                        </button>
-                    </form>
+    <div class="grid gap-4 md:grid-cols-4 sm:p-4 lg:px-16 lg:py-4">
+        <div class="flex-col p-8 py-16 hover:scale-[1.05] transition duration-300 ease-in-out rounded-lg shadow-2xl md:p-12 bg-gradient-to-br from-gray-900 to-black">
+            <p class="flex items-center justify-center text-4xl font-semibold text-green-400 bg-green-800 rounded-full shadow-lg w-14 h-14">
+                <ion-icon name="home" class="text-2xl"></ion-icon>
+            </p>
+            <div class="h-6"></div>
+            <a href="{{ route('friends_home') }}" class="font-serif text-3xl {{$clicked === 'home' ? ' text-green-400': 'text-gray-300'}}">Home</a>
+        </div>
+        <div class="flex-col p-8 py-16 hover:scale-[1.05] transition duration-300 ease-in-out rounded-lg shadow-2xl md:p-12 bg-gradient-to-br from-gray-900 to-black">
+            <p class="flex items-center justify-center text-4xl font-semibold text-green-400 bg-green-800 rounded-full shadow-lg w-14 h-14">
+                <ion-icon name="person-add" class="text-2xl"></ion-icon>
+            </p>
+            <div class="h-6"></div>
+            <a href="{{ route('friend_requests_index') }}" class="font-serif text-3xl {{$clicked === 'friend-requests' ? ' text-green-400': 'text-gray-300'}}">Requests</a>
+        </div>
+        <div class="flex-col p-8 py-16 hover:scale-[1.05] transition duration-300 ease-in-out rounded-lg shadow-2xl md:p-12 bg-gradient-to-br from-gray-900 to-black">
+            <p class="flex items-center justify-center text-4xl font-semibold text-green-400 bg-green-800 rounded-full shadow-lg w-14 h-14">
+                <ion-icon name="people" class="text-2xl"></ion-icon>
+            </p>
+            <div class="h-6"></div>
+            <a href="{{ route('all_friends_index') }}" class="font-serif text-3xl {{$clicked === 'all-friends' ? ' text-green-400': 'text-gray-300'}}">All friends</a>
+        </div>
+        <div class="flex-col p-8 py-16 hover:scale-[1.05] transition duration-300 ease-in-out rounded-lg shadow-2xl md:p-12 bg-gradient-to-br from-gray-900 to-black">
+            <p class="flex items-center justify-center text-4xl font-semibold text-green-400 bg-green-800 rounded-full shadow-lg w-14 h-14">
+                <ion-icon name="person-add" class="text-2xl"></ion-icon>
+            </p>
+            <div class="h-6"></div>
+            <a href="{{ route('suggestions') }}" class="font-serif text-3xl {{$clicked === 'suggestions' ? ' text-green-400': 'text-gray-300'}}">Suggestions</a>
+        </div>
+    </div>
 
-                </li>
-                <li class="px-4">
-                    <h1 class="font-bold">Friends</h1>
-                </li>
-                <li class="px-4">
-                    <a href="{{ route('friends_home') }}" class="nav-link flex items-center text-white gap-1 p-2 {{$clicked === 'home' ? ' bg-gradient-to-b from-gray-800 to-black rounded-lg': ''}}">
-                        <div class="flex items-center justify-center p-1 rounded-full {{$clicked === 'home' ? 'bg-red-500': 'bg-gray-400'}}">
-                            <ion-icon name="people" class="text-2xl"></ion-icon>
-                        </div>
-                        <span class="font-bold">Home</span>
-                    </a>
-                </li>
-                <li class="px-4">
-                    <a href="{{ route('friend_requests_index') }}" class="nav-link flex items-center text-white gap-1 p-2 justify-between {{$clicked === 'friend-requests' ? ' bg-gradient-to-b from-gray-800 to-black rounded-lg': ''}}">
-                        <div class="flex items-center gap-1">
-                            <div class="flex items-center justify-center p-1 rounded-full bg-gray-400 {{$clicked === 'friend-requests' ? 'bg-red-500': 'bg-gray-400'}}">
-                                <ion-icon name="person-remove" class="text-2xl"></ion-icon>
-                            </div>
-                            <span class="font-bold">Friend requests</span>
-                        </div>
-                        <ion-icon name="chevron-forward-outline" class="text-xl"></ion-icon>
-                    </a>
-                </li>
-                <li class="px-4">
-                    <a href="{{ route('suggestions') }}" class="nav-link flex items-center text-white gap-1 p-2 justify-between {{$clicked === 'suggestions' ? ' bg-gradient-to-b from-gray-800 to-black rounded-lg': ''}}">
-                        <div class="flex items-center gap-1">
-                            <div class="flex items-center justify-center p-1 rounded-full bg-gray-400 {{$clicked === 'suggestions' ? 'bg-red-500': 'bg-gray-400'}}">
-                                <ion-icon name="person-add" class="text-2xl"></ion-icon>
-                            </div>
-                            <span class="font-bold">Suggestions</span>
-                        </div>
-                        <ion-icon name="chevron-forward-outline" class="text-xl"></ion-icon>
-                    </a>
-                </li>
-                <li class="px-4">
-                    <a href="{{ route('all_friends_index') }}" class="nav-link flex items-center text-white gap-1 p-2 justify-between {{$clicked === 'all-friends' ? ' bg-gradient-to-b from-gray-800 to-black rounded-lg': ''}}">
-                        <div class="flex items-center gap-1">
-                            <div class="flex items-center justify-center p-1 rounded-full bg-gray-400 {{$clicked === 'all-friends' ? 'bg-red-500': 'bg-gray-400'}}">
-                                <ion-icon name="people-circle" class="text-2xl"></ion-icon>
-                            </div>
-                            <span class="font-bold">All friends</span>
-                        </div>
-                        <ion-icon name="chevron-forward-outline" class="text-xl"></ion-icon>
-                    </a>
-                </li>
-                <hr class="border-gray-600">
-                <li class="px-4">
-                    <a href="#" class="flex items-center justify-between">
-                        <ion-icon name="arrow-back-outline" class="text-xl text-white"></ion-icon>
-                    </a>
-                </li>
-            </ul>
-        </section>
+    <div class="text-center py-4">
+        <a href="#friends-blade">
+            <ion-icon name="chevron-down-circle" class="text-4xl text-green-500 cursor-pointer"></ion-icon>
+        </a>
+    </div>
 
-        <main class="b h-full w-full overflow-auto">
-            @yield('main-content')
-        </main>
-    </section>
+    <main id="friends-blade" class="b h-full w-full overflow-auto">
+        @yield('main-content')
+    </main>
 @endsection
