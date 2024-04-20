@@ -1,7 +1,7 @@
 @extends('friends.main')
 @section('main-content')
-    <section class="h-[91vh] grid grid-cols-7 gap-2 h-full w-full bg-gradient-to-b from-gray-800 to-black rounded-lg">
-        <div class="col-span-2 bg-gradient-to-b from-gray-900 to-gray-800 text-white p-4 rounded-lg">
+    <section id="friend-requests-container" class="grid grid-cols-7 gap-2 h-full w-full bg-gradient-to-b from-gray-800 to-black">
+        <div class="col-span-2 bg-gradient-to-b from-gray-900 to-gray-800 text-white p-4">
             <input type="text" placeholder="Search" class="w-full px-4 py-2 mb-4 rounded-md bg-gray-800 border border-gray-700 focus:outline-none focus:border-blue-500">
 
             <ul id="friends-requests-container" class="h-[78vh] overflow-y-auto">
@@ -16,6 +16,11 @@
         </div>
     </section>
 
+
+    <script>
+        const friendRequestsContainer = document.getElementById('friend-requests-container');
+        friendRequestsContainer.classList.add(`h-[${innerHeight - 50}px]`);
+    </script>
     {{-- add-friend script --}}
     <script src="{{asset('friends/js/accept-friend-request.js')}}"></script>
 @endsection

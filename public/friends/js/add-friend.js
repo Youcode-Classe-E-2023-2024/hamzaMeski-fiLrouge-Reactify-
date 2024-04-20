@@ -1,8 +1,7 @@
-
 const friendsHomeContainer = document.getElementById('friends-home-container');
-//
+if(friendsHomeContainer) friendsHomeContainer.classList.add(`h-[${innerHeight - 50}px]`);
 const friendsSuggestionsContainer = document.getElementById('friends-suggestions-container');
-//
+if(friendsSuggestionsContainer) friendsSuggestionsContainer.classList.add(`h-[${innerHeight - 50}px]`);
 
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
