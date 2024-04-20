@@ -2,7 +2,7 @@
 @include('shared.nav-bar')
 <div class="pt-[50px] relative">
     {{--        --}}
-    <div id="drag" class="p-4 rounded-tl-full rounded-bl-full rounded-br-full fixed top-16 left-2 z-[100]" style=" background: rgb(10,107,170);
+    <div id="drag" class="p-4 rounded-tl-full rounded-bl-full rounded-br-full fixed top-[80%] left-2 z-[100]" style=" background: rgb(10,107,170);
 background: linear-gradient(90deg, rgba(10,107,170,1) 35%, rgba(13,152,117,1) 72%); ">
         <div id="side-bar-disappear-btn" class="hidden h-[50px] w-[50px] cursor-pointer bg-green-500 flex items-center justify-center rounded-full  py-2">
             <ion-icon name="chevron-forward" class="text-white font-bold text-xl"></ion-icon>

@@ -8,9 +8,7 @@ fetch('/auth-user', {
     .then(res => res.json())
     .then(logged_user => {
         const chatContainer = document.getElementById('chat-container');
-        const emptyChatContainer = document.getElementById('empty-chat-container');
-        chatContainer.classList.add('hidden');
-        emptyChatContainer.style.display = 'flex';
+        chatContainer.classList.add(`h-[${innerHeight - 50}px]`)
 
         const messagesContainer = document.getElementById('messages-container');
         const friends = document.querySelectorAll('.friends');
@@ -19,8 +17,6 @@ fetch('/auth-user', {
 
         function updateMessagesContainer(messages, friend) {
             chatContainer.classList.remove('hidden');
-            // emptyChatContainer.classList.add('hidden');
-            emptyChatContainer.style.display = 'none';
 
             messagesContainer.innerHTML = '';
             for (let i = 0; i < messages.length; i++) {
@@ -31,8 +27,10 @@ fetch('/auth-user', {
                                                         </div>
                                                     </div>`;
                 } else {
-                    messagesContainer.innerHTML += `<div class="bg-white rounded-lg p-2 shadow mb-2 max-w-sm mt-1">
-                                                        ${messages[i].message}
+                    messagesContainer.innerHTML += `<div class="flex items-center justify-start mt-1">
+                                                        <div class="bg-gray-300 text-gray-700 rounded-lg p-2 shadow mr-2 max-w-sm">
+                                                            ${messages[i].message}
+                                                        </div>
                                                     </div>`;
                 }
             }
@@ -51,7 +49,6 @@ fetch('/auth-user', {
              friends.forEach(friend => {
                 if(friend.getAttribute('receiverId') === localStorage.getItem('receiverId')) {
                     friend.classList.add('selected')
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                     fetch('/get-friend-messages/' + localStorage.getItem('receiverId'), {
                         method: 'GET',
                         headers: {
@@ -77,7 +74,6 @@ fetch('/auth-user', {
                 this.classList.add('selected');
 
                 const receiverId = this.getAttribute('receiverId');
-                const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                 fetch('/get-friend-messages/' + receiverId, {
                     method: 'GET',
                     headers: {
@@ -91,6 +87,4 @@ fetch('/auth-user', {
                     });
             });
         }
-
-        /* */
     });
