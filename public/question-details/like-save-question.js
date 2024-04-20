@@ -4,23 +4,10 @@ const saveQstBtn = document.getElementById('save_question');
 const QstId = likeQstBtn.getAttribute('questionId');
 
 
-logic();
-function logic() {
-    fetch(`/auth-user`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': csrfToken
-        }
-    })
-        .then(res => res.json())
-        .then(auth => {
-            like_question();
-            save_question();
-        })
-}
+like_question();
+save_question();
 
-function like_question(auth) {
+function like_question() {
     likeQstBtn.addEventListener('click', function() {
         fetch(`/like-question/${QstId}`, {
             method: 'POST',

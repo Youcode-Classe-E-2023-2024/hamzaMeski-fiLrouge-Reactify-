@@ -39,6 +39,12 @@ function getQuestionAnswers() {
 
                     //
                     update_my_answer();
+
+                    //
+                    like_answer();
+
+                    //
+                    save_answer();
                 })
         })
 }
@@ -55,15 +61,15 @@ function render_answers_cards(answer, auth) {
                     <div class="col-span-1">
                         <ul class="flex flex-col items-center gap-4 text-gray-300">
                             <li>
-                                <a id="${answer.id}" class="like_answer cursor-pointer hover:text-gray-200" title="like answer">
+                                <a answerId="${answer.id}" class="like_answer cursor-pointer hover:text-gray-200" title="like answer">
                                     <ion-icon name="caret-up-circle-outline" class="text-4xl"></ion-icon>
                                 </a>
                             </li>
-                            <li class="mb-2">
-                                <span class="answer_nmb_likes text-2xl hover:text-gray-200" data-answer-id="{{ $answer->id }}">${answer.likes}</span>
+                            <li class="answer_likes_nmb mb-2 text-2xl hover:text-gray-200">
+                                ${answer.likes}
                             </li>
                             <li>
-                                <a class="cursor-pointer" title="save answer">
+                                <a answerId="${answer.id}" class="save_answer cursor-pointer" title="save answer">
                                     <ion-icon name="bookmark" class="text-3xl"></ion-icon>
                                 </a>
                             </li>
@@ -100,12 +106,10 @@ function render_answers_cards(answer, auth) {
                         </div>
                     </div>
                 </div>
-        </div>
+          </div>
     `;
 }
 
-
-/* answer question */
 answer_question();
 function answer_question() {
     const answerQuestionForm = document.getElementById('answer-question-form');
@@ -145,8 +149,6 @@ function answer_question() {
     });
 }
 
-
-
 function highlight_code() {
     const answersContent = document.querySelectorAll('.answerContent');
     answersContent.forEach(answerContent => {
@@ -179,9 +181,6 @@ function highlight_code() {
     });
 }
 
-
-
-/* delete my answer */
 function delete_my_answer() {
     const deleteAnswerOverlay = document.getElementById('delete-answer-overlay');
     const cancelDelete1 = document.getElementById('cancel-delete-1');
@@ -221,7 +220,6 @@ function delete_my_answer() {
         })
     }
 }
-
 
 function update_my_answer() {
     const updateAnswerOverlay = document.getElementById('update-answer-overlay');
@@ -280,5 +278,64 @@ function update_my_answer() {
                 submitListenerAdded = true;
             }
         });
+    }
+}
+
+function like_answer() {
+    const likeAnswerBtns = document.querySelectorAll('.like_answer');
+
+    for(const likeAnswerBtn of likeAnswerBtns) {
+        likeAnswerBtn.addEventListener('click', function() {
+            const AnswerId = likeAnswerBtn.getAttribute('answerId');
+            console.log();
+            fetch(`/like-answer/${AnswerId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    likeAnswerBtn.parentElement.parentElement.querySelector('.answer_likes_nmb').textContent = data.likes;
+                })
+        })
+    }
+}
+
+function save_answer() {
+    const saveAnswerBtns = document.querySelectorAll('.save_answer');
+
+    for(const saveAnswerBtn of saveAnswerBtns) {
+        saveAnswerBtn.addEventListener('click', function() {
+            const AnswerId = saveAnswerBtn.getAttribute('answerId');
+            fetch(`/save-answer/${AnswerId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.status === 'saved') {
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Answer saved successfully",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }else {
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Answer has been unsaved",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                })
+        })
     }
 }

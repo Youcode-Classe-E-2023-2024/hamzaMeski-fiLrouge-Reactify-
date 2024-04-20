@@ -153,11 +153,12 @@ Route::post('/update-answer/{answer}', [QuestionController::class, 'update_answe
 
 /* vote a question route */
 Route::post('/like-question/{question}', [QuestionController::class, 'like_question']);
-Route::post('/dislike-question/{question}', [QuestionController::class, 'dislike_question']);
 
 /* save a question route */
 Route::post('/save-question/{question}', [QuestionController::class, 'save_question']);
 
 /* vote an answer route */
 Route::post('/like-answer/{answer}', [AnswerController::class, 'like_answer']);
-Route::post('/dislike-answer/{answer}', [AnswerController::class, 'dislike_answer']);
+
+/* save a answer route */
+Route::post('/save-answer/{answer}', [AnswerController::class, 'save_answer']);
