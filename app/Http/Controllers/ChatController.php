@@ -65,7 +65,6 @@ class ChatController extends Controller
         $newMessage->save();
 
         // Broadcast the MessageSent event
-//        broadcast(new MessageSent($newMessage))->toOthers(); // Broadcast to others (exclude the current user)
         broadcast(new MessageSent($newMessage->message));
 
         // Return a JSON response indicating success

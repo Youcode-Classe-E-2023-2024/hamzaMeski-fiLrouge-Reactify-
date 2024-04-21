@@ -1,4 +1,5 @@
 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
 fetch('/auth-user', {
     method: 'GET',
     headers: {
@@ -7,6 +8,7 @@ fetch('/auth-user', {
 })
     .then(res => res.json())
     .then(logged_user => {
+        localStorage.setItem('authId', logged_user.id)
         const chatContainer = document.getElementById('chat-container');
         chatContainer.classList.add(`h-[${innerHeight - 50}px]`)
 
