@@ -1,7 +1,7 @@
 @extends('shared.layout')
 
 @section('content')
-    <div class="grid gap-4 md:grid-cols-4 sm:p-4 lg:px-16 lg:py-4">
+    <div class="grid gap-4 md:grid-cols-4 sm:p-4 lg:px-2 lg:pt-12">
         <div class="flex-col p-8 py-16 hover:scale-[1.05] transition duration-300 ease-in-out rounded-lg shadow-2xl md:p-12 bg-gradient-to-br from-gray-900 to-black">
             <p class="flex items-center justify-center text-4xl font-semibold text-green-400 bg-green-800 rounded-full shadow-lg w-14 h-14">
                 <ion-icon name="home" class="text-2xl"></ion-icon>

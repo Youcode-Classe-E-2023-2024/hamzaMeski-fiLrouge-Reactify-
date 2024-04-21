@@ -52,7 +52,7 @@
             <div class="px-4 py-2 border-t border-gray-500">
                 <form id="message-form" class="flex items-center">
                     <input id="message-input" name="message" class="w-full border-2 rounded-full py-2 px-4 mr-2 bg-gray-200 text-gray-600 focus:outline-none focus:border-green-500" type="text" placeholder="Type your message...">
-                    <button type="submit" class="text-white font-medium h-[50px] w-[50px] rounded-full" title="send message">
+                    <button type="submit" class=" text-white font-medium h-[50px] w-[50px] rounded-full" title="send message">
                         <ion-icon name="send" class="text-4xl text-green-400"></ion-icon>
                     </button>
                 </form>
@@ -74,14 +74,14 @@
         friendsChatContainer.classList.add(`h-[${innerHeight - 50}px]`);
     </script>
 
-{{--      js pusher script--}}
-    <script src="{{ asset('js/app.js') }}"></script>
+{{--    --}}{{--      js pusher script--}}
+{{--    <script src="{{ asset('js/app.js') }}"></script>--}}
 
-{{--      send-message script--}}
-    <script src="{{ asset('chat/js/send-message.js') }}"></script>
+{{--    --}}{{--      send-message script--}}
+{{--    <script src="{{ asset('chat/js/send-message.js') }}"></script>--}}
 
-{{--      open-friend-session script--}}
-    <script src="{{ asset('chat/js/open-friend-session.js') }}"></script>
+{{--    --}}{{--      open-friend-session script--}}
+{{--    <script src="{{ asset('chat/js/open-friend-session.js') }}"></script>--}}
 
 
 @endsection

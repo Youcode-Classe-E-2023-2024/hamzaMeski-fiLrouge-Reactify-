@@ -12660,35 +12660,40 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+
+// Listen to the "chat" channel
 window.Echo.channel("chat").listen('MessageSent', function (e) {
+  var authId = Number(localStorage.getItem('authId'));
+  var receiverId = Number(localStorage.getItem('receiverId'));
   console.log(e.message);
   var messagesContainer = document.getElementById('messages-container');
   if (messagesContainer) {
     var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    fetch('/auth-user', {
+    fetch('/get_last_inserted_message', {
       method: 'GET',
       headers: {
         'X-CSRF-TOKEN': csrfToken
       }
     }).then(function (res) {
       return res.json();
-    }).then(function (logged_user) {
-      fetch('/get_last_inserted_message', {
-        method: 'GET',
-        headers: {
-          'X-CSRF-TOKEN': csrfToken
-        }
-      }).then(function (res) {
-        return res.json();
-      }).then(function (data) {
-        if (data.sender_id === logged_user.id) messagesContainer.innerHTML += "<div class=\"flex items-center justify-end mt-1\">\n                                                                <div class=\"bg-blue-500 text-white rounded-lg p-2 shadow mr-2 max-w-sm\">\n                                                                    ".concat(e.message, "\n                                                                </div>\n                                                            </div>");
-        if (data.sender_id !== logged_user.id) {
-          messagesContainer.innerHTML += "<div class=\"bg-white rounded-lg p-2 shadow mb-2 max-w-sm mt-1\">\n                                                                ".concat(e.message, "\n                                                            </div>");
-        }
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-      });
+    }).then(function (data) {
+      var senderId = Number(data.sender_id);
+      console.log(senderId, ' ', authId);
+      console.log(data.receiver_id, ' ', receiverId);
+      if (senderId === authId && Number(data.receiver_id) === receiverId) {
+        messagesContainer.innerHTML += "<div class=\"flex items-center justify-end mt-1\">\n                                                        <div class=\"bg-blue-500 text-white rounded-lg p-2 shadow mr-2 max-w-sm\">\n                                                            ".concat(e.message, "\n                                                        </div>\n                                                    </div>");
+      }
+      if (senderId === receiverId && Number(data.receiver_id) === authId) {
+        messagesContainer.innerHTML += "<div class=\"flex items-center justify-start mt-1\">\n                                                        <div class=\"bg-gray-300 text-gray-700 rounded-lg p-2 shadow mr-2 max-w-sm\">\n                                                            ".concat(e.message, "\n                                                        </div>\n                                                    </div>");
+      }
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
     });
   }
+});
+
+// Listen to the "chat-group" channel
+window.Echo.channel("chat-groups").listen('ChatGroup', function (e) {
+  console.log(e.message);
 });
 })();
 
