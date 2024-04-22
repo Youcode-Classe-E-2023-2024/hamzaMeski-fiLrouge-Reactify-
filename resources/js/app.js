@@ -40,6 +40,18 @@ window.Echo.channel("chat").listen('MessageSent', (e) => {
 
 
 // Listen to the "chat-group" channel
-window.Echo.channel("chat-groups").listen('ChatGroup', (e) => {
+window.Echo.channel("chat-group").listen('GroupMessageSent', (e) => {
     console.log(e.message)
+    const groupId = localStorage.getItem('groupId');
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    fetch('/latest-group-messages/' + groupId, {
+        method: 'GET',
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        }
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
 });

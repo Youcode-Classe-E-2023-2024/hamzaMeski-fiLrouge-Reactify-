@@ -1,0 +1,5 @@
+.selected {
+    color: white;
+    /*background: rgba(224,17,59,0.88);*/
+    background: linear-gradient(90deg, rgba(0,7,36,0.82) 0%, rgba(118,9,121,1) 35%, rgba(255,72,0,1) 100%);
+}

@@ -12692,8 +12692,20 @@ window.Echo.channel("chat").listen('MessageSent', function (e) {
 });
 
 // Listen to the "chat-group" channel
-window.Echo.channel("chat-groups").listen('ChatGroup', function (e) {
+window.Echo.channel("chat-group").listen('GroupMessageSent', function (e) {
   console.log(e.message);
+  var groupId = localStorage.getItem('groupId');
+  var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  fetch('/latest-group-messages/' + groupId, {
+    method: 'GET',
+    headers: {
+      'X-CSRF-TOKEN': csrfToken
+    }
+  }).then(function (res) {
+    return res.json();
+  }).then(function (data) {
+    console.log(data);
+  });
 });
 })();
 
