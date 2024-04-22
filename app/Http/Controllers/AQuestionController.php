@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\Tag;
@@ -16,20 +17,22 @@ class AQuestionController extends Controller
     }
 
     public function store() {
-        $validated = request()->validate([
+        $validator = Validator::make(request()->all(), [
             'title' => 'required|min:10',
             'description' => 'required|min:10',
             'tags' => 'required|array|min:1'
         ]);
 
-        $validated['user_id'] = auth()->id();
-
-        if(request()->hasFile('image')) {
-            $imagePath = request()->file('image')->store('images', 'public');
-            $validated['image'] = $imagePath;
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $new_question = Question::create($validated);
+        $validatedData = $validator->validated(); // Get validated data
+
+        $validatedData['user_id'] = auth()->id();
+
+        $new_question = Question::create($validatedData);
+
 
         /*********************/
         // AI based on answer
@@ -41,39 +44,15 @@ class AQuestionController extends Controller
         exec($command, $output, $returnCode);
 
         if ($returnCode !== 0) {
-            return [
+            return response()->json([
                 'error' => 'Command execution failed',
                 'output' => $output
-            ];
+            ]);
         }
 
         $outputString = implode("\n", $output);
-//        dd($outputString);
         $outputString = preg_replace('/New.*?####\s*/', '', $outputString);
 
-//        // Remove leading and trailing whitespace
-//        $outputString = trim($outputString);
-//
-//        // Remove consecutive newlines
-//        $outputString = preg_replace('/\n{2,}/', "\n", $outputString);
-//
-//        // Replace multiple spaces with a single space
-//        $outputString = preg_replace('/\s+/', ' ', $outputString);
-//
-//        // Remove excessive whitespace around punctuation marks
-//        $outputString = preg_replace('/\s*([.,!?])\s*/', '$1 ', $outputString);
-//
-//        // Add line breaks after sentences
-//        $outputString = preg_replace('/(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s/', "\n", $outputString);
-//
-//        // Remove excessive blank lines
-//        $outputString = preg_replace("/(^[\r\n]*|[\r\n]+)[\s\t]*[\r\n]+/", "\n", $outputString);
-//
-//        // Replace double quotes with backticks
-//        $outputString = str_replace('"', '`', $outputString);
-//
-//        // Remove any remaining consecutive spaces
-//        $outputString = preg_replace('/\s+/', ' ', $outputString);
 
         Blog::create([
             'question_id' => $new_question->id,
@@ -89,6 +68,8 @@ class AQuestionController extends Controller
             ]);
         }
 
-        return redirect()->route('ask-question.show')->with('success', '_');
+        return response()->json([
+            'status' => 'question stored successfully'
+        ]);
     }
 }

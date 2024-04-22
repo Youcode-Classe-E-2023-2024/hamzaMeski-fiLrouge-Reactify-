@@ -1,4 +1,4 @@
-<nav class="custom-nav">
+<nav id="nav-bar" class="custom-nav">
     <!-- ***** Logo Start ***** -->
     <a href="{{ route('front-page') }}" class="text-logo-font">
 {{--        <img src="{{asset('images/logo.png')}}" class="w-[150px]" alt="">--}}
