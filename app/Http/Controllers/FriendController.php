@@ -182,14 +182,6 @@ class FriendController extends Controller
 
 
 
-
-
-
-
-
-
-
-
     /* blade indexes */
     public  function  friends_home() {
         $clicked = 'home';
