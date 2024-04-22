@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Events\GroupMessageSent;
 use App\Models\ChatGroup;
 use App\Models\GroupMessage;
 use App\Models\UserGroup;
@@ -12,6 +11,7 @@ use App\Models\Friendship;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Events\GroupMsgSent;
 
 class ChatGroupController extends Controller
 {
@@ -118,10 +118,13 @@ class ChatGroupController extends Controller
         $newMessage->save();
 
         // Broadcast the MessageSent event
-        broadcast(new GroupMessageSent($newMessage->message));
+        broadcast(new GroupMsgSent($newMessage->message));
 
-        // Return a JSON response indicating success
-        return response()->json(['status' => 'GroupMessage Sent!']);
+
+//        // Return a JSON response indicating success
+        return response()->json([
+            'status' => 'group message stored'
+        ]);
     }
 
     public function get_group_messages($groupId) {
@@ -150,12 +153,12 @@ class ChatGroupController extends Controller
     }
 
     public function latest_group_messages($groupId) {
-        $messages = GroupMessage::where('group_id', $groupId);
+        $messages = GroupMessage::where('group_id', $groupId)->get();
         $senders_messages = [];
         foreach ($messages as $message) {
             $senders_messages[] = [
                 'message' => $message->message,
-                'sender' => User::where('id', $message->sender_id)
+                'sender' => User::where('id', $message->sender_id)->get()
             ];
         }
 

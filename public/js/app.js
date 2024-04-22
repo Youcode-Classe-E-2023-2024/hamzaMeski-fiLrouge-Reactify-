@@ -12661,6 +12661,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
+// Listen to the "chat-group" channel
+window.Echo.channel("groupChat").listen('GroupMsgSent', function (e) {
+  console.log('socket');
+  var authId = Number(localStorage.getItem('authId'));
+  var groupId = Number(localStorage.getItem('groupId'));
+  console.log(e.message);
+  var messagesContainer = document.getElementById('messages-container');
+  if (messagesContainer) {
+    var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    fetch('/get-group-messages/' + groupId, {
+      method: 'GET',
+      headers: {
+        'X-CSRF-TOKEN': csrfToken
+      }
+    }).then(function (res) {
+      return res.json();
+    }).then(function (messages) {
+      var messageInfo = messages[messages.length - 1];
+      if (messageInfo.sender_id == authId) {
+        messagesContainer.innerHTML += "\n                    <div class=\"flex items-center justify-end mt-1\">\n                        <div class=\"bg-blue-500 text-white rounded-lg p-2 shadow mr-2 max-w-sm\">\n                            ".concat(messageInfo.message, "\n                        </div>\n                        <div id=\"receiver-image\" class=\"w-10 h-10 rounded-full mr-2 border border-gray-300\" title=\"").concat(messageInfo.sender_name, "\" style=\"background-image: url('http://127.0.0.1:8000/storage/").concat(messageInfo.sender_image, "'); background-size: cover\"></div>\n                    </div>\n                ");
+      } else {
+        messagesContainer.innerHTML += "\n                    <div class=\"flex items-center justify-start mt-1\">\n                        <div id=\"receiver-image\" class=\"w-10 h-10 rounded-full mr-2 border border-gray-300\" title=\"".concat(messageInfo.sender_name, "\" style=\"background-image: url('http://127.0.0.1:8000/storage/").concat(messageInfo.sender_image, "'); background-size: cover\"></div>\n                        <div class=\"bg-gray-300 text-gray-700 rounded-lg p-2 shadow mr-2 max-w-sm\">\n                            ").concat(messageInfo.message, "\n                        </div>\n                    </div>\n                ");
+      }
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    });
+  }
+});
+
 // Listen to the "chat" channel
 window.Echo.channel("chat").listen('MessageSent', function (e) {
   var authId = Number(localStorage.getItem('authId'));
@@ -12689,23 +12717,6 @@ window.Echo.channel("chat").listen('MessageSent', function (e) {
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
     });
   }
-});
-
-// Listen to the "chat-group" channel
-window.Echo.channel("chat-group").listen('GroupMessageSent', function (e) {
-  console.log(e.message);
-  var groupId = localStorage.getItem('groupId');
-  var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-  fetch('/latest-group-messages/' + groupId, {
-    method: 'GET',
-    headers: {
-      'X-CSRF-TOKEN': csrfToken
-    }
-  }).then(function (res) {
-    return res.json();
-  }).then(function (data) {
-    console.log(data);
-  });
 });
 })();
 

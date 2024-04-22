@@ -6,13 +6,13 @@
     <section id="chat-groups-container" class="ralative grid grid-cols-1 md:grid-cols-4 gap-2">
         <div class="col-span-1 md:col-span-1 bg-gradient-to-br from-gray-900 to-black backdrop-blur-md">
             <div class="h-[56px] py-2 px-10 flex items-center justify-between">
-                <a href="#" class="flex flex-col items-center justify-center text-blue-700">
-                    <ion-icon name="person" class="text-3xl"></ion-icon>
-                    <span class="text-[12px]">friends</span>
-                </a>
-                <a href="#" class="flex flex-col items-center justify-center">
+                <a href="{{route('chat')}}" class="flex flex-col items-center justify-center">
                     <ion-icon name="people" class="text-3xl text-white"></ion-icon>
-                    <span class="text-white text-[12px]">groups</span>
+                    <span class="text-white text-[12px]">friends</span>
+                </a>
+                <a href="{{route('chat_group_index')}}" class="flex flex-col items-center justify-center text-blue-700">
+                    <ion-icon name="person" class="text-3xl"></ion-icon>
+                    <span class="text-[12px]">groups</span>
                 </a>
             </div>
             <div class="dark:text-white pr-1 flex gap-2">
@@ -203,7 +203,7 @@
     </script>
 
 {{--          js pusher script--}}
-{{--    <script src="{{ asset('js/app.js') }}"></script>--}}
+    <script src="{{ asset('js/app.js') }}"></script>
 
 {{--          send-message script--}}
     <script src="{{ asset('chat-group/js/send-message.js') }}"></script>

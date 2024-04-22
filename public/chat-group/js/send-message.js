@@ -1,13 +1,12 @@
 const messageForm = document.getElementById('message-form');
 const messageInput = document.getElementById('message-input');
-console.log(messageForm)
 
 messageForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const formData = new FormData(this);
     formData.append('group_id', localStorage.getItem('groupId'));
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    fetch(`/sendGroupMessage`, {
+    fetch(`/send-group-message`, {
         method: 'POST',
         body: formData,
         headers: {

@@ -30,5 +30,12 @@ sendGroupInviteForm.addEventListener('submit', function(event ) {
         .then(res => res.text())
         .then(data => {
             console.log(data);
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: `Invitation sent successfully`,
+                showConfirmButton: false,
+                timer: 1500
+            });
         })
 })

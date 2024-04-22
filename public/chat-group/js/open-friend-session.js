@@ -26,10 +26,10 @@ fetch('/auth-user', {
             for (let i = 0; i < messages.length; i++) {
                 if (messages[i].sender_id === logged_user.id) {
                     messagesContainer.innerHTML += `<div class="flex items-center justify-end mt-1">
-                                                        <div id="receiver-image" class="w-10 h-10 rounded-full mr-2 border border-gray-300" title="${messages[i].sender_name}" style="background-image: url('http://127.0.0.1:8000/storage/${messages[i].sender_image}'); background-size: cover"></div>
                                                         <div class="bg-blue-500 text-white rounded-lg p-2 shadow mr-2 max-w-sm">
                                                             ${messages[i].message}
                                                         </div>
+                                                        <div id="receiver-image" class="w-10 h-10 rounded-full mr-2 border border-gray-300" title="${messages[i].sender_name}" style="background-image: url('http://127.0.0.1:8000/storage/${messages[i].sender_image}'); background-size: cover"></div>
                                                     </div>`;
                 } else {
                     messagesContainer.innerHTML += `<div class="flex items-center justify-start mt-1">
