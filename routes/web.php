@@ -13,6 +13,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\FriendController;
+use App\Http\Controllers\ChatGroupController;
+
 
 
 /*
@@ -163,3 +165,23 @@ Route::post('/like-answer/{answer}', [AnswerController::class, 'like_answer']);
 /* save an answer route */
 Route::post('/save-answer/{answer}', [AnswerController::class, 'save_answer']);
 
+/* group chat routes */
+Route::get('/chat-group-index', [ChatGroupController::class, 'index'])->name('chat_group_index');
+
+Route::get('/chat-app/{groupId}', [ChatGroupController::class, 'connect_group'])->name('connect_group');
+
+Route::post('/send-group-message', [ChatGroupController::class, 'sendGroupMessage']);
+
+Route::get('/get-group-messages/{groupId}', [ChatGroupController::class, 'get_group_messages']);
+
+Route::post('/create-group', [ChatGroupController::class, 'create_group']);
+
+Route::post('/invite-people/{groupId}', [ChatGroupController::class, 'invite_people']);
+
+Route::get('/groups-requests', [ChatGroupController::class, 'get_groups_request']);
+
+Route::post('/accept-group-request/{groupId}', [ChatGroupController::class, 'accept_group_request']);
+
+Route::delete('/refuse-group-request/{groupId}', [ChatGroupController::class, 'refuse_group_request']);
+
+Route::get('/latest-group-messages/{groupId}', [ChatGroupController::class, 'latest_group_messages']);

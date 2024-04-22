@@ -10,6 +10,10 @@
         html {
             scroll-behavior: smooth;
         }
+
+        body {
+            user-select: none;
+        }
     </style>
     {{-- tailwind--}}
     <script src="https://cdn.tailwindcss.com"></script>

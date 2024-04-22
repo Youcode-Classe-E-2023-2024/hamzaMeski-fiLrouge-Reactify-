@@ -10,7 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ChatGroup
+class GroupMsgSent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -22,6 +22,6 @@ class ChatGroup
 
     public function broadcastOn()
     {
-        return new Channel('chat-group');
+        return new Channel('groupChat');
     }
 }

@@ -45,8 +45,14 @@ background: linear-gradient(90deg, rgba(10,107,170,1) 35%, rgba(13,152,117,1) 72
         </li>
         <li class="px-4">
             <a href="{{route('friends_home')}}" class="flex items-center justify-between gap-1 hover:text-blue-500">
-                <ion-icon name="people" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
+                <ion-icon name="person" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
                 <span class="font-bold text-white" style="text-decoration: underline;">Friends</span> <!-- Changed to text-white -->
+            </a>
+        </li>
+        <li class="px-4">
+            <a href="{{route('chat_group_index')}}" class="flex items-center justify-between gap-1 hover:text-blue-500">
+                <ion-icon name="people" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
+                <span class="font-bold text-white" style="text-decoration: underline;">Groups</span> <!-- Changed to text-white -->
             </a>
         </li>
         <hr class="border-gray-600">
