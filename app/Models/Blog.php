@@ -14,6 +14,12 @@ class Blog extends Model
     protected $fillable = [
         'question_id',
         'title',
-        'content'
+        'content',
+        'likes'
     ];
+
+    public function question()
+    {
+        return $this->belongsTo(Question::class);
+    }
 }

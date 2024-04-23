@@ -22,6 +22,12 @@ class HomeController extends Controller
             ->with('tags')
             ->latest()
             ->get();
+//        $questions = Question::withCount('answers')
+//            ->with('tags')
+//            ->orderBy('likes', 'desc') // Order by the 'likes' column in descending order
+//            ->latest() // If there are ties in likes, order by the latest
+//            ->get();
+
 
         $mostLikedBlogs = Blog::orderBy('likes', 'desc')
             ->take(3)
