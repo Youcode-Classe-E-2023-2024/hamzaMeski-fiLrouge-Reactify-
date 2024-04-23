@@ -28,11 +28,11 @@
             @forelse($articles as $article)
                 <div class="hover:text-green-500 flex-col p-8 py-16 hover:scale-[1.05] transition duration-300 ease-in-out rounded-lg shadow-2xl md:p-12 bg-gradient-to-br from-gray-900 to-black">
                     <div class="flex items-center justify-start gap-2">
-                        <p class="flex items-center justify-center text-4xl font-semibold text-green-400 bg-gray-800 border border-red-500 rounded-full shadow-lg w-12 h-12">
-                            <ion-icon name="heart" class="text-2xl text-gray-300"></ion-icon>
+                        <p blogId="{{ $article->id }}" class="like-blog-btn text-gray-300 cursor-pointer flex items-center justify-center text-4xl font-semibold bg-gray-800 border border-red-500 rounded-full shadow-lg w-12 h-12">
+                            <ion-icon name="heart" class="text-2xl"></ion-icon>
                         </p>
-                        <span class="text-gray-500 font-bold text-[12px]">
-                            43
+                        <span class="likes-nmb text-gray-500 font-bold text-[12px]">
+                            {{ $article->likes }}
                         </span>
                     </div>
                     <div class="h-6"></div>
@@ -44,4 +44,6 @@
         </div>
     </section>
 
+
+    <script src="{{asset('blog-main/js/like-save-blog.js')}}"></script>
 @endsection

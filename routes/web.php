@@ -69,7 +69,7 @@ Route::post('/update-comment/{comment}', [CommentController::class, 'update']);
 Route::get('/execute-script', [AIController::class, 'executeCommands']);
 
 /* Blog route */
-Route::get('/blog-main', [BlogController::class, 'main'])->name('blog-main');
+Route::get('/blog-index', [BlogController::class, 'main'])->name('blog-main');
 
 /* article details route */
 Route::get('/article-details/{article}', [BlogController::class, 'article_details'])->name('article_details');
@@ -185,3 +185,11 @@ Route::post('/accept-group-request/{groupId}', [ChatGroupController::class, 'acc
 Route::delete('/refuse-group-request/{groupId}', [ChatGroupController::class, 'refuse_group_request']);
 
 Route::get('/latest-group-messages/{groupId}', [ChatGroupController::class, 'latest_group_messages']);
+
+/* blog routes */
+Route::post('/like-blog/{blog}', [BlogController::class, 'like_blog']);
+
+/* check if a blog is liked */
+Route::post('/is-blog-liked/{blog}', [BlogController::class, 'is_blog_liked']);
+
+Route::post('/are-blogs-liked', [BlogController::class, 'are_blogs_liked']);

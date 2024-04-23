@@ -30,8 +30,18 @@ class Question extends Model
         return $this->belongsToMany(Tag::class, 'questions_tags', 'question_id', 'tag_id');
     }
 
+//    public function user()
+//    {
+//        return $this->belongsTo(User::class, 'user_id');
+//    }
+
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
+    }
+
+    public function blog()
+    {
+        return $this->hasOne(Blog::class);
     }
 }

@@ -93,7 +93,7 @@
 
             <div class="flex flex-col items-center justify-center gap-2 font-bold">
                 <div class="text-gray-300">waite a few seconds...</div>
-                <div class="text-gray-300 text-2xl uppercase">
+                <div class="text-gray-300 text-2xl uppercase text-center">
                     Your Question Is Generating by AI API
                 </div>
                 <svg aria-hidden="true" class="w-12 h-12 text-gray-200 animate-spin dark:text-gray-600 fill-green-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
