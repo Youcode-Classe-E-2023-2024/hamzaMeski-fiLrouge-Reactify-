@@ -81,7 +81,7 @@
                 @php $i = 0 @endphp
                 @foreach($mostLikedBlogs as $blog)
                     @if($i < 4)
-                    <div class="flex-col p-8 py-16 hover:scale-[1.1] transition duration-300 ease-in-out rounded-lg shadow-2xl md:p-12 bg-gradient-to-br from-gray-900 to-black">
+                    <div class="flex-col p-8 py-16 hover:scale-[1.05] transition duration-300 ease-in-out rounded-lg shadow-2xl md:p-12 bg-gradient-to-br from-gray-900 to-black">
                         <p
                             class="flex items-center justify-center text-4xl font-semibold text-green-400 bg-green-800 rounded-full shadow-lg w-14 h-14">
                             @php $i++ @endphp
@@ -110,7 +110,7 @@
 
             <div class="grid grid-cols-1 gap-x-6 gap-y-12 px-4 mt-12 sm:px-0 xl:mt-20 xl:grid-cols-3 sm:grid-cols-2 ">
                 @forelse($questions as $question)
-                    <div class="xl:h-[250px] sm:h-[400px] rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 hover:scale-[1.1] transition duration-300 ease-in-out" style="box-shadow: 0px 0px 2px 0px rgba(255,255,255,0.75);
+                    <div class="xl:h-[250px] sm:h-[400px] rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 hover:scale-[1.05] transition duration-300 ease-in-out" style="box-shadow: 0px 0px 2px 0px rgba(255,255,255,0.75);
                     -webkit-box-shadow: 0px 0px 2px 0px rgba(255,255,255,0.75);
                     -moz-box-shadow: 0px 0px 2px 0px rgba(255,255,255,0.75);">
                         <div class="p-6 h-full flex flex-col justify-between">

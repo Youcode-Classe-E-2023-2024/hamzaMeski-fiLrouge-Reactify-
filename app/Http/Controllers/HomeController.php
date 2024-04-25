@@ -35,9 +35,33 @@ class HomeController extends Controller
         return view('QA-page.Q-items', compact('questions', 'mostLikedBlogs'));
     }
 
+    public function top_questions() {
+        $questions = Question::withCount('answers')
+            ->with('tags')
+            ->orderBy('likes', 'desc')
+            ->latest()
+            ->get();
+
+        return view('top-questions.main', compact('questions'));
+    }
+
     public function Q_item_details(Question $question) {
         $question = $question->loadCount('answers');
         $answers = Answer::where('question_id', $question->id)->latest()->get();
         return view('QA-page.Q-item-details', compact('question', 'answers'));
+    }
+
+    public function get_tags() {
+        $tags = Tag::all();
+        return view('tags.main', compact('tags'));
+    }
+
+    public function tags_questions($id) {
+        $tag = Tag::findOrFail($id);
+        $questions = Question::whereHas('tags', function ($query) use ($tag) {
+            $query->where('tags.id', $tag->id); // Specify the table name for the id column
+        })->get();
+
+        return view('tags-questions.main', compact('questions'));
     }
 }

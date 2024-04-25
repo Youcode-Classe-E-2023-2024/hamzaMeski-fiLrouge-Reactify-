@@ -3,7 +3,7 @@ import './bootstrap';
 
 // Listen to the "chat-group" channel
 window.Echo.channel("groupChat").listen('GroupMsgSent', (e) => {
-    console.log('socket');
+    // console.log('socket');
     const authId = Number(localStorage.getItem('authId'));
     const groupId = Number(localStorage.getItem('groupId'));
     console.log(e.message)
