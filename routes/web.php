@@ -50,6 +50,9 @@ Route::post('/reset-password', [ForgetPasswordController::class, 'resetPasswordP
 /* main route */
 Route::get('/main', [HomeController::class, 'Q_items'])->name('main');
 
+/* top questions route */
+Route::get('/top-questions', [HomeController::class, 'top_questions'])->name('top_questions');
+
 /* question item route */
 Route::get('/question-details/{question}', [HomeController::class, 'Q_item_details'])->name('question-details');
 
@@ -138,8 +141,14 @@ Route::delete('/cancel-friend-request/{receiver}', [FriendController::class, 'ca
 /* block friend */
 Route::post('/block-friend/{user}', [FriendController::class, 'block_friend']);
 
+/* about us route */
+Route::get('/about-us', function() {
+    return view('about.main');
+})->name('about_us');
+
+
 /* contact us */
-Route::get('/contact_us', function() {
+Route::get('/contact-us', function() {
     return view('contact-us.main');
 })->name('contact_us');
 
@@ -219,9 +228,7 @@ Route::middleware('auth')->group(function () {
         Route::prefix('role')->group(function () {
             Route::get('/getRolesNames', [RoleController::class, 'getRolesNames']);
             Route::get('/roles', [RoleController::class, 'roles']);
-//            to do
             Route::get('/getRoleDetails/{id}', [RoleController::class, 'getRoleDetails']);
-//            to do
             Route::get('/getRolePermissionsNames/{id}', [RoleController::class, 'getRolePermissionsNames']);
 
             Route::post('/storeRole', [RoleController::class, 'storeRole']);
@@ -234,7 +241,6 @@ Route::middleware('auth')->group(function () {
         });
 
         Route::prefix('permission')->group(function () {
-//            to do
             Route::get('/getPermissionsNames', [RoleController::class, 'getPermissionsNames']);
 
 
@@ -248,3 +254,17 @@ Route::middleware('auth')->group(function () {
         });
     });
 });
+
+
+
+/********************************/
+
+/* tags route */
+Route::get('/tags', [HomeController::class, 'get_tags'])->name('get_tags');
+
+/* tags questions route */
+Route::get('/tags-questions/{id}', [HomeController::class, 'tags_questions'])->name('tags_questions');
+
+/* saved questions */
+
+/* saved answers */
