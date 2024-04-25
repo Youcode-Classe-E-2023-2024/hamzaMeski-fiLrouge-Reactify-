@@ -29,6 +29,7 @@ class AuthController extends Controller
             $validated['image'] = $imagePath;
         }
         $user = User::create($validated);
+        RoleController::giveRoleToUser_static($user->id, 'user');
 //        $user->assignRole('user');
 
         return redirect()->route('login');

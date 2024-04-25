@@ -29,4 +29,37 @@ class UserController extends Controller
         $userData = User::where('id', $user->id)->first();
         return response()->json($userData);
     }
+
+
+
+
+
+    function index()
+    {
+        $users = User::all();
+        return response()->json($users);
+    }
+    function destroy(Request $request)
+    {
+        $user = User::find($request->id);
+        $user->delete();
+        return response()->json([
+            'status' => 'success'
+        ]);
+    }
+
+    public function getUserDetails($id)
+    {
+        $user = User::where('id', $id)->get()->first();
+        return response()->json(['user' => $user], 200);
+    }
+
+    public function getUserRolesNames($id) {
+        $user = User::find($id);
+        if ($user) {
+            $roles = $user->roles()->where('name', '!=', 'user')->select('roles.id as role_id', 'roles.name')->get();
+            return response()->json($roles);
+        }
+        return response()->json(['failed'=> 'user id does not exist']);
+    }
 }

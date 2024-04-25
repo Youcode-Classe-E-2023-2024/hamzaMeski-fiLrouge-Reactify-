@@ -14,7 +14,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\FriendController;
 use App\Http\Controllers\ChatGroupController;
-
+use App\Http\Controllers\RoleController;
+use App\Http\Middleware\CheckUserRole;
 
 
 /*
@@ -193,3 +194,57 @@ Route::post('/like-blog/{blog}', [BlogController::class, 'like_blog']);
 Route::post('/is-blog-liked/{blog}', [BlogController::class, 'is_blog_liked']);
 
 Route::post('/are-blogs-liked', [BlogController::class, 'are_blogs_liked']);
+
+
+
+/* roles and permissions */
+Route::middleware('auth')->group(function () {
+    Route::middleware([CheckUserRole::class . ':admin'])->group(function () {
+        Route::get('/admin-users-dash', function() {
+            return view('admin.users-dashboard.users-table');
+        });
+        Route::get('/admin-roles-dash', function() {
+            return view('admin.roles-dashboard.roles-table');
+        });
+
+        Route::prefix('users')->group(function () {
+            Route::get('/', [UserController::class, 'index']);
+            Route::post('/', [UserController::class, 'store']);
+            Route::get('/{id}', [UserController::class, 'getUserDetails']);
+            Route::put('/{id}', [UserController::class, 'update']);
+            Route::delete('/{id}', [UserController::class, 'destroy']);
+            Route::get('/getUserRolesNames/{id}', [UserController::class, 'getUserRolesNames']);
+        });
+
+        Route::prefix('role')->group(function () {
+            Route::get('/getRolesNames', [RoleController::class, 'getRolesNames']);
+            Route::get('/roles', [RoleController::class, 'roles']);
+//            to do
+            Route::get('/getRoleDetails/{id}', [RoleController::class, 'getRoleDetails']);
+//            to do
+            Route::get('/getRolePermissionsNames/{id}', [RoleController::class, 'getRolePermissionsNames']);
+
+            Route::post('/storeRole', [RoleController::class, 'storeRole']);
+            Route::put('/updateRole/{id}', [RoleController::class, 'updateRole']);
+            Route::delete('/deleteRole/{id}', [RoleController::class, 'deleteRole']);
+
+            Route::post('/giveRoleToUser/{roleId}/{userId}', [RoleController::class, 'giveRoleToUser']);
+            Route::put('/updateRoleOfUser/{id}', [RoleController::class, 'updateRoleOfUser']);
+            Route::delete('/deleteRoleFromUser/{role_id}/{user_id}', [RoleController::class, 'deleteRoleFromUser']);
+        });
+
+        Route::prefix('permission')->group(function () {
+//            to do
+            Route::get('/getPermissionsNames', [RoleController::class, 'getPermissionsNames']);
+
+
+            Route::post('/storePermission', [RoleController::class, 'storePermission']);
+            Route::put('/updatePermission/{id}', [RoleController::class, 'updatePermission']);
+            Route::delete('/deletePermission/{id}', [RoleController::class, 'deletePermission']);
+
+            Route::post('/givePermissionToRole/{roleId}/{userId}', [RoleController::class, 'givePermissionToRole']);
+            Route::put('/updatePermissionOfRole/{id}', [RoleController::class, 'updatePermissionOfRole']);
+            Route::delete('/deletePermissionFromRole/{role_id}/{user_id}', [RoleController::class, 'deletePermissionFromRole']);
+        });
+    });
+});
