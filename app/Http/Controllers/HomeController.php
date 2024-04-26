@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SavedAnswer;
 use Illuminate\Http\Request;
 use App\Models\Question;
 use App\Models\Tag;
-use App\Models\QuestionTag;
+use App\Models\User;
 use App\Models\Answer;
 use App\Models\Blog;
+use App\Models\SavedQuestion;
 
 class HomeController extends Controller
 {
@@ -59,9 +61,31 @@ class HomeController extends Controller
     public function tags_questions($id) {
         $tag = Tag::findOrFail($id);
         $questions = Question::whereHas('tags', function ($query) use ($tag) {
-            $query->where('tags.id', $tag->id); // Specify the table name for the id column
+            $query->where('tags.id', $tag->id);
         })->get();
 
         return view('tags-questions.main', compact('questions'));
     }
+
+    public function saved_questions() {
+        $user = User::findOrFail(auth()->id());
+
+        $savedQuestions = SavedQuestion::where('user_id', $user->id)->with('question')->get();
+        return view('saved-questions.main', compact('savedQuestions'));
+    }
+
+    public function saved_answers_index() {
+//        $user = User::findOrFail(auth()->id());
+//
+//        $savedAnswers = SavedAnswer::where('user_id', $user->id)->with('answer')->get();
+        return view('saved-answers.main');
+    }
+
+//    public function saved_answers(Question $question) {
+//        $answers = Answer::where('question_id', $question->id)
+//            ->with('user')
+//            ->latest()
+//            ->get();
+//        return response()->json($answers);
+//    }
 }

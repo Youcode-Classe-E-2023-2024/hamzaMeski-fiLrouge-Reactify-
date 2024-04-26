@@ -266,5 +266,7 @@ Route::get('/tags', [HomeController::class, 'get_tags'])->name('get_tags');
 Route::get('/tags-questions/{id}', [HomeController::class, 'tags_questions'])->name('tags_questions');
 
 /* saved questions */
+Route::get('/saved-questions', [HomeController::class, 'saved_questions'])->name('saved_questions');
 
 /* saved answers */
+Route::get('/saved-answers-index', [HomeController::class, 'saved_answers_index'])->name('saved_answers_index');

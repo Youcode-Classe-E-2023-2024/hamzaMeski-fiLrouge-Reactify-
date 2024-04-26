@@ -59,7 +59,6 @@ class QuestionController extends Controller
         }
     }
 
-
     public function get_question_answers(Question $question) {
         $answers = Answer::where('question_id', $question->id)
             ->with('user')
