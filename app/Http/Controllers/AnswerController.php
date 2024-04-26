@@ -37,7 +37,6 @@ class AnswerController extends Controller
         ]);
     }
 
-
     public function save_answer(Answer $answer) {
         $answerId = $answer->id;
         $userId = auth()->id();
@@ -57,4 +56,38 @@ class AnswerController extends Controller
             ]);
         }
     }
+
+    public function get_answers_likes(){
+        $IDs = json_decode(request()->AnswerIDs);
+        $userId = auth()->id();
+
+        $answerInfo = [];
+        foreach ($IDs as $answerId) {
+            $isLiked = AnswerLike::where('answer_id', $answerId)->where('user_id', $userId)->exists();
+            $savedAnswer = SavedAnswer::where('answer_id', $answerId)->where('user_id', $userId)->with('answer')->get();
+
+            $answerInfo[] = [
+                'isLiked' => $isLiked,
+                'savedAnswer' => $savedAnswer
+            ];
+        }
+
+        return response()->json($answerInfo);
+    }
+
+//    public function are_answers_liked() {
+//        $IDs = json_decode(request()->AnswerIDs);
+//        $userId = auth()->id();
+//        $answerInfo = [];
+//        foreach ($IDs as $answerId) {
+//            $isLiked = AnswerLike::where('answer_id', $answerId)->where('user_id', $userId)->exists();
+//
+//            $answerInfo[] = [
+//                'answer_id' => $answerId,
+//                'isLiked' => $isLiked,
+//            ];
+//        }
+//
+//        return response()->json($answerInfo);
+//    }
 }

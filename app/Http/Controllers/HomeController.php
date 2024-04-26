@@ -75,17 +75,9 @@ class HomeController extends Controller
     }
 
     public function saved_answers_index() {
-//        $user = User::findOrFail(auth()->id());
-//
-//        $savedAnswers = SavedAnswer::where('user_id', $user->id)->with('answer')->get();
-        return view('saved-answers.main');
-    }
+        $user = User::findOrFail(auth()->id());
 
-//    public function saved_answers(Question $question) {
-//        $answers = Answer::where('question_id', $question->id)
-//            ->with('user')
-//            ->latest()
-//            ->get();
-//        return response()->json($answers);
-//    }
+        $savedAnswers = SavedAnswer::where('user_id', $user->id)->with('answer')->get();
+        return view('saved-answers.main', compact('savedAnswers'));
+    }
 }

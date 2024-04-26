@@ -1,54 +1,42 @@
 @extends('shared.layout')
 
 @section('content')
-    <div id="top-target" class="mt-20">
-        {{-- Answers Section start --}}
-        {{-- {{$question->id}} --}}
-        <section questionId="61" id="answers-container">
+    <div class="grid sm:grid-cols-1 lg:grid-cols-2 gap-6 p-6">
+        @forelse($savedAnswers as $answer)
+            <div class="flex flex-col justify-between  w-full bg-gray-900 shadow-md rounded-lg overflow-hidden">
+                <div class="answer text-[15px] text-gray-300 p-6">
+                    {{ $answer->answer->answer }}
+                </div>
 
-        </section>
+                <div class="px-6 py-4 bg-gray-800">
+                    <div class="flex justify-center items-center">
+                        <div class="flex gap-8 items-center text-gray-500 text-xs md:text-sm">
+                            <div>
+                                <span answerId="{{ $answer->answer->id }}" class="answer_likes_nmb text-xl text-blue-700">
 
-        {{--  delete my answer  --}}
-        <section id="delete-answer-overlay" class="fixed hidden flex items-center justify-center w-full h-screen shadow-lg backdrop-filter backdrop-blur-md top-0 left-0">
-            <div class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
-                <form id="delete-answer-form" class="bg-gray-800 rounded-lg shadow-lg p-8 max-w-md">
-                    <div class="text-white text-center mb-4">
-                        <svg id="cancel-delete-1" xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-red-500 cursor-pointer" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M3.293 3.293a1 1 0 011.414 0L10 8.586l5.293-5.293a1 1 0 111.414 1.414L11.414 10l5.293 5.293a1 1 0 01-1.414 1.414L10 11.414l-5.293 5.293a1 1 0 01-1.414-1.414L8.586 10 3.293 4.707a1 1 0 010-1.414z" clip-rule="evenodd" />
-                        </svg>
-                        <h2 class="text-lg font-semibold">Are you sure you want to delete this answer?</h2>
-                        <p class="text-sm mt-2">This action cannot be undone.</p>
-                    </div>
-                    <div class="flex justify-center">
-                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded mr-2">Delete</button>
-                        <span id="cancel-delete-2" class="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white font-semibold px-4 py-2 rounded ml-2">Cancel</span>
-                    </div>
-                </form>
-            </div>
-        </section>
-
-        {{--  update my answer  --}}
-        <section id="update-answer-overlay" class="fixed hidden flex items-center justify-center w-full h-screen shadow-lg backdrop-filter backdrop-blur-md top-0 left-0">
-            <div class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50 z-50">
-                <form id="update-answer-form"
-                      class="bg-gray-800 shadow-md rounded-lg p-4 max-w-md w-full space-y-6 sm:px-10 sm:py-8 sm:space-y-8 text-lg">
-                    <h1 class="text-2xl font-bold text-white text-center">update answer</h1>
-                    <div>
-                        <label for="answer" class="block text-sm font-medium text-gray-300">Answer</label>
-                        <textarea id="update-answer-textarea" name="answer"
-                                  class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-700 rounded-md py-3 px-4 h-32 bg-gray-700 text-gray-300"></textarea>
-                        <div id="update-error-container" class="text-red-500 mt-2">
+                                </span>
+                                <button answerId="{{ $answer->answer->id }}" class="like_answer dark:text-gray-300 text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:hover:text-white dark:focus:ring-blue-800 dark:hover:bg-blue-500">
+                                    <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 18">
+                                        <path d="M3 7H1a1 1 0 0 0-1 1v8a2 2 0 0 0 4 0V8a1 1 0 0 0-1-1Zm12.954 0H12l1.558-4.5a1.778 1.778 0 0 0-3.331-1.06A24.859 24.859 0 0 1 6 6.8v9.586h.114C8.223 16.969 11.015 18 13.6 18c1.4 0 1.592-.526 1.88-1.317l2.354-7A2 2 0 0 0 15.954 7Z"/>
+                                    </svg>
+                                    <span class="sr-only">Icon description</span>
+                                </button>
+                            </div>
+                            <a answerId="{{ $answer->answer->id }}" class="save_answer cursor-pointer" title="unsave">
+                                <ion-icon name="bookmark" class="text-3xl text-green-500"></ion-icon>
+                            </a>
                         </div>
                     </div>
-                    <div class="flex justify-center">
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded mr-2">Submit</button>
-                        <span id="cancel-answer-update"  class="bg-gray-600 cursor-pointer hover:bg-gray-700 text-white font-semibold px-4 py-2 rounded ml-2">Cancel</span>
-                    </div>
-                </form>
+                </div>
             </div>
-        </section>
-
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="{{ asset('saved-questions/js/saved-questions.js') }}"></script>
+        @empty
+            <div class="w-full h-full flex items-center justify-center">
+                <p class="text-gray-300 text-3xl">No saved questions found.</p>
+            </div>
+        @endforelse
     </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{asset('saved-answers/js/saved-answers.js')}}"></script>
 @endsection

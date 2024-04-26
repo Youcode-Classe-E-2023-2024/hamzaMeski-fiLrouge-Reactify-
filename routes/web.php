@@ -175,6 +175,8 @@ Route::post('/like-answer/{answer}', [AnswerController::class, 'like_answer']);
 /* save an answer route */
 Route::post('/save-answer/{answer}', [AnswerController::class, 'save_answer']);
 
+Route::post('/get-answers-likes', [AnswerController::class, 'get_answers_likes']);
+
 /* group chat routes */
 Route::get('/chat-group-index', [ChatGroupController::class, 'index'])->name('chat_group_index');
 
@@ -258,7 +260,6 @@ Route::middleware('auth')->group(function () {
 
 
 /********************************/
-
 /* tags route */
 Route::get('/tags', [HomeController::class, 'get_tags'])->name('get_tags');
 
@@ -266,7 +267,7 @@ Route::get('/tags', [HomeController::class, 'get_tags'])->name('get_tags');
 Route::get('/tags-questions/{id}', [HomeController::class, 'tags_questions'])->name('tags_questions');
 
 /* saved questions */
-Route::get('/saved-questions', [HomeController::class, 'saved_questions'])->name('saved_questions');
+Route::get('/saved-questions-index', [HomeController::class, 'saved_questions'])->name('saved_questions');
 
 /* saved answers */
 Route::get('/saved-answers-index', [HomeController::class, 'saved_answers_index'])->name('saved_answers_index');
