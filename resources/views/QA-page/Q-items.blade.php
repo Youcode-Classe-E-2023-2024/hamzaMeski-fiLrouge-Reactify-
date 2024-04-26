@@ -4,7 +4,7 @@
     {{-- Questions Section start --}}
     {{--  home carousel container start  --}}
     <div class="p-4">
-{{-- hero section start --}}
+    {{-- hero section start --}}
         <div class="text-gray-300 container mx-auto p-8 overflow-hidden md:rounded-lg md:p-10 lg:p-12">
             <div class="flex justify-between">
                 <h1 class="font-serif text-3xl font-medium">Landing</h1>
@@ -133,7 +133,7 @@
                                                 $i++;
                                             @endphp
                                             @if($i < 5)
-                                                <a href="#" class="">
+                                                <a href="{{ route('tags_questions', $tag->id) }}" class="">
                                                     #{{ $tag->name }}
                                                 </a>
                                             @elseif($i === 5)

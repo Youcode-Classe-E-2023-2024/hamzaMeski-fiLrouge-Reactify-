@@ -5,9 +5,9 @@
         @forelse($savedQuestions as $question)
             <div class="w-full bg-gray-900 shadow-md rounded-lg overflow-hidden">
                 <div class="p-6">
-                    <h1 class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-300">
+                    <a href="{{ route('question-details', $question->question->id) }}" class="text-xl md:text-2xl lg:text-3xl font-bold text-gray-300">
                         {{ $question->question->title }}
-                    </h1>
+                    </a>
                     <div class="flex flex-col md:flex-row gap-2 md:gap-4 text-gray-500 text-xs md:text-sm mt-2">
                         <span>Asked yesterday</span>
                         <span>Modified today</span>
@@ -22,7 +22,7 @@
                     <div class="flex justify-between items-center">
                         <div>
                             @foreach($question->question->tags as $tag)
-                                <a href="#" class="text-xs md:text-sm text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">{{ $tag->name }}</a>
+                                <a href="{{ route('tags_questions', $tag->id) }}" class="text-xs md:text-sm text-blue-600 bg-blue-200 py-1 px-2 rounded-md mr-1">{{ $tag->name }}</a>
                             @endforeach
                         </div>
                         <div class="flex gap-2 text-gray-500 text-xs md:text-sm">
@@ -36,7 +36,7 @@
                             <a href="#" class="text-blue-500 text-xs md:text-sm">{{ $question->question->user->name }}</a>
                             <span class="text-xs md:text-sm text-gray-700">asked 1 min ago</span>
                         </div>
-                        <div class="flex gap-1">
+                        <div class="flex items-center text-blue-300  gap-1">
                             <a class="like_question cursor-pointer hover:text-green-600" questionId="{{ $question->question->id }}" title="Like Question">
                                 <ion-icon name="caret-up-circle-outline" class="text-lg md:text-xl"></ion-icon>
                             </a>
