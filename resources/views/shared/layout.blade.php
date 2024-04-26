@@ -32,13 +32,13 @@ background: linear-gradient(90deg, rgba(10,107,170,1) 35%, rgba(13,152,117,1) 72
             </a>
         </li>
         <li class="px-4">
-            <a href="#" class="flex items-center justify-between gap-1 hover:text-blue-500">
+            <a href="{{ route('saved_questions') }}" class="flex items-center justify-between gap-1 hover:text-blue-500">
                 <span class="font-bold text-white" style="text-decoration: underline;">Saved Questions</span> <!-- Changed to text-white -->
                 <ion-icon name="help-circle" class="text-2xl text-white"></ion-icon> <!-- Changed to text-white -->
             </a>
         </li>
         <li class="px-4">
-            <a href="#" class="flex items-center justify-between gap-1 hover:text-blue-500">
+            <a href="{{ route('saved_answers_index') }}" class="flex items-center justify-between gap-1 hover:text-blue-500">
                 <span class="font-bold text-white" style="text-decoration: underline;">Saved Answers</span> <!-- Changed to text-white -->
                 <ion-icon name="bookmark" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
             </a>

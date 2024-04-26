@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-gray-300 container mx-auto p-8 overflow-hidden md:rounded-lg md:p-10 lg:p-12">
-        <div class="grid gap-8 md:grid-cols-2">
+        <div class="grid gap-8 md:grid-cols-2 mt-16">
             <div class="flex flex-col justify-center">
                 <p class="self-start inline font-sans text-xl font-medium text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-green-600">
                     Tags list
@@ -39,11 +39,13 @@
             </div>
         </div>
 
-        <div class="text-center py-20">
+        <div class="text-center pt-20 pb-40">
             <a href="#tags-section">
                 <ion-icon name="chevron-down-circle" class="text-4xl text-green-500 cursor-pointer md hydrated" role="img"></ion-icon>
             </a>
         </div>
+
+        <h1 class="font-bold text-2xl text-gray-300 text-center py-12">TAGS ITEMS</h1>
 
         @php
             function randColor() {

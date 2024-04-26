@@ -43,10 +43,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-//    public function answers()
-//    {
-//        return $this->hasMany(Answer::class, 'answer_id');
-//    }
     public function questions()
     {
         return $this->hasMany(Question::class);
@@ -55,5 +51,15 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_has_roles', 'user_id', 'role_id');
+    }
+
+    public function savedQuestions()
+    {
+        return $this->hasMany(SavedQuestion::class);
+    }
+
+    public function savedAnswers()
+    {
+        return $this->hasMany(savedAnswer::class);
     }
 }

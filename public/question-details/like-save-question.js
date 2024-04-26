@@ -3,7 +3,6 @@ const qstLikesNmb = document.getElementById('question_likes_nmb');
 const saveQstBtn = document.getElementById('save_question');
 const QstId = likeQstBtn.getAttribute('questionId');
 
-
 like_question();
 save_question();
 
@@ -18,6 +17,7 @@ function like_question() {
         })
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 qstLikesNmb.textContent = data.likes;
             })
     })

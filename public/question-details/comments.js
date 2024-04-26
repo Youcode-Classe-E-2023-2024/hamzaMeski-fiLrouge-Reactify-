@@ -112,7 +112,7 @@ function answer_question() {
     const answerQuestionForm = document.getElementById('answer-question-form');
     const errorContainer = document.getElementById('error-container');
     const answerTextarea = document.getElementById('answer-textarea');
-    answerQuestionForm.addEventListener('submit', function(event) {
+    answerQuestionForm?.addEventListener('submit', function(event) {
         event.preventDefault();
         const formData = new FormData(this);
 
