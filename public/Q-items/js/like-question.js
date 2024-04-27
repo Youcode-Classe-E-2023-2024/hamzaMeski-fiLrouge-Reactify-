@@ -2,8 +2,6 @@ const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute
 const likeBtns = document.querySelectorAll('.like-btn');
 const likesNmb = document.querySelectorAll('.likes-nmb');
 
-
-
 for(const likeBtn of likeBtns) {
     likeBtn.addEventListener('click', function() {
         const questionId = this.getAttribute('questionId');

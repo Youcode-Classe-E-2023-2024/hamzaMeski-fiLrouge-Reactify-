@@ -21,8 +21,7 @@
             </p>
             <div class="h-10"></div>
             <p class="max-w-2xl font-serif text-xl text-gray-400 md:text-2xl">
-                Imagine being able to spent less time... This is a demonstration landing
-                page made with tailwindcss
+                Reactify is a comunity where users can get support for their problems.
             </p>
 
             <div class="h-32 md:h-40"></div>

@@ -42,6 +42,10 @@ function getQuestionAnswers() {
 
                     //
                     save_answer();
+
+                    //
+
+
                 })
         })
 }
@@ -62,7 +66,7 @@ function render_answers_cards(answer, auth) {
                                     <ion-icon name="caret-up-circle-outline" class="text-4xl"></ion-icon>
                                 </a>
                             </li>
-                            <li class="answer_likes_nmb mb-2 text-2xl hover:text-gray-200">
+                            <li answerId="${answer.id}" class="answer_likes_nmb mb-2 text-2xl hover:text-gray-200">
                                 ${answer.likes}
                             </li>
                             <li>
@@ -280,8 +284,9 @@ function update_my_answer() {
 
 function like_answer() {
     const likeAnswerBtns = document.querySelectorAll('.like_answer');
+    const answerLikesNmbs = document.querySelectorAll('.answer_likes_nmb');
 
-    for(const likeAnswerBtn of likeAnswerBtns) {
+    likeAnswerBtns.forEach((likeAnswerBtn, i) => {
         likeAnswerBtn.addEventListener('click', function() {
             const AnswerId = likeAnswerBtn.getAttribute('answerId');
             console.log();
@@ -294,10 +299,10 @@ function like_answer() {
             })
                 .then(res => res.json())
                 .then(data => {
-                    likeAnswerBtn.parentElement.parentElement.querySelector('.answer_likes_nmb').textContent = data.likes;
+                    answerLikesNmbs[i].textContent = data.likes;
                 })
         })
-    }
+    })
 }
 
 function save_answer() {
@@ -336,3 +341,37 @@ function save_answer() {
         })
     }
 }
+
+/*
+// fetch likes
+getLikes();
+function getLikes() {
+    const answerLikesNmbs = document.querySelectorAll('.answer_likes_nmb');
+    let AnswerIDs = [];
+    answerLikesNmbs.forEach(answerLikesNmb => {
+        AnswerIDs.push(answerLikesNmb.getAttribute('answerId'));
+    })
+
+    const formData = new FormData();
+    formData.append('AnswerIDs', JSON.stringify(AnswerIDs));
+    fetch(`/get-answers-likes`, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        }
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            answerLikesNmbs.forEach((answerLikesNmb, i) => {
+                if(data[i].isLiked){
+                    console.log(data[i].isLiked);
+                    likeAnswerBtns[i].classList.add('dark:text-blue-500');
+                }else {
+                    likeAnswerBtns[i].classList.remove('dark:text-blue-500');
+                }
+            })
+        })
+}
+*/
