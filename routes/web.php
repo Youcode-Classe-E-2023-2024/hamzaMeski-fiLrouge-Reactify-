@@ -56,7 +56,8 @@ Route::group(['middleware' => ['guest']], function () {
 
 /* about us route */
 Route::get('/about-us', function() {
-    return view('about.main');
+    $hover = 'About';
+    return view('about.main', compact('hover'));
 })->name('about_us');
 
 /* Blog route */
@@ -154,7 +155,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     /* contact us */
     Route::get('/contact-us', function() {
-        return view('contact-us.main');
+        $hover = 'Message Us';
+        return view('contact-us.main', compact('hover'));
     })->name('contact_us');
 
 

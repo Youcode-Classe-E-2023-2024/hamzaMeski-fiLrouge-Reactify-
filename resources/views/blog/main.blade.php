@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="flex flex-wrap bg-gray-900">
+    <div class="flex flex-wrap bg-gradient-to-br from-gray-900 to-black">
         <div class="w-full sm:w-8/12 mb-10">
             <div class="container mx-auto h-full sm:p-10">
                 <nav class="flex px-4 justify-between items-center">

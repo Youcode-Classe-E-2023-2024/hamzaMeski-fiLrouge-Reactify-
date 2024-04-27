@@ -1,8 +1,9 @@
 @extends('shared.layout')
 @section('content')
+<div class="bg-gradient-to-br from-gray-900 to-black">
 
     <div class="max-w-screen-lg mx-auto p-5">
-        <div class="grid grid-cols-1 md:grid-cols-12 border">
+        <div class="grid grid-cols-1 md:grid-cols-12 ">
             <div class="bg-gray-800 md:col-span-4 p-10 text-white">
                 <p class="mt-4 text-sm leading-7 font-regular uppercase">
                     Contact
@@ -100,7 +101,7 @@
                             First Name
                         </label>
                         <input
-                            class="appearance-none block w-full bg-gray-700 text-gray-300 border border-green-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                            class="appearance-none block w-full bg-gray-700 text-gray-300 border border-green-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-600"
                             id="grid-first-name" type="text" placeholder="Jane">
                         <p class="text-green-400 text-xs italic">Please fill out this field.</p>
                     </div>
@@ -110,7 +111,7 @@
                             Last Name
                         </label>
                         <input
-                            class="appearance-none block w-full bg-gray-700 text-gray-300 border border-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            class="appearance-none block w-full bg-gray-700 text-gray-300 border border-gray-700 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-gray-600 focus:border-gray-500"
                             id="grid-last-name" type="text" placeholder="Doe">
                     </div>
                 </div>
@@ -121,7 +122,7 @@
                             Email Address
                         </label>
                         <input
-                            class="appearance-none block w-full bg-gray-700 text-gray-300 border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                            class="appearance-none block w-full bg-gray-700 text-gray-300 border border-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-gray-600 focus:border-gray-500"
                             id="grid-email" type="email" placeholder="********@*****.**">
                     </div>
                 </div>
@@ -154,5 +155,6 @@
 
         </div>
     </div>
+</div>
 
 @endsection

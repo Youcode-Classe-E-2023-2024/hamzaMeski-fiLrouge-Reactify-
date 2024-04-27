@@ -1,4 +1,7 @@
 
+const dragEl = document.getElementById('drag');
+console.log(dragEl)
+
 /* sidebar */
 const sideBarDisappearBtn = document.getElementById('side-bar-disappear-btn');
 sideBarDisappearBtn.classList.add(`top-[${((innerHeight - 50)/2  - 50)}px]`)
@@ -10,9 +13,11 @@ const initialState = localStorage.getItem('appear');
 
 if (initialState === 'true') {
     sideBarDisappearBtn.classList.add('hidden');
+    dragEl.classList.add('hidden');
     sideBarAppearCnt.classList.remove('hidden');
 } else {
     sideBarDisappearBtn.classList.remove('hidden');
+    dragEl.classList.remove('hidden');
     sideBarAppearCnt.classList.add('hidden');
 }
 
@@ -32,10 +37,12 @@ function toggleSideBar() {
 
     if (isSidebarAppearing) {
         sideBarDisappearBtn.classList.add('hidden');
+        dragEl.classList.add('hidden');
         sideBarAppearCnt.classList.remove('hidden');
         sharedYield.classList.add(`ml-[280px]`);
     } else {
         sideBarDisappearBtn.classList.remove('hidden');
+        dragEl.classList.remove('hidden');
         sideBarAppearCnt.classList.add('hidden');
         sharedYield.classList.remove(`ml-[280px]`);
     }

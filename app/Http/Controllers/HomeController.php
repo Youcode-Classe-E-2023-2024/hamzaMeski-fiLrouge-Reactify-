@@ -31,10 +31,11 @@ class HomeController extends Controller
 //            ->get();
 
 
+        $hover = 'Home';
         $mostLikedBlogs = Blog::orderBy('likes', 'desc')
             ->take(3)
             ->get();
-        return view('QA-page.Q-items', compact('questions', 'mostLikedBlogs'));
+        return view('QA-page.Q-items', compact('questions', 'mostLikedBlogs', 'hover'));
     }
 
     public function top_questions() {
@@ -44,7 +45,9 @@ class HomeController extends Controller
             ->latest()
             ->get();
 
-        return view('top-questions.main', compact('questions'));
+        $hover = 'Top questions';
+
+        return view('top-questions.main', compact('questions', 'hover'));
     }
 
     public function Q_item_details(Question $question) {

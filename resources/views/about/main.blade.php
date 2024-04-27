@@ -1,42 +1,27 @@
 @extends('shared.layout')
 
 @section('content')
-    <div class="bg-gray-900 text-gray-300">
-        <div class="container mx-auto p-8 overflow-hidden rounded-lg md:p-10 lg:p-12">
+    <div class="bg-gradient-to-br from-gray-900 to-black text-gray-300 py-12">
+        <div class="container mx-auto px-6 lg:px-12">
+            <h1 class="text-3xl lg:text-5xl font-bold text-center mb-8">Welcome to Reactify</h1>
 
-            <p class="font-sans text-3xl font-bold text-gray-200 max-w-5xl lg:text-5xl">
-                Welcome to Reactify
-            </p>
-
-            <div class="h-6"></div>
-
-            <div class="flex flex-col justify-center">
-                <p class="self-start inline font-sans text-lg font-semibold text-green-400 bg-clip-text bg-gradient-to-br from-green-400 to-green-600">
-                    Our mission
-                </p>
-                <p class="font-serif text-lg text-gray-400 md:pr-10">
+            <section class="mb-12">
+                <h2 class="text-lg lg:text-xl font-semibold text-green-400 mb-2">Our Mission</h2>
+                <p class="text-base lg:text-lg text-gray-400 leading-relaxed">
                     Our mission is simple: to provide a dynamic space where users can ask questions, share insights, and connect with like-minded individuals. We strive to create an inclusive community where everyone's voice is heard and valued.
                 </p>
-            </div>
+            </section>
 
-            <div class="h-6"></div>
-
-            <div class="flex flex-col justify-center">
-                <p class="self-start inline font-sans text-lg font-semibold text-green-400 bg-clip-text bg-gradient-to-br from-green-400 to-green-600">
-                    What Sets Us Apart
-                </p>
-                <p class="font-serif text-lg text-gray-400 md:pr-10">
+            <section class="mb-12">
+                <h2 class="text-lg lg:text-xl font-semibold text-green-400 mb-2">What Sets Us Apart</h2>
+                <p class="text-base lg:text-lg text-gray-400 leading-relaxed">
                     Unlike traditional Q&A platforms, Reactify leverages cutting-edge AI technology to generate thought-provoking questions, sparking meaningful conversations and inspiring deep dives into various topics. Our unique approach ensures that users are constantly exposed to new ideas and perspectives, keeping the discussion fresh and engaging.
                 </p>
-            </div>
+            </section>
 
-            <div class="h-6"></div>
-
-            <div class="flex flex-col justify-center">
-                <p class="self-start inline font-sans text-lg font-semibold text-green-400 bg-clip-text bg-gradient-to-br from-green-400 to-green-600">
-                    Key Features
-                </p>
-                <ul class="font-serif text-lg text-gray-400 md:pr-10 list-disc pl-8">
+            <section class="mb-12">
+                <h2 class="text-lg lg:text-xl font-semibold text-green-400 mb-2">Key Features</h2>
+                <ul class="text-base lg:text-lg text-gray-400 leading-relaxed list-disc pl-8">
                     <li class="mb-2">
                         <span class="font-semibold text-green-400">AI-Generated Questions:</span> Our AI algorithm generates thought-provoking questions to inspire discussion and exploration.
                     </li>
@@ -53,19 +38,14 @@
                         <span class="font-semibold text-green-400">Social Networking:</span> Build your network by sending friend requests, connecting with others who share your interests.
                     </li>
                 </ul>
-            </div>
+            </section>
 
-            <div class="h-6"></div>
-
-            <div class="flex flex-col justify-center">
-                <p class="self-start inline font-sans text-lg font-semibold text-green-400 bg-clip-text bg-gradient-to-br from-green-400 to-green-600">
-                    Join The Community
+            <section>
+                <h2 class="text-lg lg:text-xl font-semibold text-green-400 mb-2">Join The Community</h2>
+                <p class="text-base lg:text-lg text-gray-400 leading-relaxed">
+                    Whether you're a curious learner, an expert in your field, or simply someone who enjoys engaging discussions, Reactify welcomes you. Join our growing community today and embark on a journey of discovery, connection, and knowledge sharing.
                 </p>
-                <p class="font-serif text-lg text-gray-400 md:pr-10">
-                    Whether you're a curious learner, an expert in your field, or simply someone who enjoys engaging discussions, [Your Website Name] welcomes you. Join our growing community today and embark on a journey of discovery, connection, and knowledge sharing.
-                </p>
-            </div>
-
+            </section>
         </div>
     </div>
 @endsection
