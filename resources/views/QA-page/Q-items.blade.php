@@ -8,8 +8,8 @@
         <div class="text-gray-300 container mx-auto p-8 overflow-hidden md:rounded-lg md:p-10 lg:p-12">
             <div class="flex justify-between">
                 <h1 class="font-serif text-3xl font-medium">Landing</h1>
-                <a href="#ask-question"
-                   class="self-start px-3 py-2 leading-none text-gray-200 border border-gray-800 rounded-lg focus:outline-none focus:shadow-outline bg-gradient-to-b hover:from-indigo-500 from-gray-900 to-black">
+                <a href="#down-here"
+                   class="self-start px-3 py-2 leading-none text-gray-200 border border-gray-800 rounded-lg focus:outline-none focus:shadow-outline bg-gradient-to-b hover:from-green-500 from-gray-900 to-black">
                     Questions section
                 </a>
             </div>
@@ -93,6 +93,8 @@
                 @endforeach
 
             </div>
+
+            <div id="down-here"></div>
         </div>
 {{-- hero section end --}}
         <div id="ask-question" class="flex items-center justify-between px-6 mt-12">

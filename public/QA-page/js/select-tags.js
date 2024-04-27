@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const tagName = event.target.dataset.tag;
             // Move the clicked tag into the tag container div
             const newTagDiv = document.createElement('span');
-            newTagDiv.classList.add('tagName', 'text-[13px]', 'text-blue-600', 'bg-blue-200', 'py-1', 'px-2', 'rounded-md', 'mr-1', 'cursor-pointer');
+            newTagDiv.classList.add('tagName', 'text-[13px]', 'text-blue-600', 'bg-blue-200', 'py-1', 'text-center', 'px-2' ,'m-2', 'rounded-md', 'cursor-pointer');
             newTagDiv.textContent = tagName;
             newTagDiv.setAttribute('data-id', tagId); // Add data-id attribute to the span for identification
             tagContainer.appendChild(newTagDiv);
