@@ -10,7 +10,8 @@ class BlogController extends Controller
 {
     public function main() {
         $articles = Blog::latest()->get();
-        return view('blog.main', compact('articles'));
+        $hover = 'Articles';
+        return view('blog.main', compact('articles', 'hover'));
     }
 
     public function article_details(Blog $article) {

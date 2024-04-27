@@ -36,7 +36,8 @@ class AuthController extends Controller
     }
 
     public function login() {
-        return view('auth.login');
+        $hover = 'Get Started';
+        return view('auth.login', compact('hover'));
     }
 
     public function authenticate(User $user) {

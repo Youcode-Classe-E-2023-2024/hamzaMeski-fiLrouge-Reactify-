@@ -1,7 +1,7 @@
 @extends('shared.layout')
 
 @section('content')
-    <div class="h-[91vh] bg-gradient-to-b from-gray-800 to-black text-white rounded-[30px] flex flex-col gap-4 items-center justify-center shadow-lg p-8">
+    <div class="h-[94vh] bg-gradient-to-b from-gray-800 to-black text-white flex flex-col gap-4 items-center justify-center shadow-lg p-8">
         <h1 class="text-5xl font-bold border-b-2 border-solid border-gray-300 px-4 py-2">
             TOP USERS
         </h1>

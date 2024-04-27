@@ -1,7 +1,7 @@
 @extends('shared.layout')
 
 @section('content')
-    <section id="askQuestionSection" class="relative bg-gray-900 px-4 py-6 md:px-10 lg:px-20 xl:px-40">
+    <section id="askQuestionSection" class="bg-gradient-to-br from-gray-900 to-black relative px-4 py-6 md:px-10 lg:px-20 xl:px-40">
         <form action="{{ route('ask-question.store') }}" method="POST" enctype="multipart/form-data" id="askForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
             @csrf
             {{-- Grid 1 --}}

@@ -10,8 +10,8 @@ class UserController extends Controller
     // here we mean by top users the user that have the most answers rate (likes and number of answers)
     public function get_top_users() {
         $users = User::all();
-
-        return view('top-users.main', compact('users'));
+        $hover = 'Top Users';
+        return view('top-users.main', compact('users', 'hover'));
     }
 
     public function get_top_user_details(User $user) {

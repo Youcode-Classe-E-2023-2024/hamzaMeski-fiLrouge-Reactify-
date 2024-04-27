@@ -24,4 +24,4 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
-<body class="min-h-screen bg-gradient-to-br from-gray-700 to-black">
+<body class="min-h-screen bg-gradient-to-br from-gray-700 to-gray-900">

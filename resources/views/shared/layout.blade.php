@@ -11,7 +11,7 @@ background: linear-gradient(90deg, rgba(10,107,170,1) 35%, rgba(13,152,117,1) 72
     </div>
 
     {{--        --}}
-    <ul id="side-bar-appear-cnt" class="fixed left-0 block z-[100] bg-gray-900 w-[280px] flex flex-col gap-6 overflow-hidden pt-2 border-r border-solid border-gray-600" >
+    <ul id="side-bar-appear-cnt" class="bg-gradient-to-br from-gray-900 to-black fixed left-0 block z-[100] w-[280px] flex flex-col gap-6 overflow-hidden pt-2 border-r border-solid border-gray-600" >
         <li class="flex  justify-between px-2 pr-0">
             <div class="p-1 h-[52px] w-[52px] border-2 border-solid border-gray-400 rounded-full flex items-center justify-center">
                 <div class="h-full w-full bg-black rounded-full" style="background-image: url('{{asset('http://127.0.0.1:8000/storage/'.auth()->user()->image )}}'); background-size: cover"></div>
@@ -27,48 +27,48 @@ background: linear-gradient(90deg, rgba(10,107,170,1) 35%, rgba(13,152,117,1) 72
 
         </li>
         <li class="px-4">
-            <a href="{{ route('get_tags') }}" class="flex items-center justify-between gap-1 hover:text-blue-500">
-                <span class="font-bold text-white" >Tags</span> <!-- Changed to text-white -->
-                <ion-icon name="pricetags" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
+            <a href="{{ route('get_tags') }}" class="flex items-center justify-between gap-1 text-gray-300">
+                <span class=" text-gray-300" >Tags</span> <!-- Changed to text-white -->
+                <ion-icon name="pricetags" class="text-xl"></ion-icon> <!-- Changed to text-white -->
             </a>
         </li>
         <li class="px-4">
-            <a href="{{ route('saved_questions') }}" class="flex items-center justify-between gap-1 hover:text-blue-500">
-                <span class="font-bold text-white" >Saved Questions</span> <!-- Changed to text-white -->
-                <ion-icon name="help-circle" class="text-2xl text-white"></ion-icon> <!-- Changed to text-white -->
+            <a href="{{ route('saved_questions') }}" class="flex items-center justify-between gap-1 text-gray-300">
+                <span class="" >Saved Questions</span> <!-- Changed to text-white -->
+                <ion-icon name="help-circle" class="text-2xl"></ion-icon> <!-- Changed to text-white -->
             </a>
         </li>
         <li class="px-4">
-            <a href="{{ route('saved_answers_index') }}" class="flex items-center justify-between gap-1 hover:text-blue-500">
-                <span class="font-bold text-white" >Saved Answers</span> <!-- Changed to text-white -->
-                <ion-icon name="bookmark" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
+            <a href="{{ route('saved_answers_index') }}" class="flex items-center justify-between gap-1 text-gray-300">
+                <span class="" >Saved Answers</span> <!-- Changed to text-white -->
+                <ion-icon name="bookmark" class="text-xl"></ion-icon> <!-- Changed to text-white -->
             </a>
         </li>
         <li class="px-4">
-            <a href="{{route('friends_home')}}" class="flex items-center justify-between gap-1 hover:text-blue-500">
-                <span class="font-bold text-white" >Friends</span> <!-- Changed to text-white -->
-                <ion-icon name="person" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
+            <a href="{{route('friends_home')}}" class="flex items-center justify-between gap-1 text-gray-300">
+                <span class="" >Friends</span> <!-- Changed to text-white -->
+                <ion-icon name="person" class="text-xl"></ion-icon> <!-- Changed to text-white -->
             </a>
         </li>
         <li class="px-4">
-            <a href="{{route('chat_group_index')}}" class="flex items-center justify-between gap-1 hover:text-blue-500">
-                <span class="font-bold text-white" >Groups</span> <!-- Changed to text-white -->
-                <ion-icon name="people" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
+            <a href="{{route('chat_group_index')}}" class="flex items-center justify-between gap-1 text-gray-300">
+                <span class="" >Groups</span> <!-- Changed to text-white -->
+                <ion-icon name="people" class="text-xl"></ion-icon> <!-- Changed to text-white -->
             </a>
         </li>
         <li class="px-4">
-            <a href="{{route('chat')}}" class="side_item flex items-center justify-between hover:text-blue-500">
-                <span class="font-bold text-white">Discussions</span>
+            <a href="{{route('chat')}}" class="side_item flex items-center justify-between gap-1 text-gray-300">
+                <span class="">Discussions</span>
                 <ion-icon name="chatbubbles" class="text-xl text-red-500"></ion-icon>
             </a>
         </li>
         <li class="px-4 flex items-center justify-between">
-            <a href="{{route('profile.edit')}}" class="w-full flex items-center justify-between">
-                <span class="font-bold text-white">Account</span>
+            <a href="{{route('profile.edit')}}" class="flex items-center justify-between gap-1 text-gray-300">
+                <span class="">Account</span>
                 <ion-icon name="settings" class="text-2xl text-blue-500"></ion-icon>
             </a>
         </li>
-        <li class="px-4 text-[12px] text-white">Communities for your favorite technologies.</li>
+        <li class="px-4 text-[12px] text-gray-300">Communities for your favorite technologies.</li>
         <li class="px-4 text-[14px] text-[10px] text-green-500">Explore all collectives</li>
         <li class="px-4">
             <form method="POST" action="{{ route('logout') }}">
