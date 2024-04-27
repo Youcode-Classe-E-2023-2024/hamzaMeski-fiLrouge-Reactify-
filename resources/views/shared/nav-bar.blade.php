@@ -9,7 +9,7 @@
         <li><a href="{{ route('main') }}" class="hover:bg-green-500 hover:text-black text-gray-400">Home</a></li>
         <li><a href="{{ route('about_us') }}" class="hover:bg-green-500 hover:text-black text-gray-400">About</a></li>
         <li><a href="{{ route('blog-main') }}" class="hover:bg-green-500 hover:text-black text-gray-400">Articles</a></li>
-        @auth()
+        @auth() 
             <li><a href="{{ route('get_top_users') }}" class="hover:bg-green-500 hover:text-black text-gray-400">Top Users</a></li>
         @endauth
         <li><a href="{{ route('top_questions') }}" class="hover:bg-green-500 hover:text-black text-gray-400">Top questions</a></li>
