@@ -8,7 +8,7 @@
     <!-- ***** Menu Start ***** -->
     <ul class="menu-items">
         <li><a href="{{ route('main') }}" >Home</a></li>
-        <li><a href="{{ route('td-landing') }}" >About</a></li>
+        <li><a href="{{ route('about_us') }}" >About</a></li>
         <li><a href="{{ route('blog-main') }}">Articles</a></li>
         <li><a href="{{ route('get_top_users') }}">Top Users</a></li>
         <li><a href="{{ route('top_questions') }}">Top questions</a></li>
