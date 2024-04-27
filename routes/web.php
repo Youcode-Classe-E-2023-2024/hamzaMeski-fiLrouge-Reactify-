@@ -165,6 +165,7 @@ Route::post('/update-answer/{answer}', [QuestionController::class, 'update_answe
 
 /* vote a question route */
 Route::post('/like-question/{question}', [QuestionController::class, 'like_question']);
+Route::post('/are-questions-liked', [QuestionController::class, 'are_questions_liked']);
 
 /* save a question route */
 Route::post('/save-question/{question}', [QuestionController::class, 'save_question']);
