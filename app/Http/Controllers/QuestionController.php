@@ -39,6 +39,31 @@ class QuestionController extends Controller
         ]);
     }
 
+    public function are_questions_liked() {
+        $userId = auth()->id();
+        $questions = \request()->questions;
+
+        $likedQuestions = [];
+        foreach ($questions as $questionId) {
+            $likedRow = QuestionLike::where('question_id', $questionId)->where('user_id', $userId);
+            $checkLike = $likedRow->exists();
+
+            if(!$checkLike) {
+                $liked = false;
+            } else {
+                $liked = true;
+            }
+
+            $likedQuestions[] = [
+                'question_id' => $questionId,
+                'liked'   => $liked,
+                'likes' => Question::where('id', $questionId)->value('likes')
+            ];
+        }
+
+        return response()->json($likedQuestions);
+    }
+
     public function save_question(Question $question) {
         $questionId = $question->id;
         $userId = auth()->id();

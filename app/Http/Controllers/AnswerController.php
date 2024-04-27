@@ -74,20 +74,4 @@ class AnswerController extends Controller
 
         return response()->json($answerInfo);
     }
-
-//    public function are_answers_liked() {
-//        $IDs = json_decode(request()->AnswerIDs);
-//        $userId = auth()->id();
-//        $answerInfo = [];
-//        foreach ($IDs as $answerId) {
-//            $isLiked = AnswerLike::where('answer_id', $answerId)->where('user_id', $userId)->exists();
-//
-//            $answerInfo[] = [
-//                'answer_id' => $answerId,
-//                'isLiked' => $isLiked,
-//            ];
-//        }
-//
-//        return response()->json($answerInfo);
-//    }
 }
