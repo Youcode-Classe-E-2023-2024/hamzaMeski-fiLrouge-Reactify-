@@ -26,7 +26,7 @@
                     What Sets Us Apart
                 </p>
                 <p class="font-serif text-lg text-gray-400 md:pr-10">
-                    Unlike traditional Q&A platforms, [Your Website Name] leverages cutting-edge AI technology to generate thought-provoking questions, sparking meaningful conversations and inspiring deep dives into various topics. Our unique approach ensures that users are constantly exposed to new ideas and perspectives, keeping the discussion fresh and engaging.
+                    Unlike traditional Q&A platforms, Reactify leverages cutting-edge AI technology to generate thought-provoking questions, sparking meaningful conversations and inspiring deep dives into various topics. Our unique approach ensures that users are constantly exposed to new ideas and perspectives, keeping the discussion fresh and engaging.
                 </p>
             </div>
 

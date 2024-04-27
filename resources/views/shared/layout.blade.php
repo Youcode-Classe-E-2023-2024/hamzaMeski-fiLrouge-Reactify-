@@ -1,6 +1,7 @@
 @include('shared.header')
 @include('shared.nav-bar')
 <div class="pt-[50px] relative">
+    @auth()
     {{--        --}}
     <div id="drag" class="p-4 rounded-tl-full rounded-bl-full rounded-br-full fixed top-[80%] left-2 z-[100]" style=" background: rgb(10,107,170);
 background: linear-gradient(90deg, rgba(10,107,170,1) 35%, rgba(13,152,117,1) 72%); ">
@@ -27,63 +28,59 @@ background: linear-gradient(90deg, rgba(10,107,170,1) 35%, rgba(13,152,117,1) 72
         </li>
         <li class="px-4">
             <a href="{{ route('get_tags') }}" class="flex items-center justify-between gap-1 hover:text-blue-500">
-                <span class="font-bold text-white" style="text-decoration: underline;">Tags</span> <!-- Changed to text-white -->
+                <span class="font-bold text-white" >Tags</span> <!-- Changed to text-white -->
                 <ion-icon name="pricetags" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
             </a>
         </li>
         <li class="px-4">
             <a href="{{ route('saved_questions') }}" class="flex items-center justify-between gap-1 hover:text-blue-500">
-                <span class="font-bold text-white" style="text-decoration: underline;">Saved Questions</span> <!-- Changed to text-white -->
+                <span class="font-bold text-white" >Saved Questions</span> <!-- Changed to text-white -->
                 <ion-icon name="help-circle" class="text-2xl text-white"></ion-icon> <!-- Changed to text-white -->
             </a>
         </li>
         <li class="px-4">
             <a href="{{ route('saved_answers_index') }}" class="flex items-center justify-between gap-1 hover:text-blue-500">
-                <span class="font-bold text-white" style="text-decoration: underline;">Saved Answers</span> <!-- Changed to text-white -->
+                <span class="font-bold text-white" >Saved Answers</span> <!-- Changed to text-white -->
                 <ion-icon name="bookmark" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
             </a>
         </li>
         <li class="px-4">
             <a href="{{route('friends_home')}}" class="flex items-center justify-between gap-1 hover:text-blue-500">
-                <span class="font-bold text-white" style="text-decoration: underline;">Friends</span> <!-- Changed to text-white -->
+                <span class="font-bold text-white" >Friends</span> <!-- Changed to text-white -->
                 <ion-icon name="person" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
             </a>
         </li>
         <li class="px-4">
             <a href="{{route('chat_group_index')}}" class="flex items-center justify-between gap-1 hover:text-blue-500">
-                <span class="font-bold text-white" style="text-decoration: underline;">Groups</span> <!-- Changed to text-white -->
+                <span class="font-bold text-white" >Groups</span> <!-- Changed to text-white -->
                 <ion-icon name="people" class="text-xl text-white"></ion-icon> <!-- Changed to text-white -->
             </a>
         </li>
-        <hr class="border-gray-600">
-        <li class="px-4 hover:text-blue-500">
-            <a href="#" class="flex items-center justify-between gap-1 ">
-                <ion-icon name="business" class="text-xl text-green-500"></ion-icon>
-                <span class="font-bold text-white">Companies</span> <!-- Changed to text-white -->
-            </a>
-        </li>
-        <li class="px-4 flex items-center justify-between gap-20 text-white hover:text-blue-500">
-            <span class=" text-green-500">Labs</span> <!-- Changed to text-white -->
-            <ion-icon name="information-circle" class="text-2xl text-blue-500"></ion-icon>
-        </li>
         <li class="px-4">
             <a href="{{route('chat')}}" class="side_item flex items-center justify-between hover:text-blue-500">
-                <ion-icon name="chatbubbles" class="text-xl text-green-500"></ion-icon> <!-- Changed to text-white -->
-                <span class="font-bold text-white">Discussions</span> <!-- Changed to text-white -->
-                <div class="h-[25px] w-[25px]  rounded-full bg-red-600 flex items-center justify-center">
-                    <div class="text-center text-white">4</div> <!-- Added text-center class -->
-                </div>
+                <span class="font-bold text-white">Discussions</span>
+                <ion-icon name="chatbubbles" class="text-xl text-red-500"></ion-icon>
             </a>
         </li>
         <li class="px-4 flex items-center justify-between">
-            <a href="" class="w-full flex items-center justify-between">
+            <a href="{{route('profile.edit')}}" class="w-full flex items-center justify-between">
                 <span class="font-bold text-white">Account</span>
                 <ion-icon name="settings" class="text-2xl text-blue-500"></ion-icon>
             </a>
         </li>
-        <li class="px-4 text-[12px] text-white">Communities for your favorite technologies.</li> <!-- Changed to text-white -->
+        <li class="px-4 text-[12px] text-white">Communities for your favorite technologies.</li>
         <li class="px-4 text-[14px] text-[10px] text-green-500">Explore all collectives</li>
+        <li class="px-4">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" title="logout" class="text-gray-900 flex items-center justify-center gap-2 bg-gray-300 p-1 rounded-md">
+                    <span class="text-[10px]">logout</span>
+                    <ion-icon name="log-out" class=" text-2xl"></ion-icon>
+                </button>
+            </form>
+        </li>
     </ul>
+    @endauth
 
     <section id="shared-yield" class="">
         @yield('content')

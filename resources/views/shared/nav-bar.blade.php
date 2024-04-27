@@ -1,7 +1,7 @@
 <nav id="nav-bar" class="custom-nav">
     <!-- ***** Logo Start ***** -->
-    <a href="{{ route('front-page') }}" class="text-logo-font">
-{{--        <img src="{{asset('images/logo.png')}}" class="w-[150px]" alt="">--}}
+    <a href="/" class="text-logo-font">
+    {{--<img src="{{asset('images/logo.png')}}" class="w-[150px]" alt="">--}}
         <div class="text-gray-300" style="font-family: cursive ">Reactify</div>
     </a>
     <!-- ***** Logo End ***** -->
@@ -10,16 +10,19 @@
         <li><a href="{{ route('main') }}" >Home</a></li>
         <li><a href="{{ route('about_us') }}" >About</a></li>
         <li><a href="{{ route('blog-main') }}">Articles</a></li>
+        @auth()
         <li><a href="{{ route('get_top_users') }}">Top Users</a></li>
+        @endauth
         <li><a href="{{ route('top_questions') }}">Top questions</a></li>
         <li><a href="{{route('contact_us')}}">Message Us</a></li>
+        @guest()
         <li><div class="main-red-button"><a href="http://127.0.0.1:8000/login">Get Started</a></div></li>
+        @endguest
     </ul>
     <!-- ***** Menu End ***** -->
 </nav>
 
 <style>
-
     .custom-nav {
         height: 50px;
         display: flex;
