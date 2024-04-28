@@ -6,16 +6,16 @@
     <!-- ***** Logo End ***** -->
     <!-- ***** Menu Start ***** -->
     <ul class="menu-items">
-        <li><a href="{{ route('main') }}" class="hover:bg-green-500 hover:text-black text-gray-400">Home</a></li>
-        <li><a href="{{ route('about_us') }}" class="hover:bg-green-500 hover:text-black text-gray-400">About</a></li>
-        <li><a href="{{ route('blog-main') }}" class="hover:bg-green-500 hover:text-black text-gray-400">Articles</a></li>
-        @auth() 
-            <li><a href="{{ route('get_top_users') }}" class="hover:bg-green-500 hover:text-black text-gray-400">Top Users</a></li>
+        <li><a href="{{ route('main') }}" class="navEl hover:bg-green-500 hover:text-black text-gray-400">Home</a></li>
+        <li><a href="{{ route('about_us') }}" class="navEl hover:bg-green-500 hover:text-black text-gray-400">About</a></li>
+        <li><a href="{{ route('blog-main') }}" class="navEl hover:bg-green-500 hover:text-black text-gray-400">Articles</a></li>
+        @auth()
+            <li><a href="{{ route('get_top_users') }}" class="navEl hover:bg-green-500 hover:text-black text-gray-400">Top Users</a></li>
         @endauth
-        <li><a href="{{ route('top_questions') }}" class="hover:bg-green-500 hover:text-black text-gray-400">Top questions</a></li>
-        <li><a href="{{ route('contact_us') }}" class="hover:bg-green-500 hover:text-black text-gray-400">Message Us</a></li>
+        <li><a href="{{ route('top_questions') }}" class="navEl hover:bg-green-500 hover:text-black text-gray-400">Top questions</a></li>
+        <li><a href="{{ route('contact_us') }}" class="navEl hover:bg-green-500 hover:text-black text-gray-400">Message Us</a></li>
         @guest()
-        <li><a href="{{ route('login') }}" class="bg-red-500 hover:text-black text-gray-100">Get started</a></li>
+        <li><a href="{{ route('login') }}" class="navEl bg-red-500 hover:text-black text-gray-100">Get started</a></li>
         @endguest
     </ul>
     <!-- ***** Menu End ***** -->
@@ -92,3 +92,23 @@
         text-decoration: none;
     }
 </style>
+
+
+
+<script>
+
+    const navEls = document.querySelectorAll('.navEl');
+
+    navEls.forEach((el, i) => {
+        if(localStorage.getItem('navElIndex') == i) {
+            el.classList.add('bg-green-500', 'text-black');
+        }
+    })
+
+    navEls.forEach((el, i) => {
+        el.addEventListener('click', _ => {
+            localStorage.removeItem('SideElIndex');
+            localStorage.setItem('navElIndex', i);
+        })
+    })
+</script>

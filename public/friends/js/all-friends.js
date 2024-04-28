@@ -154,14 +154,15 @@ function seeFriendProfile() {
             })
                 .then(res => res.json())
                 .then(user=> {
+                    const imageContainer = document.getElementById('image-container');
                     userProfileContainer.innerHTML = `
                     <section class="w-full overflow-hidden dark:bg-gray-900">
                         <div class="w-full mx-auto">
 <!--                        user.cover_image == null ? 'http://127.0.0.1:8000/storage/' + user.cover_image  : '/images/nature.jpg'-->
                             <!-- User Cover IMAGE -->
                             <div class="w-full xl:h-[10] lg:h-[10rem] md:h-[12rem] sm:h-[13rem] xs:h-[4rem] bg-red-500">
-                                    <img src="${ user.cover_image == null ? 'http://127.0.0.1:8000/storage/nature.jpg' : 'http://127.0.0.1:8000/storage/' + user.cover_image }" alt="User Cover"
-                                     class="w-full xl:h-[20rem] lg:h-[22rem] md:h-[16rem] sm:h-[13rem] xs:h-[9.5rem]" />
+                                    <div
+                                     class="w-full xl:h-[20rem] lg:h-[16rem] md:h-[12rem] sm:h-[8rem] xs:h-[9.5rem]" style="background-image: url('${imageContainer.dataset.image}'); background-size: cover; background-position: right"></div>
                             </div>
 
                             <!-- User Profile Image -->

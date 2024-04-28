@@ -21,6 +21,7 @@
         </div>
     </section>
 
+    <div id="image-container" data-image="{{ asset('images/cover.png') }}"></div>
     {{-- add-friend script --}}
     <script src="{{asset('friends/js/all-friends.js')}}"></script>
 @endsection
