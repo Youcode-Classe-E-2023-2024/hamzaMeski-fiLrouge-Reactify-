@@ -12663,7 +12663,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // Listen to the "chat-group" channel
 window.Echo.channel("groupChat").listen('GroupMsgSent', function (e) {
-  console.log('socket');
+  // console.log('socket');
   var authId = Number(localStorage.getItem('authId'));
   var groupId = Number(localStorage.getItem('groupId'));
   console.log(e.message);

@@ -1,0 +1,232 @@
+@startuml
+
+class User {
+    + id : integer
+    + name : string
+    + email : string
+    + image : string
+    + cover_image : string
+    + description : string
+    + email_verified_at : timestamp
+    + password : string
+    + rememberToken : string
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Question {
+    + id : integer
+    + user_id : integer
+    + likes : integer
+    + title : string
+    + description : text
+    + image : string
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Tag {
+    + id : integer
+    + name : string
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Question_Tag {
+    + id : integer
+    + question_id : integer
+    + tag_id : integer
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Answer {
+    + id : integer
+    + user_id : integer
+    + question_id : integer
+    + answer : text
+    + likes : integer
+    + image : string
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Comment {
+    + id : integer
+    + user_id : integer
+    + answer_id : integer
+    + comment : text
+    + likes : integer
+    + dislikes : integer
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Blog {
+    + id : integer
+    + question_id : integer
+    + title : text
+    + content : text
+    + likes : integer
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Message {
+    + id : integer
+    + sender_id : integer
+    + receiver_id : integer
+    + message : text
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Friendship {
+    + id : integer
+    + sender_id : integer
+    + receiver_id : integer
+    + status : enum
+    + suggested : enum
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Suggested_Friend {
+    + id : integer
+    + user_id : integer
+    + suggested_id : integer
+    + suggested : enum
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Block_Friend {
+    + id : integer
+    + friendship_id : integer
+    + blocked_by_id : integer
+    + blocked_user_id : integer
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Question_Like {
+    + id : integer
+    + question_id : integer
+    + user_id : integer
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Answer_Like {
+    + id : integer
+    + answer_id : integer
+    + user_id : integer
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Saved_Question {
+    + id : integer
+    + question_id : integer
+    + user_id : integer
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Saved_Answer {
+    + id : integer
+    + answer_id : integer
+    + user_id : integer
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Chat_Group {
+    + id : integer
+    + creator_id : integer
+    + name : string
+    + image : string
+    + description : text
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Group_Message {
+    + id : integer
+    + sender_id : integer
+    + group_id : integer
+    + message : text
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class User_Group {
+    + id : integer
+    + receiver_id : integer
+    + status : enum
+    + group_id : integer
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Like_Blog {
+    + id : integer
+    + user_id : integer
+    + blog_id : integer
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Permission {
+    + id : integer
+    + name : string
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Role {
+    + id : integer
+    + name : string
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class User_Has_Role {
+    + id : integer
+    + user_id : integer
+    + role_id : integer
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+class Role_Has_Permission {
+    + id : integer
+    + permission_id : integer
+    + role_id : integer
+    + created_at : timestamp
+    + updated_at : timestamp
+}
+
+User "1" --o "1..*" Question
+Question "1" --o "0..*" Tag
+Question "1" --o "0..*" Answer
+Answer "1" --o "0..*" Comment
+Question "1" --o "0..1" Blog
+User "1" --o "0..*" Message: Sends
+User "1" --o "0..*" Friendship: Initiates
+Friendship "0..*" --o "0..*" User: Involves
+User "1" --o "0..*" Suggested_Friend: Suggests
+User "0..*" --o "0..*" Block_Friend: Blocks
+Question "1" --o "0..*" Question_Like
+Answer "1" --o "0..*" Answer_Like
+User "1" --o "0..*" Saved_Question
+User "1" --o "0..*" Saved_Answer
+User "1" --o "0..*" Chat_Group: Creates
+User "0..*" --o "0..*" User_Group: Participates
+Chat_Group "1" --o "0..*" Group_Message: Contains
+User "0..*" --o "0..*" Like_Blog: Likes
+Role "0..*" --o "0..*" Permission: Has
+Role "0..*" --o "0..*" User_Has_Role: Has
+Permission "0..*" --o "0..*" Role_Has_Permission: Has
+
+@enduml
