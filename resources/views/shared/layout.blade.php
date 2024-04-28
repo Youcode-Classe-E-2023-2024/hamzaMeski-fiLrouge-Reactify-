@@ -11,7 +11,7 @@ background: linear-gradient(90deg, rgba(10,107,170,1) 35%, rgba(13,152,117,1) 72
     </div>
 
     {{--        --}}
-    <ul id="side-bar-appear-cnt" class="bg-gradient-to-br from-gray-900 to-black lg:fixed left-0 block z-[100] w-[280px] flex flex-col gap-6 overflow-hidden pt-2 border-r border-solid border-gray-600" >
+    <ul id="side-bar-appear-cnt" class="bg-gradient-to-br from-gray-900 to-black fixed left-0 block z-[100] lg:w-[280px] sm:w-screen w-full flex flex-col gap-6 overflow-hidden pt-2 border-r border-solid border-gray-600">
         <li class="flex  justify-between px-2 pr-0">
             <div class="p-1 h-[52px] w-[52px] border-2 border-solid border-gray-400 rounded-full flex items-center justify-center">
                 <div class="h-full w-full bg-black rounded-full" style="background-image: url('{{asset('http://127.0.0.1:8000/storage/'.auth()->user()->image )}}'); background-size: cover"></div>
